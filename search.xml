@@ -26,4 +26,27 @@
         <tag>Games</tag>
       </tags>
   </entry>
+  <entry>
+    <title>648. 单词替换</title>
+    <url>/leetcode/</url>
+    <content><![CDATA[<h1 id="648-单词替换"><a href="#648-单词替换" class="headerlink" title="648. 单词替换"></a>648. 单词替换</h1><p><a href="https://leetcode.cn/problems/replace-words/">力扣题目链接</a></p>
+<p>在英语中，我们有一个叫做 词根(root) 的概念，可以词根后面添加其他一些词组成另一个较长的单词——我们称这个词为 继承词(successor)。例如，词根an，跟随着单词 other(其他)，可以形成新的单词 another(另一个)。</p>
+<p>现在，给定一个由许多词根组成的词典 dictionary 和一个用空格分隔单词形成的句子 sentence。你需要将句子中的所有继承词用词根替换掉。如果继承词有许多可以形成它的词根，则用最短的词根替换它。</p>
+<p>你需要输出替换之后的句子。</p>
+<p> </p>
+<p>示例 1：</p>
+<p>输入：dictionary &#x3D; [“cat”,”bat”,”rat”], sentence &#x3D; “the cattle was rattled by the battery”<br>输出：”the cat was rat by the bat”<br>示例 2：</p>
+<p>输入：dictionary &#x3D; [“a”,”b”,”c”], sentence &#x3D; “aadsfasf absbs bbab cadsfafs”<br>输出：”a a b c”
+ </p>
+<p>提示：</p>
+<p>1 &lt;&#x3D; dictionary.length &lt;&#x3D; 1000<br>1 &lt;&#x3D; dictionary[i].length &lt;&#x3D; 100<br>dictionary[i] 仅由小写字母组成。<br>1 &lt;&#x3D; sentence.length &lt;&#x3D; 10^6<br>sentence 仅由小写字母和空格组成。<br>sentence 中单词的总量在范围 [1, 1000] 内。<br>sentence 中每个单词的长度在范围 [1, 1000] 内。<br>sentence 中单词之间由一个空格隔开。<br>sentence 没有前导或尾随空格。</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>字节跳动 10 日心动计划</tag>
+      </tags>
+  </entry>
 </search>
