@@ -19,27 +19,55 @@
 ]]></content>
   </entry>
   <entry>
-    <title>test</title>
-    <url>/test/</url>
-    <content><![CDATA[]]></content>
+    <title>1026. 节点与其祖先之间的最大差值</title>
+    <url>/leetcode1026/</url>
+    <content><![CDATA[<h2 id="1026-节点与其祖先之间的最大差值"><a href="#1026-节点与其祖先之间的最大差值" class="headerlink" title="1026. 节点与其祖先之间的最大差值"></a>1026. 节点与其祖先之间的最大差值</h2><p><a href="https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor/">力扣题目链接</a></p>
+<p><strong>给定二叉树的根节点 root，找出存在于 不同 节点 A 和 B 之间的最大值 V，其中 V &#x3D; |A.val - B.val|，且 A 是 B 的祖先。</strong></p>
+<p><strong>（如果 A 的任何子节点之一为 B，或者 A 的任何子节点是 B 的祖先，那么我们认为 A 是 B 的祖先）</strong></p>
+<h4 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h4><p><img src="/image/leetcode1026/1681810158883.png" alt="1681810158883" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：root = [8,3,10,1,6,null,14,null,null,4,7,13]</span><br><span class="line">输出：7</span><br><span class="line">解释： </span><br><span class="line">我们有大量的节点与其祖先的差值，其中一些如下：</span><br><span class="line">|8 - 3| = 5</span><br><span class="line">|3 - 7| = 4</span><br><span class="line">|8 - 1| = 7</span><br><span class="line">|10 - 13| = 3</span><br><span class="line">在所有可能的差值中，最大值 7 由 |8 - 1| = 7 得出。</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例2："><a href="#示例2：" class="headerlink" title="示例2："></a>示例2：</h4><p><img src="/image/leetcode1026/1681810167515.png" alt="1681810167515" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：root = [1,null,2,null,0,3]</span><br><span class="line">输出：3</span><br></pre></td></tr></table></figure>
+
+<h4 id="提示："><a href="#提示：" class="headerlink" title="提示："></a>提示：</h4><ul>
+<li>树中的节点数在 <code>2</code> 到 <code>5000</code> 之间。</li>
+<li><code>0 &lt;= Node.val &lt;= 10&lt;sup&gt;5&lt;/sup&gt;</code></li>
+</ul>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * function TreeNode(val, left, right) &#123;</span></span><br><span class="line"><span class="comment"> *     this.val = (val===undefined ? 0 : val)</span></span><br><span class="line"><span class="comment"> *     this.left = (left===undefined ? null : left)</span></span><br><span class="line"><span class="comment"> *     this.right = (right===undefined ? null : right)</span></span><br><span class="line"><span class="comment"> * &#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">TreeNode</span>&#125; <span class="variable">root</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> maxAncestorDiff = <span class="keyword">function</span>(<span class="params">root</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> diff = <span class="number">0</span></span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">diffData</span> = (<span class="params">node,min,max</span>) =&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(!node) <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        diff = <span class="title class_">Math</span>.<span class="title function_">max</span>(<span class="title class_">Math</span>.<span class="title function_">abs</span>(node.<span class="property">val</span>-min),<span class="title class_">Math</span>.<span class="title function_">abs</span>(node.<span class="property">val</span>-max))</span><br><span class="line">        min = <span class="title class_">Math</span>.<span class="title function_">min</span>(min,node.<span class="property">val</span>)</span><br><span class="line">        max = <span class="title class_">Math</span>.<span class="title function_">max</span>(max,node.<span class="property">val</span>)</span><br><span class="line">        diff = <span class="title class_">Math</span>.<span class="title function_">max</span>(diff,<span class="title function_">diffData</span>(node.<span class="property">left</span>,min,max)) </span><br><span class="line">        diff = <span class="title class_">Math</span>.<span class="title function_">max</span>(diff,<span class="title function_">diffData</span>(node.<span class="property">right</span>,min,max)) </span><br><span class="line">        <span class="keyword">return</span> diff</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">diffData</span>(root,root.<span class="property">val</span>,root.<span class="property">val</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><h4 id="复杂度"><a href="#复杂度" class="headerlink" title="复杂度"></a>复杂度</h4><ul>
+<li>时间复杂度</li>
+<li>时间复杂度：O(n)，其中n 是二叉树的节点数目。遍历二叉树的所有节点需要O(n)。</li>
+<li>空间复杂度：O(n)。最坏情况下，二叉树退化为链表，递归栈的空间为O(n)。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
       <tags>
-        <tag>Games</tag>
+        <tag>leetcode</tag>
+        <tag>每日一题</tag>
       </tags>
   </entry>
   <entry>
     <title>648. 单词替换</title>
-    <url>/leetcode/</url>
-    <content><![CDATA[<h1 id="648-单词替换"><a href="#648-单词替换" class="headerlink" title="648. 单词替换"></a>648. 单词替换</h1><p><a href="https://leetcode.cn/problems/replace-words/">力扣题目链接</a></p>
+    <url>/leetcode648/</url>
+    <content><![CDATA[<h2 id="648-单词替换"><a href="#648-单词替换" class="headerlink" title="648. 单词替换"></a>648. 单词替换</h2><p><a href="https://leetcode.cn/problems/replace-words/">力扣题目链接</a></p>
 <p>在英语中，我们有一个叫做 词根(root) 的概念，可以词根后面添加其他一些词组成另一个较长的单词——我们称这个词为 继承词(successor)。例如，词根an，跟随着单词 other(其他)，可以形成新的单词 another(另一个)。</p>
 <p>现在，给定一个由许多词根组成的词典 dictionary 和一个用空格分隔单词形成的句子 sentence。你需要将句子中的所有继承词用词根替换掉。如果继承词有许多可以形成它的词根，则用最短的词根替换它。</p>
 <p>你需要输出替换之后的句子。</p>
 <p> </p>
 <p>示例 1：</p>
-<p>输入：dictionary &#x3D; [“cat”,”bat”,”rat”], sentence &#x3D; “the cattle was rattled by the battery”<br>输出：”the cat was rat by the bat”<br>示例 2：</p>
-<p>输入：dictionary &#x3D; [“a”,”b”,”c”], sentence &#x3D; “aadsfasf absbs bbab cadsfafs”<br>输出：”a a b c”
- </p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：dictionary = [&quot;cat&quot;,&quot;bat&quot;,&quot;rat&quot;], sentence = &quot;the cattle was rattled by the battery&quot;</span><br><span class="line">输出：&quot;the cat was rat by the bat&quot;</span><br></pre></td></tr></table></figure>
+
+<p>示例 2：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：dictionary = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;], sentence = &quot;aadsfasf absbs bbab cadsfafs&quot;</span><br><span class="line">输出：&quot;a a b c&quot;</span><br></pre></td></tr></table></figure>
+
+<p> </p>
 <p>提示：</p>
-<p>1 &lt;&#x3D; dictionary.length &lt;&#x3D; 1000<br>1 &lt;&#x3D; dictionary[i].length &lt;&#x3D; 100<br>dictionary[i] 仅由小写字母组成。<br>1 &lt;&#x3D; sentence.length &lt;&#x3D; 10^6<br>sentence 仅由小写字母和空格组成。<br>sentence 中单词的总量在范围 [1, 1000] 内。<br>sentence 中每个单词的长度在范围 [1, 1000] 内。<br>sentence 中单词之间由一个空格隔开。<br>sentence 没有前导或尾随空格。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 &lt;= dictionary.length &lt;= 1000</span><br><span class="line">1 &lt;= dictionary[i].length &lt;= 100</span><br><span class="line">dictionary[i] 仅由小写字母组成。</span><br><span class="line">1 &lt;= sentence.length &lt;= 10^6</span><br><span class="line">sentence 仅由小写字母和空格组成。</span><br><span class="line">sentence 中单词的总量在范围 [1, 1000] 内。</span><br><span class="line">sentence 中每个单词的长度在范围 [1, 1000] 内。</span><br><span class="line">sentence 中单词之间由一个空格隔开。</span><br><span class="line">sentence 没有前导或尾随空格。</span><br></pre></td></tr></table></figure>
+
 <h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>]]></content>
       <categories>
         <category>leetcode</category>
