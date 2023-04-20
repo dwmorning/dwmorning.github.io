@@ -1,27 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>1026. 节点与其祖先之间的最大差值</title>
+    <title>1026. 节点与其祖先之间的最大差值 - 每日一题0418</title>
     <url>/leetcode1026/</url>
-    <content><![CDATA[<h2 id="1026-节点与其祖先之间的最大差值"><a href="#1026-节点与其祖先之间的最大差值" class="headerlink" title="1026. 节点与其祖先之间的最大差值"></a>1026. 节点与其祖先之间的最大差值</h2><p><a href="https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor/">力扣题目链接</a></p>
+    <content><![CDATA[<p><a href="https://leetcode.cn/problems/maximum-difference-between-node-and-ancestor/">力扣题目链接</a></p>
 <p><strong>给定二叉树的根节点 root，找出存在于 不同 节点 A 和 B 之间的最大值 V，其中 V &#x3D; |A.val - B.val|，且 A 是 B 的祖先。</strong></p>
 <p><strong>（如果 A 的任何子节点之一为 B，或者 A 的任何子节点是 B 的祖先，那么我们认为 A 是 B 的祖先）</strong></p>
 <h4 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h4><p><img src="/image/leetcode1026/1681810158883.png" alt="1681810158883" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
@@ -51,30 +33,237 @@
       </tags>
   </entry>
   <entry>
-    <title>648. 单词替换</title>
-    <url>/leetcode648/</url>
-    <content><![CDATA[<h2 id="648-单词替换"><a href="#648-单词替换" class="headerlink" title="648. 单词替换"></a>648. 单词替换</h2><p><a href="https://leetcode.cn/problems/replace-words/">力扣题目链接</a></p>
-<p>在英语中，我们有一个叫做 词根(root) 的概念，可以词根后面添加其他一些词组成另一个较长的单词——我们称这个词为 继承词(successor)。例如，词根an，跟随着单词 other(其他)，可以形成新的单词 another(另一个)。</p>
-<p>现在，给定一个由许多词根组成的词典 dictionary 和一个用空格分隔单词形成的句子 sentence。你需要将句子中的所有继承词用词根替换掉。如果继承词有许多可以形成它的词根，则用最短的词根替换它。</p>
-<p>你需要输出替换之后的句子。</p>
-<p> </p>
-<p>示例 1：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：dictionary = [&quot;cat&quot;,&quot;bat&quot;,&quot;rat&quot;], sentence = &quot;the cattle was rattled by the battery&quot;</span><br><span class="line">输出：&quot;the cat was rat by the bat&quot;</span><br></pre></td></tr></table></figure>
+    <title>624. 数组列表中的最大距离</title>
+    <url>/leetcode624/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="https://dwmorning.github.io/leetcodeVipInterview">尊享面试 100 题</a>是Leetcode会员专享题单</p>
+</blockquote>
+<h2 id="624-数组列表中的最大距离"><a href="#624-数组列表中的最大距离" class="headerlink" title="624. 数组列表中的最大距离"></a>624. 数组列表中的最大距离</h2><p><a href="https://leetcode.cn/problems/maximum-distance-in-arrays/?envType=study-plan-v2&id=premium-algo-100">力扣题目链接</a><br>给定 m 个数组，每个数组都已经按照升序排好序了。现在你需要从两个不同的数组中选择两个整数（每个数组选一个）并且计算它们的距离。两个整数 a 和 b 之间的距离定义为它们差的绝对值 |a-b| 。你的任务就是去找到最大距离</p>
+<h4 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a><strong>示例 1：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入： </span><br><span class="line">[[1,2,3],</span><br><span class="line"> [4,5],</span><br><span class="line"> [1,2,3]]</span><br><span class="line">输出： 4</span><br><span class="line">解释：</span><br><span class="line">一种得到答案 4 的方法是从第一个数组或者第三个数组中选择 1，同时从第二个数组中选择 5 。</span><br></pre></td></tr></table></figure>
 
-<p>示例 2：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：dictionary = [&quot;a&quot;,&quot;b&quot;,&quot;c&quot;], sentence = &quot;aadsfasf absbs bbab cadsfafs&quot;</span><br><span class="line">输出：&quot;a a b c&quot;</span><br></pre></td></tr></table></figure>
 
-<p> </p>
-<p>提示：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1 &lt;= dictionary.length &lt;= 1000</span><br><span class="line">1 &lt;= dictionary[i].length &lt;= 100</span><br><span class="line">dictionary[i] 仅由小写字母组成。</span><br><span class="line">1 &lt;= sentence.length &lt;= 10^6</span><br><span class="line">sentence 仅由小写字母和空格组成。</span><br><span class="line">sentence 中单词的总量在范围 [1, 1000] 内。</span><br><span class="line">sentence 中每个单词的长度在范围 [1, 1000] 内。</span><br><span class="line">sentence 中单词之间由一个空格隔开。</span><br><span class="line">sentence 没有前导或尾随空格。</span><br></pre></td></tr></table></figure>
-
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3>]]></content>
+<p><strong>注意：</strong></p>
+<ul>
+<li>每个给定数组至少会有 1 个数字。列表中至少有两个非空数组。</li>
+<li>所有 m 个数组中的数字总数目在范围 [2, 10000] 内。</li>
+<li>m 个数组中所有整数的范围在 [-10000, 10000] 内。</li>
+</ul>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[][]</span>&#125; <span class="variable">arrays</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> maxDistance = <span class="keyword">function</span>(<span class="params">arrays</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> res = <span class="number">0</span>, min = <span class="title class_">Infinity</span>, max = -<span class="title class_">Infinity</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arrays.<span class="property">length</span>; i++)&#123;</span><br><span class="line">        <span class="keyword">let</span> start = arrays[i][<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">let</span> end = arrays[i][arrays[i].<span class="property">length</span>-<span class="number">1</span>]</span><br><span class="line">        res = <span class="title class_">Math</span>.<span class="title function_">max</span>(res,max-start,end-min)</span><br><span class="line">        max = <span class="title class_">Math</span>.<span class="title function_">max</span>(max,end)</span><br><span class="line">        min = <span class="title class_">Math</span>.<span class="title function_">min</span>(min,start)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
       <categories>
         <category>leetcode</category>
       </categories>
       <tags>
         <tag>leetcode</tag>
-        <tag>字节跳动10日心动计划</tag>
+        <tag>尊享面试 100 题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1043. 分隔数组以得到最大和 - 每日一题0419</title>
+    <url>/leetcode1043/</url>
+    <content><![CDATA[<h2 id="1043-分隔数组以得到最大和"><a href="#1043-分隔数组以得到最大和" class="headerlink" title="1043. 分隔数组以得到最大和"></a>1043. 分隔数组以得到最大和</h2><p><a href="https://leetcode.cn/problems/partition-array-for-maximum-sum/">力扣题目链接</a></p>
+<p>给你一个整数数组 <code>arr</code>，请你将该数组分隔为长度 **最多 **为 k 的一些（连续）子数组。分隔完成后，每个子数组的中的所有值都会变为该子数组中的最大值。</p>
+<p>返回将数组分隔变换后能够得到的元素最大和。本题所用到的测试用例会确保答案是一个 32 位整数。</p>
+<h4 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a><strong>示例 1：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：arr = [1,15,7,9,2,5,10], k = 3</span><br><span class="line">输出：84</span><br><span class="line">解释：数组变为 [15,15,15,9,10,10,10]</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a><strong>示例 2：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：arr = [1,4,1,5,7,3,6,1,9,9,3], k = 4</span><br><span class="line">输出：83</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a><strong>示例 3：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：arr = [1], k = 1</span><br><span class="line">输出：1</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>1 &lt;&#x3D; arr.length &lt;&#x3D; 500</li>
+<li>0 &lt;&#x3D; arr[i] &lt;&#x3D; 10 <code>&lt;sup&gt;</code>9 <code>&lt;/sup&gt;</code></li>
+<li>1 &lt;&#x3D; k &lt;&#x3D; arr.length</li>
+</ul>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">arr</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">k</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> maxSumAfterPartitioning = <span class="keyword">function</span>(<span class="params">arr, k</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> len = arr.<span class="property">length</span></span><br><span class="line">    <span class="keyword">if</span>(len &lt;= k) <span class="keyword">return</span> <span class="title class_">Math</span>.<span class="title function_">max</span>(...arr) * len</span><br><span class="line">    <span class="keyword">let</span> dp = <span class="title class_">Array</span>(len+<span class="number">1</span>).<span class="title function_">fill</span>(<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= len; i++)&#123;</span><br><span class="line">        <span class="keyword">let</span> max = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = i - <span class="number">1</span>; j &gt;= <span class="title class_">Math</span>.<span class="title function_">max</span>(<span class="number">0</span>, i - k); j--)&#123;</span><br><span class="line">            max = <span class="title class_">Math</span>.<span class="title function_">max</span>(max,arr[j])</span><br><span class="line">            dp[i] = <span class="title class_">Math</span>.<span class="title function_">max</span>(dp[i], dp[j] + max * (i - j)) </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[len]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>每日一题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>尊享面试 100 题目录</title>
+    <url>/leetcodeVipInterview/</url>
+    <content><![CDATA[<p><img src="/image/leetcodVipInterview/1681874173382.png" alt="1681874173382" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<blockquote>
+<p>概述：</p>
+<ul>
+<li>专为会员定制面试题单</li>
+<li>涵盖完整知识架构与更多会员面试真题</li>
+<li>精心布局刷题顺序查漏补缺</li>
+<li>适合需要在 3 个月以内准备面试的用户</li>
+</ul>
+</blockquote>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><h3 id="数组-x2F-字符串"><a href="#数组-x2F-字符串" class="headerlink" title="数组 &#x2F; 字符串"></a>数组 &#x2F; 字符串</h3><table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><a href="https://dwmorning.github.io/leetcode624/">624. 数组列表中的最大距离</a></td>
+<td>贪心，数组</td>
+<td><font color="#ffb800">中等 </font></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="https://dwmorning.github.io/leetcode280/">280. 摆动排序</a></td>
+<td>贪心，数组，排序</td>
+<td><font color="#ffb800">中等 </font></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="https://dwmorning.github.io/leetcode1056/">1056. 易混淆数</a></td>
+<td>数学</td>
+<td><font color="#15bd66">简单 </font></td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="https://dwmorning.github.io/leetcode1427/">1427. 字符串的左右移</a></td>
+<td>数组，数学，字符串</td>
+<td><font color="#15bd66">简单 </font></td>
+</tr>
+<tr>
+<td>5</td>
+<td>161. 相隔为 1 的编辑距离</td>
+<td>双指针，字符串</td>
+<td><font color="#ffb800">中等 </font></td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="https://dwmorning.github.io/leetcode186/">186. 反转字符串中的单词 II</a></td>
+<td>双指针，字符串</td>
+<td><font color="#ffb800">中等 </font></td>
+</tr>
+<tr>
+<td>7</td>
+<td>1055. 形成字符串的最短路径</td>
+<td>贪心，双指针，字符串</td>
+<td><font color="#ffb800">中等 </font></td>
+</tr>
+</tbody></table>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>尊享面试 100 题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1056. 易混淆数</title>
+    <url>/leetcode1056/</url>
+    <content><![CDATA[<h2 id="1056-易混淆数"><a href="#1056-易混淆数" class="headerlink" title="1056. 易混淆数"></a>1056. 易混淆数</h2><p><a href="https://leetcode.cn/problems/confusing-number/?envType=study-plan-v2&id=premium-algo-100">力扣题目链接</a><br>给定一个数字 N，当它满足以下条件的时候返回 true：<br>原数字旋转 180° 以后可以得到新的数字。<br>如 0, 1, 6, 8, 9 旋转 180° 以后，得到了新的数字 0, 1, 9, 8, 6 。<br>2, 3, 4, 5, 7 旋转 180° 后，得到的不是数字。<br>易混淆数 (confusing number) 在旋转180°以后，可以得到和原来不同的数，且新数字的每一位都是有效的。</p>
+<h4 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a><strong>示例 1：</strong></h4><p><img src="https://assets.leetcode.com/uploads/2019/03/23/1268_1.png" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：6</span><br><span class="line">输出：true</span><br><span class="line">解释： </span><br><span class="line">把 6 旋转 180° 以后得到 9，9 是有效数字且 9!=6 。</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a><strong>示例 2：</strong></h4><p><img src="https://assets.leetcode.com/uploads/2019/03/23/1268_2.png" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：89</span><br><span class="line">输出：true</span><br><span class="line">解释: </span><br><span class="line">把 89 旋转 180° 以后得到 68，86 是有效数字且 86!=89 。</span><br></pre></td></tr></table></figure>
+<h4 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a><strong>示例 3：</strong></h4><p><img src="https://assets.leetcode.com/uploads/2019/03/23/1268_3.png" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：11</span><br><span class="line">输出：false</span><br><span class="line">解释：</span><br><span class="line">把 11 旋转 180° 以后得到 11，11 是有效数字但是值保持不变，所以 11 不是易混淆数字。 </span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-4："><a href="#示例-4：" class="headerlink" title="示例 4："></a><strong>示例 4：</strong></h4><p><img src="https://assets.leetcode.com/uploads/2019/03/23/1268_4.png" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：25</span><br><span class="line">输出：false</span><br><span class="line">解释：</span><br><span class="line">把 25 旋转 180° 以后得到的不是数字。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>0 &lt;&#x3D; N &lt;&#x3D; 10^9</li>
+<li>可以忽略掉旋转后得到的前导零，例如，如果我们旋转后得到 0008 那么该数字就是 8 。</li>
+</ul>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">boolean</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> confusingNumber = <span class="keyword">function</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> map = &#123;</span><br><span class="line">        <span class="string">&#x27;0&#x27;</span>: <span class="string">&#x27;0&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;1&#x27;</span>: <span class="string">&#x27;1&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;6&#x27;</span>: <span class="string">&#x27;9&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;8&#x27;</span>: <span class="string">&#x27;8&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;9&#x27;</span>: <span class="string">&#x27;6&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> str = <span class="title class_">String</span>(n)</span><br><span class="line">    <span class="keyword">let</span> res = <span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = str.<span class="property">length</span>-<span class="number">1</span>; i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!map[str[i]])&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res += map[str[i]]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res !== str</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>尊享面试 100 题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1427. 字符串的左右移</title>
+    <url>/leetcode1427/</url>
+    <content><![CDATA[<h2 id="1427-字符串的左右移"><a href="#1427-字符串的左右移" class="headerlink" title="1427. 字符串的左右移"></a>1427. 字符串的左右移</h2><p><a href="https://leetcode.cn/problems/perform-string-shifts/?envType=study-plan-v2&id=premium-algo-100">力扣题目链接</a></p>
+<p>给定一个包含小写英文字母的字符串 s 以及一个矩阵 shift，其中 shift[i] &#x3D; [direction, amount]：<br>direction 可以为 0 （表示左移）或 1 （表示右移）。<br>amount 表示 s 左右移的位数。<br>左移 1 位表示移除 s 的第一个字符，并将该字符插入到 s 的结尾。<br>类似地，右移 1 位表示移除 s 的最后一个字符，并将该字符插入到 s 的开头。<br>对这个字符串进行所有操作后，返回最终结果。</p>
+<p> </p>
+<h4 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a><strong>示例 1：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：s = &quot;abc&quot;, shift = [[0,1],[1,2]]</span><br><span class="line">输出：&quot;cab&quot;</span><br><span class="line">解释：</span><br><span class="line">[0,1] 表示左移 1 位。 &quot;abc&quot; -&gt; &quot;bca&quot;</span><br><span class="line">[1,2] 表示右移 2 位。 &quot;bca&quot; -&gt; &quot;cab&quot;</span><br></pre></td></tr></table></figure>
+<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a><strong>示例 2：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：s = &quot;abcdefg&quot;, shift = [[1,1],[1,1],[0,2],[1,3]]</span><br><span class="line">输出：&quot;efgabcd&quot;</span><br><span class="line">解释： </span><br><span class="line">[1,1] 表示右移 1 位。 &quot;abcdefg&quot; -&gt; &quot;gabcdef&quot;</span><br><span class="line">[1,1] 表示右移 1 位。 &quot;gabcdef&quot; -&gt; &quot;fgabcde&quot;</span><br><span class="line">[0,2] 表示左移 2 位。 &quot;fgabcde&quot; -&gt; &quot;abcdefg&quot;</span><br><span class="line">[1,3] 表示右移 3 位。 &quot;abcdefg&quot; -&gt; &quot;efgabcd&quot;</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>1 &lt;&#x3D; s.length &lt;&#x3D; 100</li>
+<li>s 只包含小写英文字母</li>
+<li>1 &lt;&#x3D; shift.length &lt;&#x3D; 100</li>
+<li>shift[i].length &#x3D;&#x3D; 2</li>
+<li>0 &lt;&#x3D; shift[i][0] &lt;&#x3D; 1</li>
+<li>0 &lt;&#x3D; shift[i][1] &lt;&#x3D; 100</li>
+</ul>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">s</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[][]</span>&#125; <span class="variable">shift</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">string</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> stringShift = <span class="keyword">function</span>(<span class="params">s, shift</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> left = <span class="number">0</span>, right = <span class="number">0</span>,len =s.<span class="property">length</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt; shift.<span class="property">length</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(shift[i][<span class="number">0</span>] === <span class="number">0</span>)&#123;</span><br><span class="line">            left = s.<span class="title function_">slice</span>(shift[i][<span class="number">1</span>]%len)</span><br><span class="line">            right = s.<span class="title function_">slice</span>(<span class="number">0</span>,shift[i][<span class="number">1</span>]%len)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            left = s.<span class="title function_">slice</span>(-shift[i][<span class="number">1</span>]%len)</span><br><span class="line">            right = s.<span class="title function_">slice</span>(<span class="number">0</span>,-shift[i][<span class="number">1</span>]%len)</span><br><span class="line">        &#125;</span><br><span class="line">        s = left + right</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> s</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>尊享面试 100 题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>186. 反转字符串中的单词 II</title>
+    <url>/leetcode186/</url>
+    <content><![CDATA[<h2 id="186-反转字符串中的单词-II"><a href="#186-反转字符串中的单词-II" class="headerlink" title="186. 反转字符串中的单词 II"></a>186. 反转字符串中的单词 II</h2><p><a href="https://leetcode.cn/problems/reverse-words-in-a-string-ii/?envType=study-plan-v2&id=premium-algo-100">力扣题目链接</a></p>
+<p>给你一个字符数组 s ，反转其中 单词 的顺序。<br>单词 的定义为：单词是一个由非空格字符组成的序列。s 中的单词将会由单个空格分隔。<br>必须设计并实现 原地 解法来解决此问题，即不分配额外的空间。</p>
+<h4 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a><strong>示例 1：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：s = [&quot;t&quot;,&quot;h&quot;,&quot;e&quot;,&quot; &quot;,&quot;s&quot;,&quot;k&quot;,&quot;y&quot;,&quot; &quot;,&quot;i&quot;,&quot;s&quot;,&quot; &quot;,&quot;b&quot;,&quot;l&quot;,&quot;u&quot;,&quot;e&quot;]</span><br><span class="line">输出：[&quot;b&quot;,&quot;l&quot;,&quot;u&quot;,&quot;e&quot;,&quot; &quot;,&quot;i&quot;,&quot;s&quot;,&quot; &quot;,&quot;s&quot;,&quot;k&quot;,&quot;y&quot;,&quot; &quot;,&quot;t&quot;,&quot;h&quot;,&quot;e&quot;]</span><br></pre></td></tr></table></figure>
+<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a><strong>示例 2：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：s = [&quot;a&quot;]</span><br><span class="line">输出：[&quot;a&quot;]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>1 &lt;&#x3D; s.length &lt;&#x3D; 105</li>
+<li>s[i] 可以是一个英文字母（大写或小写）、数字、或是空格 ‘ ‘ 。</li>
+<li>s 中至少存在一个单词</li>
+<li>s 不含前导或尾随空格</li>
+<li>题目数据保证：s 中的每个单词都由单个空格分隔</li>
+</ul>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>本来想直接一行实现，但是需要在原地实现如下：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> reverseWords = <span class="keyword">function</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> s.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>那么则先将数组整体反转，再将单词反转即可</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">character[]</span>&#125; <span class="variable">s</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">void</span>&#125; Do not return anything, modify s in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> reverseWords = <span class="keyword">function</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="comment">// return s.join(&#x27;&#x27;).split(&#x27; &#x27;).reverse().join(&#x27; &#x27;).split(&#x27;&#x27;)</span></span><br><span class="line">    s.<span class="title function_">reverse</span>()</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">reverseFun</span> = (<span class="params">left,right</span>)=&gt;&#123;</span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            [s[left],s[right]] = [s[right],s[left]]</span><br><span class="line">            left++</span><br><span class="line">            right--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> start = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt;= s.<span class="property">length</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] === <span class="string">&#x27; &#x27;</span> || i === s.<span class="property">length</span>)&#123;</span><br><span class="line">            <span class="title function_">reverseFun</span>(start,i-<span class="number">1</span>)</span><br><span class="line">            start = i + <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>尊享面试 100 题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>280. 摆动排序</title>
+    <url>/leetcode280/</url>
+    <content><![CDATA[<h2 id="280-摆动排序"><a href="#280-摆动排序" class="headerlink" title="280. 摆动排序"></a>280. 摆动排序</h2><p><a href="https://leetcode.cn/problems/wiggle-sort/?envType=study-plan-v2&id=premium-algo-100">力扣题目链接</a><br>给你一个的整数数组 nums, 将该数组重新排序后使 nums[0] &lt;&#x3D; nums[1] &gt;&#x3D; nums[2] &lt;&#x3D; nums[3]… <br>输入数组总是有一个有效的答案。</p>
+<h4 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a><strong>示例 1：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：nums = [3,5,2,1,6,4]</span><br><span class="line">输出：[3,5,1,6,2,4]</span><br><span class="line">解释：[1,6,2,5,3,4]也是有效的答案</span><br></pre></td></tr></table></figure>
+<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a><strong>示例 2：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：nums = [6,6,5,6,3,8]</span><br><span class="line">输出：[6,6,5,6,3,8]</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 5 * 104</li>
+<li>0 &lt;&#x3D; nums[i] &lt;&#x3D; 104</li>
+<li>输入的 nums 保证至少有一个答案。</li>
+</ul>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>先排序，再两两交换</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">nums</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">void</span>&#125; Do not return anything, modify nums in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> wiggleSort = <span class="keyword">function</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">    nums = nums.<span class="title function_">sort</span>(<span class="function">(<span class="params">a,b</span>)=&gt;</span>a-b)</span><br><span class="line">    <span class="keyword">let</span> n = nums.<span class="property">length</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">2</span>; i&lt; n;i += <span class="number">2</span>)&#123;</span><br><span class="line">        [nums[i],nums[i-<span class="number">1</span>]] = [nums[i-<span class="number">1</span>],nums[i]]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// return nums</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>尊享面试 100 题</tag>
       </tags>
   </entry>
 </search>

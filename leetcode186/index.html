@@ -7,19 +7,23 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="hello">
+<meta name="description" content="186. 反转字符串中的单词 II力扣题目链接 给你一个字符数组 s ，反转其中 单词 的顺序。单词 的定义为：单词是一个由非空格字符组成的序列。s 中的单词将会由单个空格分隔。必须设计并实现 原地 解法来解决此问题，即不分配额外的空间。 示例 1：12输入：s &#x3D; [&quot;t&quot;,&quot;h&quot;,&quot;e&quot;,&quot; &quot;,&quot;s&amp;q">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://dwmorning.github.io/hello-world/index.html">
+<meta property="og:title" content="186. 反转字符串中的单词 II">
+<meta property="og:url" content="https://dwmorning.github.io/leetcode186/index.html">
 <meta property="og:site_name" content="wmorning">
-<meta property="og:description" content="hello">
+<meta property="og:description" content="186. 反转字符串中的单词 II力扣题目链接 给你一个字符数组 s ，反转其中 单词 的顺序。单词 的定义为：单词是一个由非空格字符组成的序列。s 中的单词将会由单个空格分隔。必须设计并实现 原地 解法来解决此问题，即不分配额外的空间。 示例 1：12输入：s &#x3D; [&quot;t&quot;,&quot;h&quot;,&quot;e&quot;,&quot; &quot;,&quot;s&amp;q">
 <meta property="og:locale">
-<meta property="article:published_time" content="2023-04-14T12:43:46.638Z">
-<meta property="article:modified_time" content="2023-04-15T06:44:04.657Z">
+<meta property="article:published_time" content="2023-04-20T07:44:58.000Z">
+<meta property="article:modified_time" content="2023-04-20T12:36:14.142Z">
+<meta property="article:tag" content="leetcode">
+<meta property="article:tag" content="尊享面试 100 题">
 <meta name="twitter:card" content="summary">
 
+    <meta name="keywords" content="双指针, 字符串">
 
-<title >Hello World</title>
+
+<title >186. 反转字符串中的单词 II</title>
 
 <!-- Favicon -->
 
@@ -64,8 +68,8 @@
 
 
 <!-- Variable -->
-<script>window.ASYNC_CONFIG = {"hostname":"dwmorning.github.io","author":null,"root":"/","typed_text":["总是努力翻山越岭"],"theme_version":"2.0.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon-32x32.png","icon16":"/img/favicon-16x16.png","icon32":"/img/favicon-32x32.png","appleTouchIcon":"/img/favicon-32x32.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","showText":"(/≧▽≦/)wmorningBlog","hideText":"(●—●)休息一下啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":200},"covers":["https://w.wallhaven.cc/full/0j/wallhaven-0jlz9p.jpg","https://w.wallhaven.cc/full/01/wallhaven-01mj83.jpg","https://w.wallhaven.cc/full/2y/wallhaven-2ydy76.jpg","https://w.wallhaven.cc/full/3l/wallhaven-3l9zy3.jpg","https://w.wallhaven.cc/full/3z/wallhaven-3zkold.jpg","https://w.wallhaven.cc/full/4g/wallhaven-4g77y3.jpg","https://w.wallhaven.cc/full/5g/wallhaven-5gwp58.jpg","https://w.wallhaven.cc/full/28/wallhaven-28pdry.jpg","https://w.wallhaven.cc/full/45/wallhaven-45gjv7.jpg","https://w.wallhaven.cc/full/85/wallhaven-8535j1.jpg","https://w.wallhaven.cc/full/ex/wallhaven-exyxvr.jpg","https://w.wallhaven.cc/full/g7/wallhaven-g7ormd.jpg","https://w.wallhaven.cc/full/gp/wallhaven-gp87vd.jpg","https://w.wallhaven.cc/full/gp/wallhaven-gp87vq.jpg","https://w.wallhaven.cc/full/jx/wallhaven-jx5xlw.jpg","https://w.wallhaven.cc/full/kx/wallhaven-kxwzk6.jpg","https://w.wallhaven.cc/full/l8/wallhaven-l8m3r2.jpg","https://w.wallhaven.cc/full/l8/wallhaven-l8m8gy.jpg","https://w.wallhaven.cc/full/md/wallhaven-md2kl8.jpg","https://w.wallhaven.cc/full/o5/wallhaven-o5x3v7.jpg","https://w.wallhaven.cc/full/r7/wallhaven-r71zwq.jpg","https://w.wallhaven.cc/full/rr/wallhaven-rryqkj.jpg","https://w.wallhaven.cc/full/we/wallhaven-we61wq.jpg","https://w.wallhaven.cc/full/zy/wallhaven-zym8vj.jpg","https://w.wallhaven.cc/full/zy/wallhaven-zymyvj.jpg","https://w.wallhaven.cc/full/zy/wallhaven-zyxvqy.jpg"],"creative_commons":{"license":"by-nc-sa","language":"deed.zh"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"trigger":"auto","path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2023-04-15 14:44:04"};</script>
+<script>window.ASYNC_CONFIG = {"hostname":"dwmorning.github.io","author":null,"root":"/","typed_text":["总是努力翻山越岭"],"theme_version":"2.0.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon-32x32.png","icon16":"/img/favicon-16x16.png","icon32":"/img/favicon-32x32.png","appleTouchIcon":"/img/favicon-32x32.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","showText":"(/≧▽≦/)wmorningBlog","hideText":"(●—●)休息一下啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":200},"covers":["https://w.wallhaven.cc/full/0j/wallhaven-0jlz9p.jpg","https://w.wallhaven.cc/full/2y/wallhaven-2ydy76.jpg","https://w.wallhaven.cc/full/3l/wallhaven-3l9zy3.jpg","https://w.wallhaven.cc/full/3z/wallhaven-3zkold.jpg","https://w.wallhaven.cc/full/4g/wallhaven-4g77y3.jpg","https://w.wallhaven.cc/full/5g/wallhaven-5gwp58.jpg","https://w.wallhaven.cc/full/28/wallhaven-28pdry.jpg","https://w.wallhaven.cc/full/45/wallhaven-45gjv7.jpg","https://w.wallhaven.cc/full/85/wallhaven-8535j1.jpg","https://w.wallhaven.cc/full/ex/wallhaven-exyxvr.jpg","https://w.wallhaven.cc/full/g7/wallhaven-g7ormd.jpg","https://w.wallhaven.cc/full/gp/wallhaven-gp87vd.jpg","https://w.wallhaven.cc/full/gp/wallhaven-gp87vq.jpg","https://w.wallhaven.cc/full/jx/wallhaven-jx5xlw.jpg","https://w.wallhaven.cc/full/kx/wallhaven-kxwzk6.jpg","https://w.wallhaven.cc/full/l8/wallhaven-l8m3r2.jpg","https://w.wallhaven.cc/full/l8/wallhaven-l8m8gy.jpg","https://w.wallhaven.cc/full/md/wallhaven-md2kl8.jpg","https://w.wallhaven.cc/full/o5/wallhaven-o5x3v7.jpg","https://w.wallhaven.cc/full/r7/wallhaven-r71zwq.jpg","https://w.wallhaven.cc/full/rr/wallhaven-rryqkj.jpg","https://w.wallhaven.cc/full/we/wallhaven-we61wq.jpg","https://w.wallhaven.cc/full/zy/wallhaven-zym8vj.jpg","https://w.wallhaven.cc/full/zy/wallhaven-zymyvj.jpg","https://w.wallhaven.cc/full/zy/wallhaven-zyxvqy.jpg"],"creative_commons":{"license":"by-nc-sa","language":"deed.zh"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"trigger":"auto","path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2023-04-20 20:36:14"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.0.6" id="trm-switch-style">
@@ -218,7 +222,7 @@
     <div class="trm-banner" data-scroll data-scroll-direction="vertical">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3" src="/img/banner.png">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3" src="https://pic1.zhimg.com/v2-b3c2c6745b9421a13a3c4706b19223b3_r.jpg">
     <!-- banner cover end -->
     
 
@@ -234,10 +238,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            NEWS LETTER
+                            尊享面试 100 题
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            Hello World
+                            186. 反转字符串中的单词 II
                         </h1>
 
                         
@@ -247,7 +251,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        hello-world
+                                        leetcode186
                                     </span
                                 ></li>
                             </ul>
@@ -279,17 +283,7 @@
 <div class="trm-main-card-frame trm-sidebar">
     <div class="trm-main-card" data-scroll data-scroll-repeat data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="60"> 
     
-        <div class="trm-user-tabs" id="sidebar-tabs">
-           <div class="trm-tabs-nav trm-mb-40" id="trm-tabs-nav">
-                <div data-to="tabs-user" class="trm-tabs-nav-item">
-                    <i class="iconfont fas fa-user-alt"></i>
-                </div>
-                <div data-to="tabs-toc" class="trm-tabs-nav-item active">
-                    <i class="iconfont fas fa-th-list"></i>
-                </div>
-           </div>
-            <div name="tabs-user" class="trm-tabs-item">
-                <!-- card header -->
+        <!-- card header -->
 <div class="trm-mc-header">
     <div class="trm-avatar-frame trm-mb-20">
         <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
@@ -307,10 +301,10 @@
     
 </div>
 <!-- card header end -->
-                <!-- sidebar social -->
+        <!-- sidebar social -->
 
 <!-- sidebar social end -->
-                <!-- info -->
+        <!-- info -->
 <div class="trm-divider trm-mb-40 trm-mt-40"></div>
 <ul class="trm-table trm-mb-20">
     
@@ -326,14 +320,7 @@
 </ul>
 <!-- info end -->
 
-                
-            </div>
-            <div name="tabs-toc" class="trm-tabs-item active">
-                <div class="post-toc">
-    <ol class="toc"><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#Quick-Start"  data-scroll-to="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#Create-a-new-post"  data-scroll-to="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#Run-server"  data-scroll-to="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#Generate-static-files"  data-scroll-to="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#Deploy-to-remote-sites"  data-scroll-to="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
-</div>
-            </div>
-        </div>
+        
     
     </div>
 </div>
@@ -348,38 +335,41 @@
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
-            04/14
+            04/20
         </div>
     </div>
     <div class="col-sm-4">
         <div class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-clock trm-icon"></i><br>
-            20:43
+            15:44
         </div>
     </div>
     <div class="col-sm-4">
         <div id="post-author" class="trm-card trm-label trm-label-light text-center">
             <i class="iconfont far fa-user trm-icon"></i><br>
-            
+            菜鸟书生
         </div>
     </div>
 </div>
 <div class="trm-card ">
     <article id="article-container" class="trm-publication">
-    <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    <h2 id="186-反转字符串中的单词-II"><a href="#186-反转字符串中的单词-II" class="headerlink" title="186. 反转字符串中的单词 II"></a>186. 反转字符串中的单词 II</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/reverse-words-in-a-string-ii/?envType=study-plan-v2&id=premium-algo-100">力扣题目链接</a></p>
+<p>给你一个字符数组 s ，反转其中 单词 的顺序。<br>单词 的定义为：单词是一个由非空格字符组成的序列。s 中的单词将会由单个空格分隔。<br>必须设计并实现 原地 解法来解决此问题，即不分配额外的空间。</p>
+<h4 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a><strong>示例 1：</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s = [&quot;t&quot;,&quot;h&quot;,&quot;e&quot;,&quot; &quot;,&quot;s&quot;,&quot;k&quot;,&quot;y&quot;,&quot; &quot;,&quot;i&quot;,&quot;s&quot;,&quot; &quot;,&quot;b&quot;,&quot;l&quot;,&quot;u&quot;,&quot;e&quot;]</span><br><span class="line">输出：[&quot;b&quot;,&quot;l&quot;,&quot;u&quot;,&quot;e&quot;,&quot; &quot;,&quot;i&quot;,&quot;s&quot;,&quot; &quot;,&quot;s&quot;,&quot;k&quot;,&quot;y&quot;,&quot; &quot;,&quot;t&quot;,&quot;h&quot;,&quot;e&quot;]</span><br></pre></td></tr></table></figure>
+<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a><strong>示例 2：</strong></h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入：s = [&quot;a&quot;]</span><br><span class="line">输出：[&quot;a&quot;]</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+<p><strong>提示：</strong></p>
+<ul>
+<li>1 &lt;&#x3D; s.length &lt;&#x3D; 105</li>
+<li>s[i] 可以是一个英文字母（大写或小写）、数字、或是空格 ‘ ‘ 。</li>
+<li>s 中至少存在一个单词</li>
+<li>s 不含前导或尾随空格</li>
+<li>题目数据保证：s 中的每个单词都由单个空格分隔</li>
+</ul>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>本来想直接一行实现，但是需要在原地实现如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> reverseWords = <span class="keyword">function</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> s.<span class="title function_">join</span>(<span class="string">&#x27;&#x27;</span>).<span class="title function_">split</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">reverse</span>().<span class="title function_">join</span>(<span class="string">&#x27; &#x27;</span>).<span class="title function_">split</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>那么则先将数组整体反转，再将单词反转即可</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">character[]</span>&#125; <span class="variable">s</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">void</span>&#125; Do not return anything, modify s in-place instead.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> reverseWords = <span class="keyword">function</span>(<span class="params">s</span>) &#123;</span><br><span class="line">    <span class="comment">// return s.join(&#x27;&#x27;).split(&#x27; &#x27;).reverse().join(&#x27; &#x27;).split(&#x27;&#x27;)</span></span><br><span class="line">    s.<span class="title function_">reverse</span>()</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">reverseFun</span> = (<span class="params">left,right</span>)=&gt;&#123;</span><br><span class="line">        <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">            [s[left],s[right]] = [s[right],s[left]]</span><br><span class="line">            left++</span><br><span class="line">            right--</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> start = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">0</span>; i&lt;= s.<span class="property">length</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(s[i] === <span class="string">&#x27; &#x27;</span> || i === s.<span class="property">length</span>)&#123;</span><br><span class="line">            <span class="title function_">reverseFun</span>(start,i-<span class="number">1</span>)</span><br><span class="line">            start = i + <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 </article>
     
     
@@ -387,11 +377,11 @@
 <ul class="trm-post-copyright">
     <li class="trm-post-copyright-author">
         <strong>本文作者：</strong>
-        
+        菜鸟书生
     </li>
     <li class="trm-post-copyright-link">
         <strong>本文链接：</strong>
-        <a id="original-link" href="https://dwmorning.github.io/hello-world/" title="Hello World">https://dwmorning.github.io/hello-world/</a>
+        <a id="original-link" href="https://dwmorning.github.io/leetcode186/" title="186. 反转字符串中的单词 II">https://dwmorning.github.io/leetcode186/</a>
     </li>
     <li class="trm-post-copyright-license">
         <strong>版权声明：</strong>
@@ -410,12 +400,13 @@
         </h5>
     </div>
     
+    
         <div class="col-lg-6">
     <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
-        <a href="/leetcode648/" class="trm-cover-frame trm-anima-link">
+        <a href="/leetcode1427/" class="trm-cover-frame trm-anima-link">
             
             
-                <img data-random-img alt="cover" class="no-fancybox" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVBhXY/gPBVDG//8Aj4IP8dFqTzkAAAAASUVORK5CYII=">
+                <img alt="cover" class="no-fancybox" src="https://w.wallhaven.cc/full/zy/wallhaven-zymyvj.jpg">
             
         </a>
         
@@ -426,21 +417,20 @@
                 </a>
             </div>
             <h5>
-                <a href="/leetcode648/" class="trm-anima-link">
-                    648. 单词替换
+                <a href="/leetcode1427/" class="trm-anima-link">
+                    1427. 字符串的左右移
                 </a>
             </h5>
             <div class="trm-divider trm-mb-20 trm-mt-20"></div>
             <ul class="trm-card-data trm-label">
-                <li>23/04/17</li>
-                <li>21:16</li>
+                <li>23/04/20</li>
+                <li>15:17</li>
                 
                 
             </ul>
         </div>
     </div>
 </div>
-    
     
 </div>
 
