@@ -278,4 +278,31 @@
         <tag>尊享面试 100 题</tag>
       </tags>
   </entry>
+  <entry>
+    <title>2413. 最小偶倍数</title>
+    <url>/leetcode2413/</url>
+    <content><![CDATA[<h2 id="2413-最小偶倍数"><a href="#2413-最小偶倍数" class="headerlink" title="2413. 最小偶倍数"></a>2413. 最小偶倍数</h2><p><a href="https://leetcode.cn/problems/smallest-even-multiple/">力扣链接</a></p>
+<p>给你一个正整数 n ，返回 2 和 n 的最小公倍数（正整数）。</p>
+<p><strong>#### *<em>示例 1：*</em></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：n = 5</span><br><span class="line">输出：10</span><br><span class="line">解释：5 和 2 的最小公倍数是 10 。</span><br></pre></td></tr></table></figure>
+
+<p><strong>#### *<em>示例 2：*</em></strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：n = 6</span><br><span class="line">输出：6</span><br><span class="line">解释：6 和 2 的最小公倍数是 6 。注意数字会是它自身的倍数。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li>1 &lt;&#x3D; n &lt;&#x3D; 150</li>
+</ul>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一行实现</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> smallestEvenMultiple = <span class="keyword">function</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> n%<span class="number">2</span>===<span class="number">1</span> ? <span class="number">2</span>*n : n</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>每日一题</tag>
+      </tags>
+  </entry>
 </search>
