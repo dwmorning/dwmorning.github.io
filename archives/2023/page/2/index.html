@@ -7,23 +7,15 @@
 <meta name="full-screen" content="yes">
 <meta name="theme-color" content="#317EFB" />
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
-<meta name="description" content="2413. 最小偶倍数力扣链接 给你一个正整数 n ，返回 2 和 n 的最小公倍数（正整数）。 #### *示例 1：* 123输入：n &#x3D; 5输出：10解释：5 和 2 的最小公倍数是 10 。  #### *示例 2：* 123输入：n &#x3D; 6输出：6解释：6 和 2 的最小公倍数是 6 。注意数字会是它自身的倍数。  提示：  1 &lt;&#x3D; n &lt;&#x3D; 150">
-<meta property="og:type" content="article">
-<meta property="og:title" content="2413. 最小偶倍数">
-<meta property="og:url" content="https://dwmorning.github.io/leetcode2413/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="wmorning">
+<meta property="og:url" content="https://dwmorning.github.io/archives/2023/page/2/index.html">
 <meta property="og:site_name" content="wmorning">
-<meta property="og:description" content="2413. 最小偶倍数力扣链接 给你一个正整数 n ，返回 2 和 n 的最小公倍数（正整数）。 #### *示例 1：* 123输入：n &#x3D; 5输出：10解释：5 和 2 的最小公倍数是 10 。  #### *示例 2：* 123输入：n &#x3D; 6输出：6解释：6 和 2 的最小公倍数是 6 。注意数字会是它自身的倍数。  提示：  1 &lt;&#x3D; n &lt;&#x3D; 150">
 <meta property="og:locale">
-<meta property="article:published_time" content="2023-04-21T13:34:25.000Z">
-<meta property="article:modified_time" content="2023-04-21T13:42:20.740Z">
-<meta property="article:tag" content="leetcode">
-<meta property="article:tag" content="每日一题">
 <meta name="twitter:card" content="summary">
 
-    <meta name="keywords" content="数学, 数论">
 
-
-<title >2413. 最小偶倍数</title>
+<title >wmorning</title>
 
 <!-- Favicon -->
 
@@ -69,7 +61,7 @@
 
 <!-- Variable -->
 <script>window.ASYNC_CONFIG = {"hostname":"dwmorning.github.io","author":null,"root":"/","typed_text":["总是努力翻山越岭"],"theme_version":"2.0.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon-32x32.png","icon16":"/img/favicon-16x16.png","icon32":"/img/favicon-32x32.png","appleTouchIcon":"/img/favicon-32x32.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","showText":"(/≧▽≦/)wmorningBlog","hideText":"(●—●)休息一下啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://unpkg.com/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":200},"covers":["https://w.wallhaven.cc/full/0j/wallhaven-0jlz9p.jpg","https://w.wallhaven.cc/full/2y/wallhaven-2ydy76.jpg","https://w.wallhaven.cc/full/3l/wallhaven-3l9zy3.jpg","https://w.wallhaven.cc/full/3z/wallhaven-3zkold.jpg","https://w.wallhaven.cc/full/od/wallhaven-od95m7.jpg","https://w.wallhaven.cc/full/j8/wallhaven-j87ldq.jpg","https://w.wallhaven.cc/full/qz/wallhaven-qzdxd5.jpg","https://w.wallhaven.cc/full/gj/wallhaven-gj968l.jpg","https://w.wallhaven.cc/full/4g/wallhaven-4g77y3.jpg","https://w.wallhaven.cc/full/5g/wallhaven-5gwp58.jpg","https://w.wallhaven.cc/full/95/wallhaven-95rrq8.jpg","https://w.wallhaven.cc/full/28/wallhaven-28pdry.jpg","https://w.wallhaven.cc/full/45/wallhaven-45gjv7.jpg","https://w.wallhaven.cc/full/0w/wallhaven-0w9qd7.jpg","https://w.wallhaven.cc/full/85/wallhaven-8535j1.jpg","https://w.wallhaven.cc/full/ex/wallhaven-exyxvr.jpg","https://w.wallhaven.cc/full/g7/wallhaven-g7ormd.jpg","https://w.wallhaven.cc/full/gp/wallhaven-gp87vd.jpg","https://w.wallhaven.cc/full/gp/wallhaven-gp87vq.jpg","https://w.wallhaven.cc/full/jx/wallhaven-jx5xlw.jpg","https://w.wallhaven.cc/full/kx/wallhaven-kxwzk6.jpg","https://w.wallhaven.cc/full/l8/wallhaven-l8m3r2.jpg","https://w.wallhaven.cc/full/l8/wallhaven-l8m8gy.jpg","https://w.wallhaven.cc/full/nm/wallhaven-nm7q11.jpg","https://w.wallhaven.cc/full/0q/wallhaven-0qq2gl.jpg","https://w.wallhaven.cc/full/72/wallhaven-72m53y.jpg","https://w.wallhaven.cc/full/49/wallhaven-49qy8d.jpg","https://w.wallhaven.cc/full/6k/wallhaven-6k7z5l.jpg","https://w.wallhaven.cc/full/45/wallhaven-45pe95.jpg","https://w.wallhaven.cc/full/4g/wallhaven-4gy2l7.jpg","https://w.wallhaven.cc/full/0j/wallhaven-0jre25.jpg","https://w.wallhaven.cc/full/n6/wallhaven-n6qzq6.jpg","https://w.wallhaven.cc/full/x8/wallhaven-x8oexo.jpg","https://w.wallhaven.cc/full/1k/wallhaven-1kr323.jpg","https://w.wallhaven.cc/full/yj/wallhaven-yj7wqk.jpg","https://w.wallhaven.cc/full/md/wallhaven-md2kl8.jpg","https://w.wallhaven.cc/full/o5/wallhaven-o5x3v7.jpg","https://w.wallhaven.cc/full/r7/wallhaven-r71zwq.jpg","https://w.wallhaven.cc/full/rr/wallhaven-rryqkj.jpg","https://w.wallhaven.cc/full/we/wallhaven-we61wq.jpg","https://w.wallhaven.cc/full/zy/wallhaven-zym8vj.jpg","https://w.wallhaven.cc/full/zy/wallhaven-zyxvqy.jpg"],"creative_commons":{"license":"by-nc-sa","language":"deed.zh"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"trigger":"auto","path":"search.xml"}};</script>
-<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2023-04-21 21:42:20"};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":false,"isHome":false,"postUpdate":"2023-04-22 18:04:08"};</script>
 
 <!-- Theme mode css -->
 <link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.0.6" id="trm-switch-style">
@@ -216,13 +208,12 @@
             <!-- top bar end -->
 
             <!-- body -->
-            
-<div class="trm-content-start">
+            <div class="trm-content-start">
     <!-- banner -->
     <div class="trm-banner" data-scroll data-scroll-direction="vertical">
     
     <!-- banner cover -->
-    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3" src="https://pic1.zhimg.com/v2-b3c2c6745b9421a13a3c4706b19223b3_r.jpg">
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3" src="/img/banner.png">
     <!-- banner cover end -->
     
 
@@ -238,10 +229,10 @@
                     <!-- banner title -->
                     <div class="trm-banner-text ">
                         <div class="trm-label trm-mb-20">
-                            每日一题
+                            The article archive
                         </div>
                         <h1 class="trm-mb-30 trm-hsmb-font">
-                            2413. 最小偶倍数
+                            云间连下榻，<br>天上接行杯。
                         </h1>
 
                         
@@ -251,7 +242,7 @@
                                 </li>
                                 <li>
                                     <span>
-                                        leetcode2413
+                                        archives
                                     </span
                                 ></li>
                             </ul>
@@ -331,184 +322,88 @@
                 <div class="trm-content" id="trm-content">
                     <div data-scroll data-scroll-repeat data-scroll-offset="500" id="about-triger"></div>
 
-                    <div id="post-info" class="row hidden-sm">
-    <div class="col-sm-4">
-        <div class="trm-card trm-label trm-label-light text-center">
-            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
-            04/21
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="trm-card trm-label trm-label-light text-center">
-            <i class="iconfont far fa-clock trm-icon"></i><br>
-            21:34
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
-            <i class="iconfont far fa-user trm-icon"></i><br>
-            菜鸟书生
+                    <!-- tags -->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="trm-card">
+            <div style="padding: 0 20px;">
+                <!-- <a href="/tags/leetbook/" style="font-size: 20px;">leetbook</a> <a href="/tags/leetcode/" style="font-size: 36px;">leetcode</a> <a href="/tags/vue/" style="font-size: 20px;">vue</a> <a href="/tags/%E5%B0%8A%E4%BA%AB%E9%9D%A2%E8%AF%95-100-%E9%A2%98/" style="font-size: 30.67px;">尊享面试 100 题</a> <a href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" style="font-size: 25.33px;">每日一题</a> <a href="/tags/%E9%9D%A2%E8%AF%95/" style="font-size: 20px;">面试</a> -->
+                <ul class="row trm-tag-list trm-list" itemprop="keywords"><li class="col-lg-4 trm-list-item"><a class="tag-list-link" href="/tags/leetbook/" rel="tag">leetbook</a><span class="tag-list-count">1</span></li><li class="col-lg-4 trm-list-item"><a class="tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a><span class="tag-list-count">9</span></li><li class="col-lg-4 trm-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="col-lg-4 trm-list-item"><a class="tag-list-link" href="/tags/%E5%B0%8A%E4%BA%AB%E9%9D%A2%E8%AF%95-100-%E9%A2%98/" rel="tag">尊享面试 100 题</a><span class="tag-list-count">6</span></li><li class="col-lg-4 trm-list-item"><a class="tag-list-link" href="/tags/%E6%AF%8F%E6%97%A5%E4%B8%80%E9%A2%98/" rel="tag">每日一题</a><span class="tag-list-count">4</span></li><li class="col-lg-4 trm-list-item"><a class="tag-list-link" href="/tags/%E9%9D%A2%E8%AF%95/" rel="tag">面试</a><span class="tag-list-count">1</span></li></ul>
+            </div>
         </div>
     </div>
 </div>
-<div class="trm-card ">
-    <article id="article-container" class="trm-publication">
-    <h2 id="2413-最小偶倍数"><a href="#2413-最小偶倍数" class="headerlink" title="2413. 最小偶倍数"></a>2413. 最小偶倍数</h2><p><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/smallest-even-multiple/">力扣链接</a></p>
-<p>给你一个正整数 n ，返回 2 和 n 的最小公倍数（正整数）。</p>
-<p><strong>#### *<em>示例 1：*</em></strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 5</span><br><span class="line">输出：10</span><br><span class="line">解释：5 和 2 的最小公倍数是 10 。</span><br></pre></td></tr></table></figure>
-
-<p><strong>#### *<em>示例 2：*</em></strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入：n = 6</span><br><span class="line">输出：6</span><br><span class="line">解释：6 和 2 的最小公倍数是 6 。注意数字会是它自身的倍数。</span><br></pre></td></tr></table></figure>
-
-<p><strong>提示：</strong></p>
-<ul>
-<li>1 &lt;&#x3D; n &lt;&#x3D; 150</li>
-</ul>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>一行实现</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number</span>&#125; <span class="variable">n</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> smallestEvenMultiple = <span class="keyword">function</span>(<span class="params">n</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> n%<span class="number">2</span>===<span class="number">1</span> ? <span class="number">2</span>*n : n</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
 
-</article>
-    
-    
-
-<ul class="trm-post-copyright">
-    <li class="trm-post-copyright-author">
-        <strong>本文作者：</strong>
-        菜鸟书生
-    </li>
-    <li class="trm-post-copyright-link">
-        <strong>本文链接：</strong>
-        <a id="original-link" href="https://dwmorning.github.io/leetcode2413/" title="2413. 最小偶倍数">https://dwmorning.github.io/leetcode2413/</a>
-    </li>
-    <li class="trm-post-copyright-license">
-        <strong>版权声明：</strong>
-        本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 ">CC BY-NC-SA 4.0</a> 许可协议。
-    </li>
-</ul>
-
-
+<!-- Archives -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="trm-card">
+            <div style="padding: 0 20px;">
+                
+                    <ul class="row trm-list" style="margin-bottom: 0px;"><li class="col-lg-4 trm-list-item" style="margin: 6px 0;"><a class="archive-list-link" href="/archives/2023/">2023</a><span class="archive-list-count">（11）</span></li></ul>
+                
+            </div>
+        </div>
+    </div>
 </div>
-<div id="post-next-prev" class="row">
+
+<!-- history -->
+
+<div class="row">
     <div class="col-lg-12">
         <!-- title -->
         <h5 class="trm-title-with-divider">
-            其他文章
-            <span data-number="02"></span>
+            
+                2023 年的归档
+            
+            <span data-number="01"></span>
         </h5>
     </div>
-    
-        <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
-        <a href="/leetbookVue/" class="trm-cover-frame trm-anima-link">
+    <div class="col-lg-12">
+        <!-- timeline -->
+        <div class="trm-timeline">
             
-            
-                <img alt="cover" class="no-fancybox" src="https://w.wallhaven.cc/full/md/wallhaven-md2kl8.jpg">
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/leetbook/">
-                    leetbook
-                </a>
+            <div class="trm-timeline-item trm-scroll-animation" data-scroll data-scroll-offset="40">
+                <div class="trm-timeline-mark-light"></div>
+                <div class="trm-timeline-mark"></div>
+                <div class="trm-a trm-timeline-content more">
+                    
+                        <div class="trm-card-header">
+                            <div class="trm-left-side">
+                                <h6>
+                                    <a href="/leetcode1026/" class="trm-anima-link">
+                                        1026. 节点与其祖先之间的最大差值 - 每日一题0418
+                                    </a>
+                                </h6>
+                                <div class="trm-text-sm trm-accent-color trm-mt-15">
+                                    <ul class="trm-card-data trm-label ">
+                                        <li class="trm-accent-color">04/18</li>
+                                        <li class="trm-accent-color">14:23</li>
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    
+                </div>
             </div>
-            <h5>
-                <a href="/leetbookVue/" class="trm-anima-link">
-                    前端面试突破：Vue
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>23/04/21</li>
-                <li>22:15</li>
-                
-                
-            </ul>
+            
         </div>
+        <!-- timeline end -->
     </div>
 </div>
-    
-    
-        <div class="col-lg-6">
-    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
-        <a href="/leetcode186/" class="trm-cover-frame trm-anima-link">
-            
-            
-                <img alt="cover" class="no-fancybox" src="https://w.wallhaven.cc/full/r7/wallhaven-r71zwq.jpg">
-            
-        </a>
-        
-        <div class="trm-card-descr">
-            <div class="trm-label trm-category trm-mb-20">
-                <a href=" /categories/leetcode/">
-                    leetcode
-                </a>
-            </div>
-            <h5>
-                <a href="/leetcode186/" class="trm-anima-link">
-                    186. 反转字符串中的单词 II
-                </a>
-            </h5>
-            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
-            <ul class="trm-card-data trm-label">
-                <li>23/04/20</li>
-                <li>15:44</li>
-                
-                
-            </ul>
-        </div>
+
+<!-- history end -->
+
+
+    <div class="trm-pagination">
+        <a class="page-number" href="/archives/2023/">1</a><span class="page-number current">2</span>
     </div>
-</div>
-    
-</div>
 
-    
 
-    <div id="giscus-wrap" class="trm-card trm-scroll-animation comment-container" data-scroll data-scroll-offset="50"></div>
-<script data-swup-reload-script>
-    function loadGiscus() {
-        let nowTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-        const config = {
-            src: 'https://giscus.app/client.js',
-            "data-repo": 'dwmorning/wmorning_blog',
-            "data-repo-id": 'R_kgDOJVV2rw',
-            "data-category": 'General',
-            "data-category-id": 'DIC_kwDOJVV2r84CVy-H',
-            "data-mapping": 'pathname',
-            "data-reactions-enabled": '1',
-            "data-emit-metadata": '0',
-            "data-theme": nowTheme,
-            "data-lang": 'zh-CN',
-            crossorigin: "anonymous",
-            async: true
-        }
-        let ele = document.createElement('script')
-        for (let key in config) {
-            ele.setAttribute(key, config[key])
-        }
-        document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin', ele)
-    }
-
-    function changeGiscusTheme() {
-        let theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
-
-        function sendMessage(message) {
-            const iframe = document.querySelector('iframe.giscus-frame');
-            if (!iframe) return;
-            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
-        }
-
-        sendMessage({
-            setConfig: {
-                theme: theme
-            }
-        });
-    }
-
-    loadGiscus();
-</script>
 
 
 
@@ -560,10 +455,6 @@
             <!-- body end -->
 
             <div class="trm-fixed-container" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
-    
-        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
-            <i class="iconfont fas fa-book-reader"></i>
-        </div>
     
     
     <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
@@ -645,10 +536,6 @@
     
 
     <!-- 评论插件 -->
-    
-        
-
-        
     
 
 

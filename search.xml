@@ -305,4 +305,55 @@
         <tag>每日一题</tag>
       </tags>
   </entry>
+  <entry>
+    <title>前端面试突破：Vue</title>
+    <url>/leetbookVue/</url>
+    <content><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="81bc925552f291773495401ee2aa52ec80b5b850b51812a4bba5a752b829fa85">ff5bd91e40b47e4b70872304ecb021a0996dd0de20decd455d33d4a3c9e20cfa</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">输入密码界面提示说明</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+      <categories>
+        <category>leetbook</category>
+      </categories>
+      <tags>
+        <tag>leetbook</tag>
+        <tag>vue</tag>
+        <tag>面试</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>1027. 最长等差数列</title>
+    <url>/leetcode1027/</url>
+    <content><![CDATA[<h2 id="1043-分隔数组以得到最大和"><a href="#1043-分隔数组以得到最大和" class="headerlink" title="1043. 分隔数组以得到最大和"></a>1043. 分隔数组以得到最大和</h2><p><a href="https://leetcode.cn/problems/longest-arithmetic-subsequence/">力扣题目链接</a></p>
+<p>给你一个整数数组 nums，返回 nums 中最长等差子序列的长度。</p>
+<p>回想一下，nums 的子序列是一个列表 nums[i1], nums[i2], …, nums[ik] ，且 0 &lt;&#x3D; i1 &lt; i2 &lt; … &lt; ik &lt;&#x3D; nums.length - 1。并且如果 seq[i+1] - seq[i]( 0 &lt;&#x3D; i &lt; seq.length - 1) 的值都相同，那么序列 seq 是等差的。</p>
+<h4 id="示例-1："><a href="#示例-1：" class="headerlink" title="示例 1："></a><strong>示例 1：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：nums = [3,6,9,12]</span><br><span class="line">输出：4</span><br><span class="line">解释： </span><br><span class="line">整个数组是公差为 3 的等差数列。</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-2："><a href="#示例-2：" class="headerlink" title="示例 2："></a><strong>示例 2：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：nums = [9,4,7,2,10]</span><br><span class="line">输出：3</span><br><span class="line">解释：</span><br><span class="line">最长的等差子序列是 [4,7,10]。</span><br></pre></td></tr></table></figure>
+
+<h4 id="示例-3："><a href="#示例-3：" class="headerlink" title="示例 3："></a><strong>示例 3：</strong></h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">输入：nums = [20,1,15,3,10,5,8]</span><br><span class="line">输出：4</span><br><span class="line">解释：</span><br><span class="line">最长的等差子序列是 [20,15,10,5]。</span><br></pre></td></tr></table></figure>
+
+<p><strong>提示：</strong></p>
+<ul>
+<li><code>2 &lt;= nums.length &lt;= 1000</code></li>
+<li><code>0 &lt;= nums[i] &lt;= 500</code></li>
+</ul>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">number[]</span>&#125; <span class="variable">nums</span></span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="type">number</span>&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">var</span> longestArithSeqLength = <span class="keyword">function</span>(<span class="params">nums</span>) &#123;</span><br><span class="line">    <span class="keyword">let</span> n = nums.<span class="property">length</span></span><br><span class="line">    <span class="keyword">let</span> dp = <span class="title class_">Array</span>(n).<span class="title function_">fill</span>(<span class="number">0</span>).<span class="title function_">map</span>(<span class="function">()=&gt;</span><span class="keyword">new</span> <span class="title class_">Map</span>())</span><br><span class="line">    <span class="keyword">let</span> res = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i = <span class="number">1</span>; i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">let</span> j = <span class="number">0</span>; j&lt;i;j++)&#123;</span><br><span class="line">            <span class="keyword">let</span> seq = nums[i] - nums[j]</span><br><span class="line">            <span class="keyword">let</span> count = dp[j].<span class="title function_">get</span>(seq) || <span class="number">1</span></span><br><span class="line">            dp[i].<span class="title function_">set</span>(seq,count+<span class="number">1</span>)</span><br><span class="line">            res = <span class="title class_">Math</span>.<span class="title function_">max</span>(res,count+<span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>leetcode</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+        <tag>每日一题</tag>
+      </tags>
+  </entry>
 </search>
