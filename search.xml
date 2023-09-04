@@ -2087,12 +2087,13 @@
   <entry>
     <title>深度优先搜索</title>
     <url>/leetbookDFS/</url>
-    <content><![CDATA[<h1 id="勇往直前的深度优先遍历"><a href="#勇往直前的深度优先遍历" class="headerlink" title="勇往直前的深度优先遍历"></a>勇往直前的深度优先遍历</h1><p><img src="/image/leetcode1026/1681810167515.png" alt="1681810167515" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br><img src="image/react18Note/14-03-常见生命周期图谱.png"  loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/><br><img src="/image/leetbookDFS/image.png" alt="1681810167515" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br><img src="/image/leetbookDFS/image.png" alt="勇往直前的深度优先遍历" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
-<p>在线性结构中，按照顺序一个一个地看到所有的元素，称为线性遍历。在非线性结构中，由于元素之间的组织方式变得复杂，就有了不同的遍历行为。其中最常见的遍历有：深度优先遍历（Depth-First-Search）和广度优先遍历（Breadth-First-Search）。它们的思想非常简单，但是在算法的世界里发挥着巨大的作用。</p>
+    <content><![CDATA[<h1 id="勇往直前的深度优先遍历"><a href="#勇往直前的深度优先遍历" class="headerlink" title="勇往直前的深度优先遍历"></a>勇往直前的深度优先遍历</h1><p><img src="/image/leetbookDFS/image.png" alt="勇往直前的深度优先遍历" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'></p>
+<p><a href="http://localhost:4000/image/leetbookDFS/image.png">http://localhost:4000/image/leetbookDFS/image.png</a></p>
+<p><a href="http://localhost:4000/leetbookDFS/image/leetbookDFS/leetbookDFS.mp4">http://localhost:4000/leetbookDFS/image/leetbookDFS/leetbookDFS.mp4</a><br>在线性结构中，按照顺序一个一个地看到所有的元素，称为线性遍历。在非线性结构中，由于元素之间的组织方式变得复杂，就有了不同的遍历行为。其中最常见的遍历有：深度优先遍历（Depth-First-Search）和广度优先遍历（Breadth-First-Search）。它们的思想非常简单，但是在算法的世界里发挥着巨大的作用。</p>
 <blockquote>
 <p>友情提示：大家先不要纠结这里「Search」为什么翻译成「遍历」，可以认为「遍历」和「搜索」是一回事。</p>
 </blockquote>
-<h1 id="深度优先遍历的形象描述"><a href="#深度优先遍历的形象描述" class="headerlink" title="深度优先遍历的形象描述"></a>深度优先遍历的形象描述</h1><p><video  src="image/leetbookDFS/leetbookDFS.mp4"></video></p>
+<h1 id="深度优先遍历的形象描述"><a href="#深度优先遍历的形象描述" class="headerlink" title="深度优先遍历的形象描述"></a>深度优先遍历的形象描述</h1><p><img src="/image/leetbookDFS/leetbookDFS.mp4" alt="勇往直前的深度优先遍历" loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'><br><video  src="/image/leetbookDFS/leetbookDFS.mp4"></video></p>
 ]]></content>
       <categories>
         <category>leetbook</category>
@@ -2164,7 +2165,7 @@
 <h3 id="immutable-js库"><a href="#immutable-js库" class="headerlink" title="immutable.js库"></a>immutable.js库</h3><p>Immutable 是 Facebook 开发的不可变数据集合。不可变数据一旦创建就不能被修改，使得应用开发更简单，允许使用函数式编程技术，比如惰性评估。Immutable JS 提供一个惰性 <code>Sequence，</code>允许高效的队列方法链，类似 <code>map</code> 和 <code>filter</code> ，不用创建中间代表。</p>
 <p>具体是如何做到高效的，可以参考图示。</p>
 <div align=center>
-    <img src="image/react18Note/immutablejs.gif"  loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/>
+    <img src="/image/react18Note/immutablejs.gif"  loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/>
     <div>immutablejs</div>
 </div>
 
