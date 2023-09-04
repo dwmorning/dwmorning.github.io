@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="React18核心概念与类组件使用props细节详解及注意事项构造器中获取props数据多属性的传递给属性添加默认值与类型类组件中事件的使用详解事件中this的处理事件传参处理state细节详解及React18的自动批处理自动批处理异步处理PureComponent与shouldComponentUpdateshouldComponentUpdatePureComponentimmutable.j">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react 18 笔记目录">
+<meta property="og:url" content="https://dwmorning.github.io/react18Note-toc/index.html">
+<meta property="og:site_name" content="wmorning">
+<meta property="og:description" content="React18核心概念与类组件使用props细节详解及注意事项构造器中获取props数据多属性的传递给属性添加默认值与类型类组件中事件的使用详解事件中this的处理事件传参处理state细节详解及React18的自动批处理自动批处理异步处理PureComponent与shouldComponentUpdateshouldComponentUpdatePureComponentimmutable.j">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-04-25T15:41:45.000Z">
+<meta property="article:modified_time" content="2023-05-14T16:03:13.466Z">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+
+
+<title >react 18 笔记目录</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon-16x16.png?v=2.0.6' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon-32x32.png?v=2.0.6' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/img/favicon-32x32.png?v=2.0.6' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"dwmorning.github.io","author":null,"root":"/","typed_text":["总是努力翻山越岭"],"theme_version":"2.0.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon-32x32.png","icon16":"/img/favicon-16x16.png","icon32":"/img/favicon-32x32.png","appleTouchIcon":"/img/favicon-32x32.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","showText":"(/≧▽≦/)wmorningBlog","hideText":"(●—●)休息一下啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://cdn.jsdelivr.net/npm/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":200},"covers":["//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0jlz9p.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-2ydy76.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-3l9zy3.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-3zkold.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-od95m7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-j87ldq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-qzdxd5.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gj968l.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-4g77y3.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-5gwp58.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-95rrq8.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-28pdry.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-45gjv7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0w9qd7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-8535j1.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-exyxvr.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-g7ormd.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gp87vd.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-jx5xlw.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-kxwzk6.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-l8m3r2.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-l8m8gy.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-nm7q11.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0qq2gl.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-72m53y.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-49qy8d.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-6k7z5l.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-45pe95.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-yj7wqk.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-o5x3v7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-r71zwq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-rryqkj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-we61wq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zym8vj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zyxvqy.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0wz1p6.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-1kr69v.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-3l9kr9.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-5gwrj1.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-6dkmwl.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-8o5v1k.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-9d6g7w.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-953xmw.png","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gp8wld.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gp87dq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-m3dzw1.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-o5x3v7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-p98ljj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-qz6p85.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-weyq3p.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-x6l93d.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-y8zeyg.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z8dlkj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z81mqv.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z81ovo.png","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z853dv.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zym8vj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zymxpv.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zymyvj.jpg"],"creative_commons":{"license":"by-nc-sa","language":"deed.zh"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"trigger":"auto","path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2023-05-15 00:03:13"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.0.6" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" data-scroll-container style="opacity: 0">
+          <div data-scroll-section id="content" class="trm-scroll-section">
+
+            <div class="locomotive-scroll__sticky-target" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;"></div>
+
+            <!-- top bar -->
+            <header class="trm-top-bar" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon-32x32.png">
+    
+    
+        <div class="trm-logo-text">
+            wmorning<span>Blog</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    主页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/links/" target="">
+                    项目
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/about/" target="">
+                    关于
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner" data-scroll data-scroll-direction="vertical">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3" src="https://pic1.zhimg.com/v2-b3c2c6745b9421a13a3c4706b19223b3_r.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container" data-scroll data-scroll-direction="vertical" data-scroll-speed="0">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            入门React
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            react 18 笔记目录
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        react18Note-toc
+                                    </span
+                                ></li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <a href="#about-triger" data-scroll-to="#about-triger" data-scroll-offset="-130" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </a>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div id="page-sidebar" class="col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    
+
+<div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card" data-scroll data-scroll-repeat data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="60"> 
+    
+        <div class="trm-user-tabs" id="sidebar-tabs">
+           <div class="trm-tabs-nav trm-mb-40" id="trm-tabs-nav">
+                <div data-to="tabs-user" class="trm-tabs-nav-item">
+                    <i class="iconfont fas fa-user-alt"></i>
+                </div>
+                <div data-to="tabs-toc" class="trm-tabs-nav-item active">
+                    <i class="iconfont fas fa-th-list"></i>
+                </div>
+           </div>
+            <div name="tabs-user" class="trm-tabs-item">
+                <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        菜鸟书生
+    </h5>
+    
+        <div class="trm-label">
+            优秀的人
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+                <!-- sidebar social -->
+
+<!-- sidebar social end -->
+                <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                leetcode:
+            </div>
+            <div class="trm-label trm-label-light">
+                <a href="/tags/leetcode" target="_self" rel="nofollow">查看</a>
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+                
+            </div>
+            <div name="tabs-toc" class="trm-tabs-item active">
+                <div class="post-toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a rel="nofollow" class="toc-link" href="#React18核心概念与类组件使用"  data-scroll-to="#React18核心概念与类组件使用"><span class="toc-number">1.</span> <span class="toc-text">React18核心概念与类组件使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#props细节详解及注意事项"  data-scroll-to="#props细节详解及注意事项"><span class="toc-number">1.1.</span> <span class="toc-text">props细节详解及注意事项</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#构造器中获取props数据"  data-scroll-to="#构造器中获取props数据"><span class="toc-number">1.1.1.</span> <span class="toc-text">构造器中获取props数据</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#多属性的传递"  data-scroll-to="#多属性的传递"><span class="toc-number">1.1.2.</span> <span class="toc-text">多属性的传递</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#给属性添加默认值与类型"  data-scroll-to="#给属性添加默认值与类型"><span class="toc-number">1.1.3.</span> <span class="toc-text">给属性添加默认值与类型</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#类组件中事件的使用详解"  data-scroll-to="#类组件中事件的使用详解"><span class="toc-number">1.2.</span> <span class="toc-text">类组件中事件的使用详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#事件中this的处理"  data-scroll-to="#事件中this的处理"><span class="toc-number">1.2.1.</span> <span class="toc-text">事件中this的处理</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#事件传参处理"  data-scroll-to="#事件传参处理"><span class="toc-number">1.2.2.</span> <span class="toc-text">事件传参处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#state细节详解及React18的自动批处理"  data-scroll-to="#state细节详解及React18的自动批处理"><span class="toc-number">1.3.</span> <span class="toc-text">state细节详解及React18的自动批处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#自动批处理"  data-scroll-to="#自动批处理"><span class="toc-number">1.3.1.</span> <span class="toc-text">自动批处理</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#异步处理"  data-scroll-to="#异步处理"><span class="toc-number">1.3.2.</span> <span class="toc-text">异步处理</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#PureComponent与shouldComponentUpdate"  data-scroll-to="#PureComponent与shouldComponentUpdate"><span class="toc-number">1.4.</span> <span class="toc-text">PureComponent与shouldComponentUpdate</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#shouldComponentUpdate"  data-scroll-to="#shouldComponentUpdate"><span class="toc-number">1.4.1.</span> <span class="toc-text">shouldComponentUpdate</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#PureComponent"  data-scroll-to="#PureComponent"><span class="toc-number">1.4.2.</span> <span class="toc-text">PureComponent</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#immutable-js不可变数据集合"  data-scroll-to="#immutable-js不可变数据集合"><span class="toc-number">1.5.</span> <span class="toc-text">immutable.js不可变数据集合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#immutable-js库"  data-scroll-to="#immutable-js库"><span class="toc-number">1.5.1.</span> <span class="toc-text">immutable.js库</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#Refs操作DOM及操作类组件"  data-scroll-to="#Refs操作DOM及操作类组件"><span class="toc-number">1.6.</span> <span class="toc-text">Refs操作DOM及操作类组件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#React-createRef"  data-scroll-to="#React-createRef"><span class="toc-number">1.6.1.</span> <span class="toc-text">React.createRef()</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#回调函数写法"  data-scroll-to="#回调函数写法"><span class="toc-number">1.6.2.</span> <span class="toc-text">回调函数写法</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#Ref操作类组件"  data-scroll-to="#Ref操作类组件"><span class="toc-number">1.6.3.</span> <span class="toc-text">Ref操作类组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#详解常见生命周期钩子函数"  data-scroll-to="#详解常见生命周期钩子函数"><span class="toc-number">1.7.</span> <span class="toc-text">详解常见生命周期钩子函数</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#详解不常见生命周期钩子函数"  data-scroll-to="#详解不常见生命周期钩子函数"><span class="toc-number">1.8.</span> <span class="toc-text">详解不常见生命周期钩子函数</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#getDerivedStateFromProps"  data-scroll-to="#getDerivedStateFromProps"><span class="toc-number">1.9.</span> <span class="toc-text">getDerivedStateFromProps</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#shouldComponentUpdate-1"  data-scroll-to="#shouldComponentUpdate-1"><span class="toc-number">1.9.1.</span> <span class="toc-text">shouldComponentUpdate</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#getSnapshotBeforeUpdate"  data-scroll-to="#getSnapshotBeforeUpdate"><span class="toc-number">1.9.2.</span> <span class="toc-text">getSnapshotBeforeUpdate</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#组件内容的组合模式"  data-scroll-to="#组件内容的组合模式"><span class="toc-number">1.10.</span> <span class="toc-text">组件内容的组合模式</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#复用组件功能之Render-Props模式"  data-scroll-to="#复用组件功能之Render-Props模式"><span class="toc-number">1.11.</span> <span class="toc-text">复用组件功能之Render Props模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#Render-Props模式"  data-scroll-to="#Render-Props模式"><span class="toc-number">1.11.1.</span> <span class="toc-text">Render Props模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#复用组件功能之HOC高阶组件模式"  data-scroll-to="#复用组件功能之HOC高阶组件模式"><span class="toc-number">1.12.</span> <span class="toc-text">复用组件功能之HOC高阶组件模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#HOC高阶组件"  data-scroll-to="#HOC高阶组件"><span class="toc-number">1.12.1.</span> <span class="toc-text">HOC高阶组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#组件跨层级通信方案Context"  data-scroll-to="#组件跨层级通信方案Context"><span class="toc-number">1.13.</span> <span class="toc-text">组件跨层级通信方案Context</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#Context通信"  data-scroll-to="#Context通信"><span class="toc-number">1.13.1.</span> <span class="toc-text">Context通信</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a rel="nofollow" class="toc-link" href="#React18之Hook与函数组件-–-优雅简易的开发模式"  data-scroll-to="#React18之Hook与函数组件-–-优雅简易的开发模式"><span class="toc-number">2.</span> <span class="toc-text">React18之Hook与函数组件 – 优雅简易的开发模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#函数组件基本使用及点标记组件写法"  data-scroll-to="#函数组件基本使用及点标记组件写法"><span class="toc-number">2.1.</span> <span class="toc-text">函数组件基本使用及点标记组件写法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#函数组件的基本使用"  data-scroll-to="#函数组件的基本使用"><span class="toc-number">2.1.1.</span> <span class="toc-text">函数组件的基本使用</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#点标记组件写法"  data-scroll-to="#点标记组件写法"><span class="toc-number">2.1.2.</span> <span class="toc-text">点标记组件写法</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#Hook概念及Hook之useState函数"  data-scroll-to="#Hook概念及Hook之useState函数"><span class="toc-number">2.2.</span> <span class="toc-text">Hook概念及Hook之useState函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#什么是Hook"  data-scroll-to="#什么是Hook"><span class="toc-number">2.2.1.</span> <span class="toc-text">什么是Hook</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#详解Hook之useEffect函数"  data-scroll-to="#详解Hook之useEffect函数"><span class="toc-number">2.3.</span> <span class="toc-text">详解Hook之useEffect函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#什么是useEffect-Hook"  data-scroll-to="#什么是useEffect-Hook"><span class="toc-number">2.3.1.</span> <span class="toc-text">什么是useEffect Hook</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#使用多个-Effect-实现关注点分离"  data-scroll-to="#使用多个-Effect-实现关注点分离"><span class="toc-number">2.3.2.</span> <span class="toc-text">使用多个 Effect 实现关注点分离</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#通过跳过-Effect-进行性能优化"  data-scroll-to="#通过跳过-Effect-进行性能优化"><span class="toc-number">2.3.3.</span> <span class="toc-text">通过跳过 Effect 进行性能优化</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#Effect-中使用了某个响应式数据，一定要进行数组的依赖处理"  data-scroll-to="#Effect-中使用了某个响应式数据，一定要进行数组的依赖处理"><span class="toc-number">2.3.4.</span> <span class="toc-text">Effect 中使用了某个响应式数据，一定要进行数组的依赖处理</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#频繁的修改某个响应式数据，可通过回调函数进行改写"  data-scroll-to="#频繁的修改某个响应式数据，可通过回调函数进行改写"><span class="toc-number">2.3.5.</span> <span class="toc-text">频繁的修改某个响应式数据，可通过回调函数进行改写</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#useEffect异步与useLayoutEffect同步"  data-scroll-to="#useEffect异步与useLayoutEffect同步"><span class="toc-number">2.3.6.</span> <span class="toc-text">useEffect异步与useLayoutEffect同步</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#详解Hook之useRef函数"  data-scroll-to="#详解Hook之useRef函数"><span class="toc-number">2.4.</span> <span class="toc-text">详解Hook之useRef函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#回调函数形式"  data-scroll-to="#回调函数形式"><span class="toc-number">2.4.1.</span> <span class="toc-text">回调函数形式</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#useRef-形式"  data-scroll-to="#useRef-形式"><span class="toc-number">2.4.2.</span> <span class="toc-text">useRef()形式</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#函数转发"  data-scroll-to="#函数转发"><span class="toc-number">2.4.3.</span> <span class="toc-text">函数转发</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#useRef的记忆能力"  data-scroll-to="#useRef的记忆能力"><span class="toc-number">2.4.4.</span> <span class="toc-text">useRef的记忆能力</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#详解Hook之useContext函数"  data-scroll-to="#详解Hook之useContext函数"><span class="toc-number">2.5.</span> <span class="toc-text">详解Hook之useContext函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#useContext函数"  data-scroll-to="#useContext函数"><span class="toc-number">2.5.1.</span> <span class="toc-text">useContext函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#函数组件性能优化之React-memo"  data-scroll-to="#函数组件性能优化之React-memo"><span class="toc-number">2.6.</span> <span class="toc-text">函数组件性能优化之React.memo</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#详解Hook之useCallback与useMemo函数"  data-scroll-to="#详解Hook之useCallback与useMemo函数"><span class="toc-number">2.7.</span> <span class="toc-text">详解Hook之useCallback与useMemo函数</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#详解Hook之useReducer函数"  data-scroll-to="#详解Hook之useReducer函数"><span class="toc-number">2.8.</span> <span class="toc-text">详解Hook之useReducer函数</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#React18之并发模式与startTransition"  data-scroll-to="#React18之并发模式与startTransition"><span class="toc-number">2.9.</span> <span class="toc-text">React18之并发模式与startTransition</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#React18之useTransition与useDeferredValue"  data-scroll-to="#React18之useTransition与useDeferredValue"><span class="toc-number">2.10.</span> <span class="toc-text">React18之useTransition与useDeferredValue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#useTransition"  data-scroll-to="#useTransition"><span class="toc-number">2.10.1.</span> <span class="toc-text">useTransition</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#useDeferredValue"  data-scroll-to="#useDeferredValue"><span class="toc-number">2.10.2.</span> <span class="toc-text">useDeferredValue</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#函数组件功能复用之自定义Hook"  data-scroll-to="#函数组件功能复用之自定义Hook"><span class="toc-number">2.11.</span> <span class="toc-text">函数组件功能复用之自定义Hook</span></a></li></ol></li><li class="toc-item toc-level-1"><a rel="nofollow" class="toc-link" href="#React18扩展内容与脚手架使用-–-全面掌握React18特性"  data-scroll-to="#React18扩展内容与脚手架使用-–-全面掌握React18特性"><span class="toc-number">3.</span> <span class="toc-text">React18扩展内容与脚手架使用 – 全面掌握React18特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#脚手架安装及vsCode插件安装"  data-scroll-to="#脚手架安装及vsCode插件安装"><span class="toc-number">3.1.</span> <span class="toc-text">脚手架安装及vsCode插件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#脚手架的安装"  data-scroll-to="#脚手架的安装"><span class="toc-number">3.1.1.</span> <span class="toc-text">脚手架的安装</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#插件的安装"  data-scroll-to="#插件的安装"><span class="toc-number">3.1.2.</span> <span class="toc-text">插件的安装</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#脚手架下需要注意的点"  data-scroll-to="#脚手架下需要注意的点"><span class="toc-number">3.1.3.</span> <span class="toc-text">脚手架下需要注意的点</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#脚手架下样式处理方式及Sass支持"  data-scroll-to="#脚手架下样式处理方式及Sass支持"><span class="toc-number">3.2.</span> <span class="toc-text">脚手架下样式处理方式及Sass支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#全局样式"  data-scroll-to="#全局样式"><span class="toc-number">3.2.1.</span> <span class="toc-text">全局样式</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#预编译CSS的支持"  data-scroll-to="#预编译CSS的支持"><span class="toc-number">3.2.2.</span> <span class="toc-text">预编译CSS的支持</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#模块化CSS"  data-scroll-to="#模块化CSS"><span class="toc-number">3.2.3.</span> <span class="toc-text">模块化CSS</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#CSS-in-JS"  data-scroll-to="#CSS-in-JS"><span class="toc-number">3.2.4.</span> <span class="toc-text">CSS-in-JS</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#样式模块classnames"  data-scroll-to="#样式模块classnames"><span class="toc-number">3.2.5.</span> <span class="toc-text">样式模块classnames</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#Ant-Design框架的安装与使用（一）"  data-scroll-to="#Ant-Design框架的安装与使用（一）"><span class="toc-number">3.3.</span> <span class="toc-text">Ant Design框架的安装与使用（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#什么是Ant-Design框架"  data-scroll-to="#什么是Ant-Design框架"><span class="toc-number">3.3.1.</span> <span class="toc-text">什么是Ant Design框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#Ant-Design框架的安装与使用（二）"  data-scroll-to="#Ant-Design框架的安装与使用（二）"><span class="toc-number">3.4.</span> <span class="toc-text">Ant Design框架的安装与使用（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#逻辑组件"  data-scroll-to="#逻辑组件"><span class="toc-number">3.4.1.</span> <span class="toc-text">逻辑组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#仿Ant-Design的Rate组件实现"  data-scroll-to="#仿Ant-Design的Rate组件实现"><span class="toc-number">3.5.</span> <span class="toc-text">仿Ant Design的Rate组件实现</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#仿Ant-Design的Button组件实现"  data-scroll-to="#仿Ant-Design的Button组件实现"><span class="toc-number">3.6.</span> <span class="toc-text">仿Ant Design的Button组件实现</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#react-transition-group模块实现动画功能"  data-scroll-to="#react-transition-group模块实现动画功能"><span class="toc-number">3.7.</span> <span class="toc-text">react-transition-group模块实现动画功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#react-transition-group模块"  data-scroll-to="#react-transition-group模块"><span class="toc-number">3.7.1.</span> <span class="toc-text">react-transition-group模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#createPortal传送门与逻辑组件的实现"  data-scroll-to="#createPortal传送门与逻辑组件的实现"><span class="toc-number">3.8.</span> <span class="toc-text">createPortal传送门与逻辑组件的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#createPortal传送门"  data-scroll-to="#createPortal传送门"><span class="toc-number">3.8.1.</span> <span class="toc-text">createPortal传送门</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#React-lazy与React-Suspense与错误边界"  data-scroll-to="#React-lazy与React-Suspense与错误边界"><span class="toc-number">3.9.</span> <span class="toc-text">React.lazy与React.Suspense与错误边界</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#React-lazy与React-Suspense"  data-scroll-to="#React-lazy与React-Suspense"><span class="toc-number">3.9.1.</span> <span class="toc-text">React.lazy与React.Suspense</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#错误边界"  data-scroll-to="#错误边界"><span class="toc-number">3.9.2.</span> <span class="toc-text">错误边界</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a rel="nofollow" class="toc-link" href="#ReactRouter路由与Redux状态管理-–-组织与架构应用"  data-scroll-to="#ReactRouter路由与Redux状态管理-–-组织与架构应用"><span class="toc-number">4.</span> <span class="toc-text">ReactRouter路由与Redux状态管理 – 组织与架构应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#ReactRouterV6-4-基础路由搭建"  data-scroll-to="#ReactRouterV6-4-基础路由搭建"><span class="toc-number">4.1.</span> <span class="toc-text">ReactRouterV6.4 基础路由搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#路由的安装"  data-scroll-to="#路由的安装"><span class="toc-number">4.1.1.</span> <span class="toc-text">路由的安装</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#动态路由模式与编程式路由模式"  data-scroll-to="#动态路由模式与编程式路由模式"><span class="toc-number">4.2.</span> <span class="toc-text">动态路由模式与编程式路由模式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#动态路由模式"  data-scroll-to="#动态路由模式"><span class="toc-number">4.2.1.</span> <span class="toc-text">动态路由模式</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#带样式的声明式路由NavLink"  data-scroll-to="#带样式的声明式路由NavLink"><span class="toc-number">4.2.2.</span> <span class="toc-text">带样式的声明式路由NavLink</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#编程式路由"  data-scroll-to="#编程式路由"><span class="toc-number">4.2.3.</span> <span class="toc-text">编程式路由</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#useSearchParams与useLocation函数"  data-scroll-to="#useSearchParams与useLocation函数"><span class="toc-number">4.3.</span> <span class="toc-text">useSearchParams与useLocation函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#useLocation函数"  data-scroll-to="#useLocation函数"><span class="toc-number">4.3.1.</span> <span class="toc-text">useLocation函数</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#useSearchParams函数"  data-scroll-to="#useSearchParams函数"><span class="toc-number">4.3.2.</span> <span class="toc-text">useSearchParams函数</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#默认路由展示与重定向路由与404处理"  data-scroll-to="#默认路由展示与重定向路由与404处理"><span class="toc-number">4.4.</span> <span class="toc-text">默认路由展示与重定向路由与404处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#默认路由"  data-scroll-to="#默认路由"><span class="toc-number">4.4.1.</span> <span class="toc-text">默认路由</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#重定向路由"  data-scroll-to="#重定向路由"><span class="toc-number">4.4.2.</span> <span class="toc-text">重定向路由</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#处理404页面"  data-scroll-to="#处理404页面"><span class="toc-number">4.4.3.</span> <span class="toc-text">处理404页面</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#路由loader函数与redirect方法"  data-scroll-to="#路由loader函数与redirect方法"><span class="toc-number">4.5.</span> <span class="toc-text">路由loader函数与redirect方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#loader函数"  data-scroll-to="#loader函数"><span class="toc-number">4.5.1.</span> <span class="toc-text">loader函数</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#redirect方法"  data-scroll-to="#redirect方法"><span class="toc-number">4.5.2.</span> <span class="toc-text">redirect方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#自定义全局守卫与自定义元信息"  data-scroll-to="#自定义全局守卫与自定义元信息"><span class="toc-number">4.6.</span> <span class="toc-text">自定义全局守卫与自定义元信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#自定义全局守卫"  data-scroll-to="#自定义全局守卫"><span class="toc-number">4.6.1.</span> <span class="toc-text">自定义全局守卫</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#自定义元信息"  data-scroll-to="#自定义元信息"><span class="toc-number">4.6.2.</span> <span class="toc-text">自定义元信息</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#Redux状态管理的基本流程"  data-scroll-to="#Redux状态管理的基本流程"><span class="toc-number">4.7.</span> <span class="toc-text">Redux状态管理的基本流程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#Redux状态管理库"  data-scroll-to="#Redux状态管理库"><span class="toc-number">4.7.1.</span> <span class="toc-text">Redux状态管理库</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#react-redux简化对Redux的使用"  data-scroll-to="#react-redux简化对Redux的使用"><span class="toc-number">4.8.</span> <span class="toc-text">react-redux简化对Redux的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#react-redux库"  data-scroll-to="#react-redux库"><span class="toc-number">4.8.1.</span> <span class="toc-text">react-redux库</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#如何处理多个reducer函数及Redux模块化"  data-scroll-to="#如何处理多个reducer函数及Redux模块化"><span class="toc-number">4.9.</span> <span class="toc-text">如何处理多个reducer函数及Redux模块化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#模块化Redux"  data-scroll-to="#模块化Redux"><span class="toc-number">4.9.1.</span> <span class="toc-text">模块化Redux</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#redux-thunk中间件处理异步操作"  data-scroll-to="#redux-thunk中间件处理异步操作"><span class="toc-number">4.10.</span> <span class="toc-text">redux-thunk中间件处理异步操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#redux-thunk中间件"  data-scroll-to="#redux-thunk中间件"><span class="toc-number">4.10.1.</span> <span class="toc-text">redux-thunk中间件</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#Redux-Toolkit-RTK-改善Redux使用体验"  data-scroll-to="#Redux-Toolkit-RTK-改善Redux使用体验"><span class="toc-number">4.11.</span> <span class="toc-text">Redux-Toolkit(RTK)改善Redux使用体验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#Redux-Toolkit-RTK-库"  data-scroll-to="#Redux-Toolkit-RTK-库"><span class="toc-number">4.11.1.</span> <span class="toc-text">Redux-Toolkit(RTK)库</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#Redux-Toolkit-RTK-如何处理异步任务"  data-scroll-to="#Redux-Toolkit-RTK-如何处理异步任务"><span class="toc-number">4.12.</span> <span class="toc-text">Redux-Toolkit(RTK)如何处理异步任务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#createAsyncThunk方法"  data-scroll-to="#createAsyncThunk方法"><span class="toc-number">4.12.1.</span> <span class="toc-text">createAsyncThunk方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#通过redux-persist进行数据持久化处理"  data-scroll-to="#通过redux-persist进行数据持久化处理"><span class="toc-number">4.13.</span> <span class="toc-text">通过redux-persist进行数据持久化处理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#redux-persist模块"  data-scroll-to="#redux-persist模块"><span class="toc-number">4.13.1.</span> <span class="toc-text">redux-persist模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#路由加状态管理的登录拦截综合案例"  data-scroll-to="#路由加状态管理的登录拦截综合案例"><span class="toc-number">4.14.</span> <span class="toc-text">路由加状态管理的登录拦截综合案例</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#类组件中如何使用路由和状态管理"  data-scroll-to="#类组件中如何使用路由和状态管理"><span class="toc-number">4.15.</span> <span class="toc-text">类组件中如何使用路由和状态管理</span></a></li></ol></li></ol>
+</div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div id="page-content" class="col-lg-8">
+                <div class="trm-content" id="trm-content">
+                    <div data-scroll data-scroll-repeat data-scroll-offset="500" id="about-triger"></div>
+
+                    <div id="post-info" class="row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            04/25
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            23:41
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            菜鸟书生
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="React18核心概念与类组件使用"><a href="#React18核心概念与类组件使用" class="headerlink" title="React18核心概念与类组件使用"></a>React18核心概念与类组件使用</h1><h2 id="props细节详解及注意事项"><a href="#props细节详解及注意事项" class="headerlink" title="props细节详解及注意事项"></a>props细节详解及注意事项</h2><h3 id="构造器中获取props数据"><a href="#构造器中获取props数据" class="headerlink" title="构造器中获取props数据"></a>构造器中获取props数据</h3><h3 id="多属性的传递"><a href="#多属性的传递" class="headerlink" title="多属性的传递"></a>多属性的传递</h3><h3 id="给属性添加默认值与类型"><a href="#给属性添加默认值与类型" class="headerlink" title="给属性添加默认值与类型"></a>给属性添加默认值与类型</h3><h2 id="类组件中事件的使用详解"><a href="#类组件中事件的使用详解" class="headerlink" title="类组件中事件的使用详解"></a>类组件中事件的使用详解</h2><h3 id="事件中this的处理"><a href="#事件中this的处理" class="headerlink" title="事件中this的处理"></a>事件中this的处理</h3><h3 id="事件传参处理"><a href="#事件传参处理" class="headerlink" title="事件传参处理"></a>事件传参处理</h3><h2 id="state细节详解及React18的自动批处理"><a href="#state细节详解及React18的自动批处理" class="headerlink" title="state细节详解及React18的自动批处理"></a>state细节详解及React18的自动批处理</h2><h3 id="自动批处理"><a href="#自动批处理" class="headerlink" title="自动批处理"></a>自动批处理</h3><h3 id="异步处理"><a href="#异步处理" class="headerlink" title="异步处理"></a>异步处理</h3><h2 id="PureComponent与shouldComponentUpdate"><a href="#PureComponent与shouldComponentUpdate" class="headerlink" title="PureComponent与shouldComponentUpdate"></a>PureComponent与shouldComponentUpdate</h2><h3 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h3><h3 id="PureComponent"><a href="#PureComponent" class="headerlink" title="PureComponent"></a>PureComponent</h3><h2 id="immutable-js不可变数据集合"><a href="#immutable-js不可变数据集合" class="headerlink" title="immutable.js不可变数据集合"></a>immutable.js不可变数据集合</h2><h3 id="immutable-js库"><a href="#immutable-js库" class="headerlink" title="immutable.js库"></a>immutable.js库</h3><h2 id="Refs操作DOM及操作类组件"><a href="#Refs操作DOM及操作类组件" class="headerlink" title="Refs操作DOM及操作类组件"></a>Refs操作DOM及操作类组件</h2><h3 id="React-createRef"><a href="#React-createRef" class="headerlink" title="React.createRef()"></a>React.createRef()</h3><h3 id="回调函数写法"><a href="#回调函数写法" class="headerlink" title="回调函数写法"></a>回调函数写法</h3><h3 id="Ref操作类组件"><a href="#Ref操作类组件" class="headerlink" title="Ref操作类组件"></a>Ref操作类组件</h3><h2 id="详解常见生命周期钩子函数"><a href="#详解常见生命周期钩子函数" class="headerlink" title="详解常见生命周期钩子函数"></a>详解常见生命周期钩子函数</h2><h2 id="详解不常见生命周期钩子函数"><a href="#详解不常见生命周期钩子函数" class="headerlink" title="详解不常见生命周期钩子函数"></a>详解不常见生命周期钩子函数</h2><h2 id="getDerivedStateFromProps"><a href="#getDerivedStateFromProps" class="headerlink" title="getDerivedStateFromProps"></a>getDerivedStateFromProps</h2><h3 id="shouldComponentUpdate-1"><a href="#shouldComponentUpdate-1" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h3><h3 id="getSnapshotBeforeUpdate"><a href="#getSnapshotBeforeUpdate" class="headerlink" title="getSnapshotBeforeUpdate"></a>getSnapshotBeforeUpdate</h3><h2 id="组件内容的组合模式"><a href="#组件内容的组合模式" class="headerlink" title="组件内容的组合模式"></a>组件内容的组合模式</h2><h2 id="复用组件功能之Render-Props模式"><a href="#复用组件功能之Render-Props模式" class="headerlink" title="复用组件功能之Render Props模式"></a>复用组件功能之Render Props模式</h2><h3 id="Render-Props模式"><a href="#Render-Props模式" class="headerlink" title="Render Props模式"></a>Render Props模式</h3><h2 id="复用组件功能之HOC高阶组件模式"><a href="#复用组件功能之HOC高阶组件模式" class="headerlink" title="复用组件功能之HOC高阶组件模式"></a>复用组件功能之HOC高阶组件模式</h2><h3 id="HOC高阶组件"><a href="#HOC高阶组件" class="headerlink" title="HOC高阶组件"></a>HOC高阶组件</h3><h2 id="组件跨层级通信方案Context"><a href="#组件跨层级通信方案Context" class="headerlink" title="组件跨层级通信方案Context"></a>组件跨层级通信方案Context</h2><h3 id="Context通信"><a href="#Context通信" class="headerlink" title="Context通信"></a>Context通信</h3><h1 id="React18之Hook与函数组件-–-优雅简易的开发模式"><a href="#React18之Hook与函数组件-–-优雅简易的开发模式" class="headerlink" title="React18之Hook与函数组件 – 优雅简易的开发模式"></a>React18之Hook与函数组件 – 优雅简易的开发模式</h1><h2 id="函数组件基本使用及点标记组件写法"><a href="#函数组件基本使用及点标记组件写法" class="headerlink" title="函数组件基本使用及点标记组件写法"></a>函数组件基本使用及点标记组件写法</h2><h3 id="函数组件的基本使用"><a href="#函数组件的基本使用" class="headerlink" title="函数组件的基本使用"></a>函数组件的基本使用</h3><h3 id="点标记组件写法"><a href="#点标记组件写法" class="headerlink" title="点标记组件写法"></a>点标记组件写法</h3><h2 id="Hook概念及Hook之useState函数"><a href="#Hook概念及Hook之useState函数" class="headerlink" title="Hook概念及Hook之useState函数"></a>Hook概念及Hook之useState函数</h2><h3 id="什么是Hook"><a href="#什么是Hook" class="headerlink" title="什么是Hook"></a>什么是Hook</h3><h2 id="详解Hook之useEffect函数"><a href="#详解Hook之useEffect函数" class="headerlink" title="详解Hook之useEffect函数"></a>详解Hook之useEffect函数</h2><h3 id="什么是useEffect-Hook"><a href="#什么是useEffect-Hook" class="headerlink" title="什么是useEffect Hook"></a>什么是useEffect Hook</h3><h3 id="使用多个-Effect-实现关注点分离"><a href="#使用多个-Effect-实现关注点分离" class="headerlink" title="使用多个 Effect 实现关注点分离"></a>使用多个 Effect 实现关注点分离</h3><h3 id="通过跳过-Effect-进行性能优化"><a href="#通过跳过-Effect-进行性能优化" class="headerlink" title="通过跳过 Effect 进行性能优化"></a>通过跳过 Effect 进行性能优化</h3><h3 id="Effect-中使用了某个响应式数据，一定要进行数组的依赖处理"><a href="#Effect-中使用了某个响应式数据，一定要进行数组的依赖处理" class="headerlink" title="Effect 中使用了某个响应式数据，一定要进行数组的依赖处理"></a>Effect 中使用了某个响应式数据，一定要进行数组的依赖处理</h3><h3 id="频繁的修改某个响应式数据，可通过回调函数进行改写"><a href="#频繁的修改某个响应式数据，可通过回调函数进行改写" class="headerlink" title="频繁的修改某个响应式数据，可通过回调函数进行改写"></a>频繁的修改某个响应式数据，可通过回调函数进行改写</h3><h3 id="useEffect异步与useLayoutEffect同步"><a href="#useEffect异步与useLayoutEffect同步" class="headerlink" title="useEffect异步与useLayoutEffect同步"></a>useEffect异步与useLayoutEffect同步</h3><h2 id="详解Hook之useRef函数"><a href="#详解Hook之useRef函数" class="headerlink" title="详解Hook之useRef函数"></a>详解Hook之useRef函数</h2><h3 id="回调函数形式"><a href="#回调函数形式" class="headerlink" title="回调函数形式"></a>回调函数形式</h3><h3 id="useRef-形式"><a href="#useRef-形式" class="headerlink" title="useRef()形式"></a>useRef()形式</h3><h3 id="函数转发"><a href="#函数转发" class="headerlink" title="函数转发"></a>函数转发</h3><h3 id="useRef的记忆能力"><a href="#useRef的记忆能力" class="headerlink" title="useRef的记忆能力"></a>useRef的记忆能力</h3><h2 id="详解Hook之useContext函数"><a href="#详解Hook之useContext函数" class="headerlink" title="详解Hook之useContext函数"></a>详解Hook之useContext函数</h2><h3 id="useContext函数"><a href="#useContext函数" class="headerlink" title="useContext函数"></a>useContext函数</h3><h2 id="函数组件性能优化之React-memo"><a href="#函数组件性能优化之React-memo" class="headerlink" title="函数组件性能优化之React.memo"></a>函数组件性能优化之React.memo</h2><h2 id="详解Hook之useCallback与useMemo函数"><a href="#详解Hook之useCallback与useMemo函数" class="headerlink" title="详解Hook之useCallback与useMemo函数"></a>详解Hook之useCallback与useMemo函数</h2><h2 id="详解Hook之useReducer函数"><a href="#详解Hook之useReducer函数" class="headerlink" title="详解Hook之useReducer函数"></a>详解Hook之useReducer函数</h2><h2 id="React18之并发模式与startTransition"><a href="#React18之并发模式与startTransition" class="headerlink" title="React18之并发模式与startTransition"></a>React18之并发模式与startTransition</h2><h2 id="React18之useTransition与useDeferredValue"><a href="#React18之useTransition与useDeferredValue" class="headerlink" title="React18之useTransition与useDeferredValue"></a>React18之useTransition与useDeferredValue</h2><h3 id="useTransition"><a href="#useTransition" class="headerlink" title="useTransition"></a>useTransition</h3><h3 id="useDeferredValue"><a href="#useDeferredValue" class="headerlink" title="useDeferredValue"></a>useDeferredValue</h3><h2 id="函数组件功能复用之自定义Hook"><a href="#函数组件功能复用之自定义Hook" class="headerlink" title="函数组件功能复用之自定义Hook"></a>函数组件功能复用之自定义Hook</h2><h1 id="React18扩展内容与脚手架使用-–-全面掌握React18特性"><a href="#React18扩展内容与脚手架使用-–-全面掌握React18特性" class="headerlink" title="React18扩展内容与脚手架使用 – 全面掌握React18特性"></a>React18扩展内容与脚手架使用 – 全面掌握React18特性</h1><h2 id="脚手架安装及vsCode插件安装"><a href="#脚手架安装及vsCode插件安装" class="headerlink" title="脚手架安装及vsCode插件安装"></a>脚手架安装及vsCode插件安装</h2><h3 id="脚手架的安装"><a href="#脚手架的安装" class="headerlink" title="脚手架的安装"></a>脚手架的安装</h3><h3 id="插件的安装"><a href="#插件的安装" class="headerlink" title="插件的安装"></a>插件的安装</h3><h3 id="脚手架下需要注意的点"><a href="#脚手架下需要注意的点" class="headerlink" title="脚手架下需要注意的点"></a>脚手架下需要注意的点</h3><h2 id="脚手架下样式处理方式及Sass支持"><a href="#脚手架下样式处理方式及Sass支持" class="headerlink" title="脚手架下样式处理方式及Sass支持"></a>脚手架下样式处理方式及Sass支持</h2><h3 id="全局样式"><a href="#全局样式" class="headerlink" title="全局样式"></a>全局样式</h3><h3 id="预编译CSS的支持"><a href="#预编译CSS的支持" class="headerlink" title="预编译CSS的支持"></a>预编译CSS的支持</h3><h3 id="模块化CSS"><a href="#模块化CSS" class="headerlink" title="模块化CSS"></a>模块化CSS</h3><h3 id="CSS-in-JS"><a href="#CSS-in-JS" class="headerlink" title="CSS-in-JS"></a>CSS-in-JS</h3><h3 id="样式模块classnames"><a href="#样式模块classnames" class="headerlink" title="样式模块classnames"></a>样式模块classnames</h3><h2 id="Ant-Design框架的安装与使用（一）"><a href="#Ant-Design框架的安装与使用（一）" class="headerlink" title="Ant Design框架的安装与使用（一）"></a>Ant Design框架的安装与使用（一）</h2><h3 id="什么是Ant-Design框架"><a href="#什么是Ant-Design框架" class="headerlink" title="什么是Ant Design框架"></a>什么是Ant Design框架</h3><h2 id="Ant-Design框架的安装与使用（二）"><a href="#Ant-Design框架的安装与使用（二）" class="headerlink" title="Ant Design框架的安装与使用（二）"></a>Ant Design框架的安装与使用（二）</h2><h3 id="逻辑组件"><a href="#逻辑组件" class="headerlink" title="逻辑组件"></a>逻辑组件</h3><h2 id="仿Ant-Design的Rate组件实现"><a href="#仿Ant-Design的Rate组件实现" class="headerlink" title="仿Ant Design的Rate组件实现"></a>仿Ant Design的Rate组件实现</h2><h2 id="仿Ant-Design的Button组件实现"><a href="#仿Ant-Design的Button组件实现" class="headerlink" title="仿Ant Design的Button组件实现"></a>仿Ant Design的Button组件实现</h2><h2 id="react-transition-group模块实现动画功能"><a href="#react-transition-group模块实现动画功能" class="headerlink" title="react-transition-group模块实现动画功能"></a>react-transition-group模块实现动画功能</h2><h3 id="react-transition-group模块"><a href="#react-transition-group模块" class="headerlink" title="react-transition-group模块"></a>react-transition-group模块</h3><h2 id="createPortal传送门与逻辑组件的实现"><a href="#createPortal传送门与逻辑组件的实现" class="headerlink" title="createPortal传送门与逻辑组件的实现"></a>createPortal传送门与逻辑组件的实现</h2><h3 id="createPortal传送门"><a href="#createPortal传送门" class="headerlink" title="createPortal传送门"></a>createPortal传送门</h3><h2 id="React-lazy与React-Suspense与错误边界"><a href="#React-lazy与React-Suspense与错误边界" class="headerlink" title="React.lazy与React.Suspense与错误边界"></a>React.lazy与React.Suspense与错误边界</h2><h3 id="React-lazy与React-Suspense"><a href="#React-lazy与React-Suspense" class="headerlink" title="React.lazy与React.Suspense"></a>React.lazy与React.Suspense</h3><h3 id="错误边界"><a href="#错误边界" class="headerlink" title="错误边界"></a>错误边界</h3><h1 id="ReactRouter路由与Redux状态管理-–-组织与架构应用"><a href="#ReactRouter路由与Redux状态管理-–-组织与架构应用" class="headerlink" title="ReactRouter路由与Redux状态管理 – 组织与架构应用"></a>ReactRouter路由与Redux状态管理 – 组织与架构应用</h1><h2 id="ReactRouterV6-4-基础路由搭建"><a href="#ReactRouterV6-4-基础路由搭建" class="headerlink" title="ReactRouterV6.4 基础路由搭建"></a>ReactRouterV6.4 基础路由搭建</h2><h3 id="路由的安装"><a href="#路由的安装" class="headerlink" title="路由的安装"></a>路由的安装</h3><h2 id="动态路由模式与编程式路由模式"><a href="#动态路由模式与编程式路由模式" class="headerlink" title="动态路由模式与编程式路由模式"></a>动态路由模式与编程式路由模式</h2><h3 id="动态路由模式"><a href="#动态路由模式" class="headerlink" title="动态路由模式"></a>动态路由模式</h3><h3 id="带样式的声明式路由NavLink"><a href="#带样式的声明式路由NavLink" class="headerlink" title="带样式的声明式路由NavLink"></a>带样式的声明式路由NavLink</h3><h3 id="编程式路由"><a href="#编程式路由" class="headerlink" title="编程式路由"></a>编程式路由</h3><h2 id="useSearchParams与useLocation函数"><a href="#useSearchParams与useLocation函数" class="headerlink" title="useSearchParams与useLocation函数"></a>useSearchParams与useLocation函数</h2><h3 id="useLocation函数"><a href="#useLocation函数" class="headerlink" title="useLocation函数"></a>useLocation函数</h3><h3 id="useSearchParams函数"><a href="#useSearchParams函数" class="headerlink" title="useSearchParams函数"></a>useSearchParams函数</h3><h2 id="默认路由展示与重定向路由与404处理"><a href="#默认路由展示与重定向路由与404处理" class="headerlink" title="默认路由展示与重定向路由与404处理"></a>默认路由展示与重定向路由与404处理</h2><h3 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h3><h3 id="重定向路由"><a href="#重定向路由" class="headerlink" title="重定向路由"></a>重定向路由</h3><h3 id="处理404页面"><a href="#处理404页面" class="headerlink" title="处理404页面"></a>处理404页面</h3><h2 id="路由loader函数与redirect方法"><a href="#路由loader函数与redirect方法" class="headerlink" title="路由loader函数与redirect方法"></a>路由loader函数与redirect方法</h2><h3 id="loader函数"><a href="#loader函数" class="headerlink" title="loader函数"></a>loader函数</h3><h3 id="redirect方法"><a href="#redirect方法" class="headerlink" title="redirect方法"></a>redirect方法</h3><h2 id="自定义全局守卫与自定义元信息"><a href="#自定义全局守卫与自定义元信息" class="headerlink" title="自定义全局守卫与自定义元信息"></a>自定义全局守卫与自定义元信息</h2><h3 id="自定义全局守卫"><a href="#自定义全局守卫" class="headerlink" title="自定义全局守卫"></a>自定义全局守卫</h3><h3 id="自定义元信息"><a href="#自定义元信息" class="headerlink" title="自定义元信息"></a>自定义元信息</h3><h2 id="Redux状态管理的基本流程"><a href="#Redux状态管理的基本流程" class="headerlink" title="Redux状态管理的基本流程"></a>Redux状态管理的基本流程</h2><h3 id="Redux状态管理库"><a href="#Redux状态管理库" class="headerlink" title="Redux状态管理库"></a>Redux状态管理库</h3><h2 id="react-redux简化对Redux的使用"><a href="#react-redux简化对Redux的使用" class="headerlink" title="react-redux简化对Redux的使用"></a>react-redux简化对Redux的使用</h2><h3 id="react-redux库"><a href="#react-redux库" class="headerlink" title="react-redux库"></a>react-redux库</h3><h2 id="如何处理多个reducer函数及Redux模块化"><a href="#如何处理多个reducer函数及Redux模块化" class="headerlink" title="如何处理多个reducer函数及Redux模块化"></a>如何处理多个reducer函数及Redux模块化</h2><h3 id="模块化Redux"><a href="#模块化Redux" class="headerlink" title="模块化Redux"></a>模块化Redux</h3><h2 id="redux-thunk中间件处理异步操作"><a href="#redux-thunk中间件处理异步操作" class="headerlink" title="redux-thunk中间件处理异步操作"></a>redux-thunk中间件处理异步操作</h2><h3 id="redux-thunk中间件"><a href="#redux-thunk中间件" class="headerlink" title="redux-thunk中间件"></a>redux-thunk中间件</h3><h2 id="Redux-Toolkit-RTK-改善Redux使用体验"><a href="#Redux-Toolkit-RTK-改善Redux使用体验" class="headerlink" title="Redux-Toolkit(RTK)改善Redux使用体验"></a>Redux-Toolkit(RTK)改善Redux使用体验</h2><h3 id="Redux-Toolkit-RTK-库"><a href="#Redux-Toolkit-RTK-库" class="headerlink" title="Redux-Toolkit(RTK)库"></a>Redux-Toolkit(RTK)库</h3><h2 id="Redux-Toolkit-RTK-如何处理异步任务"><a href="#Redux-Toolkit-RTK-如何处理异步任务" class="headerlink" title="Redux-Toolkit(RTK)如何处理异步任务"></a>Redux-Toolkit(RTK)如何处理异步任务</h2><h3 id="createAsyncThunk方法"><a href="#createAsyncThunk方法" class="headerlink" title="createAsyncThunk方法"></a>createAsyncThunk方法</h3><h2 id="通过redux-persist进行数据持久化处理"><a href="#通过redux-persist进行数据持久化处理" class="headerlink" title="通过redux-persist进行数据持久化处理"></a>通过redux-persist进行数据持久化处理</h2><h3 id="redux-persist模块"><a href="#redux-persist模块" class="headerlink" title="redux-persist模块"></a>redux-persist模块</h3><h2 id="路由加状态管理的登录拦截综合案例"><a href="#路由加状态管理的登录拦截综合案例" class="headerlink" title="路由加状态管理的登录拦截综合案例"></a>路由加状态管理的登录拦截综合案例</h2><h2 id="类组件中如何使用路由和状态管理"><a href="#类组件中如何使用路由和状态管理" class="headerlink" title="类组件中如何使用路由和状态管理"></a>类组件中如何使用路由和状态管理</h2>
+</article>
+    
+    
+
+<ul class="trm-post-copyright">
+    <li class="trm-post-copyright-author">
+        <strong>本文作者：</strong>
+        菜鸟书生
+    </li>
+    <li class="trm-post-copyright-link">
+        <strong>本文链接：</strong>
+        <a id="original-link" href="https://dwmorning.github.io/react18Note-toc/" title="react 18 笔记目录">https://dwmorning.github.io/react18Note-toc/</a>
+    </li>
+    <li class="trm-post-copyright-license">
+        <strong>版权声明：</strong>
+        本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 ">CC BY-NC-SA 4.0</a> 许可协议。
+    </li>
+</ul>
+
+
+</div>
+<div id="post-next-prev" class="row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/2023-04-25-react-18-%E7%AC%94%E8%AE%B0/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img data-random-img alt="cover" class="no-fancybox" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVBhXY/gPBVDG//8Aj4IP8dFqTzkAAAAASUVORK5CYII=">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/react/">
+                    react
+                </a>
+            </div>
+            <h5>
+                <a href="/2023-04-25-react-18-%E7%AC%94%E8%AE%B0/" class="trm-anima-link">
+                    react 18 笔记
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>23/04/25</li>
+                <li>23:41</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/leetcode340/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img data-random-img alt="cover" class="no-fancybox" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVBhXY/gPBVDG//8Aj4IP8dFqTzkAAAAASUVORK5CYII=">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/leetcode/">
+                    leetcode
+                </a>
+            </div>
+            <h5>
+                <a href="/leetcode340/" class="trm-anima-link">
+                    340. 至多包含 K 个不同字符的最长子串
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>23/04/25</li>
+                <li>13:59</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+    <div id="giscus-wrap" class="trm-card trm-scroll-animation comment-container" data-scroll data-scroll-offset="50"></div>
+<script data-swup-reload-script>
+    function loadGiscus() {
+        let nowTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        const config = {
+            src: 'https://giscus.app/client.js',
+            "data-repo": 'dwmorning/wmorning_blog',
+            "data-repo-id": 'R_kgDOJVV2rw',
+            "data-category": 'General',
+            "data-category-id": 'DIC_kwDOJVV2r84CVy-H',
+            "data-mapping": 'pathname',
+            "data-reactions-enabled": '1',
+            "data-emit-metadata": '0',
+            "data-theme": nowTheme,
+            "data-lang": 'zh-CN',
+            crossorigin: "anonymous",
+            async: true
+        }
+        let ele = document.createElement('script')
+        for (let key in config) {
+            ele.setAttribute(key, config[key])
+        }
+        document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin', ele)
+    }
+
+    function changeGiscusTheme() {
+        let theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+
+        function sendMessage(message) {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (!iframe) return;
+            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+
+        sendMessage({
+            setConfig: {
+                theme: theme
+            }
+        });
+    }
+
+    loadGiscus();
+</script>
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation" data-scroll data-scroll-offset="50">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2023- 2023</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">菜鸟书生</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v6.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.0.6
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            Hosted by <a href="https://github.com/dwmorning" rel="noopener" target="_blank">Github Pages</a>
+        </div>
+     
+</footer>
+ 
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            <div class="trm-fixed-container" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+          </div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    请输入关键词进行搜索
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/js/plugins/typing.js?v=2.0.6"></script>
+    
+
+    
+        
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/js/plugins/local_search.js?v=2.0.6"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+    <script data-swup-reload-script>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+
+
+<script id="async-script" src="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/js/main.js?v=2.0.6"></script>
+
+</body>
+
+</html>

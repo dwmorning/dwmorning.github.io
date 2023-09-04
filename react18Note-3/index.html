@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="React18扩展内容与脚手架使用 – 全面掌握React18特性脚手架安装及vsCode插件安装脚手架的安装React的脚手架我们采用官方提供的Create React App进行搭建，Create React App是一个用于学习 React 的舒适环境，也是用 React 创建新的单页应用的最佳方式。 它会配置你的开发环境，以便使你能够使用最新的 JavaScript 特性，提供良好的开发体">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React18扩展内容与脚手架使用 – 全面掌握React18特性">
+<meta property="og:url" content="https://dwmorning.github.io/react18Note-3/index.html">
+<meta property="og:site_name" content="wmorning">
+<meta property="og:description" content="React18扩展内容与脚手架使用 – 全面掌握React18特性脚手架安装及vsCode插件安装脚手架的安装React的脚手架我们采用官方提供的Create React App进行搭建，Create React App是一个用于学习 React 的舒适环境，也是用 React 创建新的单页应用的最佳方式。 它会配置你的开发环境，以便使你能够使用最新的 JavaScript 特性，提供良好的开发体">
+<meta property="og:locale">
+<meta property="og:image" content="https://dwmorning.github.io/img/404.jpg">
+<meta property="og:image" content="https://dwmorning.github.io/img/404.jpg">
+<meta property="og:image" content="https://dwmorning.github.io/img/404.jpg">
+<meta property="og:image" content="https://dwmorning.github.io/img/404.jpg">
+<meta property="og:image" content="https://dwmorning.github.io/img/404.jpg">
+<meta property="og:image" content="https://dwmorning.github.io/img/404.jpg">
+<meta property="og:image" content="https://dwmorning.github.io/img/404.jpg">
+<meta property="article:published_time" content="2023-05-05T15:54:45.000Z">
+<meta property="article:modified_time" content="2023-05-14T15:27:27.481Z">
+<meta property="article:tag" content="note">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://dwmorning.github.io/img/404.jpg">
+
+
+<title >React18扩展内容与脚手架使用 – 全面掌握React18特性</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon-16x16.png?v=2.0.6' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon-32x32.png?v=2.0.6' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/img/favicon-32x32.png?v=2.0.6' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"dwmorning.github.io","author":null,"root":"/","typed_text":["总是努力翻山越岭"],"theme_version":"2.0.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon-32x32.png","icon16":"/img/favicon-16x16.png","icon32":"/img/favicon-32x32.png","appleTouchIcon":"/img/favicon-32x32.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","showText":"(/≧▽≦/)wmorningBlog","hideText":"(●—●)休息一下啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://cdn.jsdelivr.net/npm/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":200},"covers":["//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0jlz9p.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-2ydy76.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-3l9zy3.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-3zkold.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-od95m7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-j87ldq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-qzdxd5.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gj968l.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-4g77y3.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-5gwp58.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-95rrq8.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-28pdry.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-45gjv7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0w9qd7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-8535j1.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-exyxvr.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-g7ormd.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gp87vd.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-jx5xlw.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-kxwzk6.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-l8m3r2.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-l8m8gy.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-nm7q11.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0qq2gl.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-72m53y.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-49qy8d.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-6k7z5l.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-45pe95.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-yj7wqk.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-o5x3v7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-r71zwq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-rryqkj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-we61wq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zym8vj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zyxvqy.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0wz1p6.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-1kr69v.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-3l9kr9.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-5gwrj1.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-6dkmwl.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-8o5v1k.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-9d6g7w.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-953xmw.png","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gp8wld.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gp87dq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-m3dzw1.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-o5x3v7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-p98ljj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-qz6p85.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-weyq3p.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-x6l93d.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-y8zeyg.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z8dlkj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z81mqv.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z81ovo.png","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z853dv.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zym8vj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zymxpv.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zymyvj.jpg"],"creative_commons":{"license":"by-nc-sa","language":"deed.zh"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"trigger":"auto","path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2023-05-14 23:27:27"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.0.6" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" data-scroll-container style="opacity: 0">
+          <div data-scroll-section id="content" class="trm-scroll-section">
+
+            <div class="locomotive-scroll__sticky-target" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;"></div>
+
+            <!-- top bar -->
+            <header class="trm-top-bar" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon-32x32.png">
+    
+    
+        <div class="trm-logo-text">
+            wmorning<span>Blog</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    主页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/links/" target="">
+                    项目
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/about/" target="">
+                    关于
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner" data-scroll data-scroll-direction="vertical">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3" src="https://pic1.zhimg.com/v2-b3c2c6745b9421a13a3c4706b19223b3_r.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container" data-scroll data-scroll-direction="vertical" data-scroll-speed="0">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            入门React18
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            React18扩展内容与脚手架使用 – 全面掌握React18特性
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        react18Note-3
+                                    </span
+                                ></li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <a href="#about-triger" data-scroll-to="#about-triger" data-scroll-offset="-130" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </a>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div id="page-sidebar" class="col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    
+
+<div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card" data-scroll data-scroll-repeat data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="60"> 
+    
+        <div class="trm-user-tabs" id="sidebar-tabs">
+           <div class="trm-tabs-nav trm-mb-40" id="trm-tabs-nav">
+                <div data-to="tabs-user" class="trm-tabs-nav-item">
+                    <i class="iconfont fas fa-user-alt"></i>
+                </div>
+                <div data-to="tabs-toc" class="trm-tabs-nav-item active">
+                    <i class="iconfont fas fa-th-list"></i>
+                </div>
+           </div>
+            <div name="tabs-user" class="trm-tabs-item">
+                <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        菜鸟书生
+    </h5>
+    
+        <div class="trm-label">
+            优秀的人
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+                <!-- sidebar social -->
+
+<!-- sidebar social end -->
+                <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                leetcode:
+            </div>
+            <div class="trm-label trm-label-light">
+                <a href="/tags/leetcode" target="_self" rel="nofollow">查看</a>
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+                
+            </div>
+            <div name="tabs-toc" class="trm-tabs-item active">
+                <div class="post-toc">
+    <ol class="toc"><li class="toc-item toc-level-1"><a rel="nofollow" class="toc-link" href="#React18扩展内容与脚手架使用-–-全面掌握React18特性"  data-scroll-to="#React18扩展内容与脚手架使用-–-全面掌握React18特性"><span class="toc-number">1.</span> <span class="toc-text">React18扩展内容与脚手架使用 – 全面掌握React18特性</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#脚手架安装及vsCode插件安装"  data-scroll-to="#脚手架安装及vsCode插件安装"><span class="toc-number">1.1.</span> <span class="toc-text">脚手架安装及vsCode插件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#脚手架的安装"  data-scroll-to="#脚手架的安装"><span class="toc-number">1.1.1.</span> <span class="toc-text">脚手架的安装</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#插件的安装"  data-scroll-to="#插件的安装"><span class="toc-number">1.1.2.</span> <span class="toc-text">插件的安装</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#脚手架下需要注意的点"  data-scroll-to="#脚手架下需要注意的点"><span class="toc-number">1.1.3.</span> <span class="toc-text">脚手架下需要注意的点</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#脚手架下样式处理方式及Sass支持"  data-scroll-to="#脚手架下样式处理方式及Sass支持"><span class="toc-number">1.2.</span> <span class="toc-text">脚手架下样式处理方式及Sass支持</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#全局样式"  data-scroll-to="#全局样式"><span class="toc-number">1.2.1.</span> <span class="toc-text">全局样式</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#预编译CSS的支持"  data-scroll-to="#预编译CSS的支持"><span class="toc-number">1.2.2.</span> <span class="toc-text">预编译CSS的支持</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#模块化CSS"  data-scroll-to="#模块化CSS"><span class="toc-number">1.2.3.</span> <span class="toc-text">模块化CSS</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#CSS-in-JS"  data-scroll-to="#CSS-in-JS"><span class="toc-number">1.2.4.</span> <span class="toc-text">CSS-in-JS</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#样式模块classnames"  data-scroll-to="#样式模块classnames"><span class="toc-number">1.2.5.</span> <span class="toc-text">样式模块classnames</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#Ant-Design框架的安装与使用（一）"  data-scroll-to="#Ant-Design框架的安装与使用（一）"><span class="toc-number">1.3.</span> <span class="toc-text">Ant Design框架的安装与使用（一）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#什么是Ant-Design框架"  data-scroll-to="#什么是Ant-Design框架"><span class="toc-number">1.3.1.</span> <span class="toc-text">什么是Ant Design框架</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#Ant-Design框架的安装与使用（二）"  data-scroll-to="#Ant-Design框架的安装与使用（二）"><span class="toc-number">1.4.</span> <span class="toc-text">Ant Design框架的安装与使用（二）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#逻辑组件"  data-scroll-to="#逻辑组件"><span class="toc-number">1.4.1.</span> <span class="toc-text">逻辑组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#仿Ant-Design的Button组件实现"  data-scroll-to="#仿Ant-Design的Button组件实现"><span class="toc-number">1.5.</span> <span class="toc-text">仿Ant Design的Button组件实现</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#仿Ant-Design的Rate组件实现"  data-scroll-to="#仿Ant-Design的Rate组件实现"><span class="toc-number">1.6.</span> <span class="toc-text">仿Ant Design的Rate组件实现</span></a></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#react-transition-group模块实现动画功能"  data-scroll-to="#react-transition-group模块实现动画功能"><span class="toc-number">1.7.</span> <span class="toc-text">react-transition-group模块实现动画功能</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#react-transition-group模块"  data-scroll-to="#react-transition-group模块"><span class="toc-number">1.7.1.</span> <span class="toc-text">react-transition-group模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#createPortal传送门与逻辑组件的实现"  data-scroll-to="#createPortal传送门与逻辑组件的实现"><span class="toc-number">1.8.</span> <span class="toc-text">createPortal传送门与逻辑组件的实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#createPortal传送门"  data-scroll-to="#createPortal传送门"><span class="toc-number">1.8.1.</span> <span class="toc-text">createPortal传送门</span></a></li></ol></li><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#React-lazy与React-Suspense与错误边界"  data-scroll-to="#React-lazy与React-Suspense与错误边界"><span class="toc-number">1.9.</span> <span class="toc-text">React.lazy与React.Suspense与错误边界</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#React-lazy与React-Suspense"  data-scroll-to="#React-lazy与React-Suspense"><span class="toc-number">1.9.1.</span> <span class="toc-text">React.lazy与React.Suspense</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#错误边界"  data-scroll-to="#错误边界"><span class="toc-number">1.9.2.</span> <span class="toc-text">错误边界</span></a></li></ol></li></ol></li></ol>
+</div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div id="page-content" class="col-lg-8">
+                <div class="trm-content" id="trm-content">
+                    <div data-scroll data-scroll-repeat data-scroll-offset="500" id="about-triger"></div>
+
+                    <div id="post-info" class="row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            05/05
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            23:54
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            菜鸟书生
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h1 id="React18扩展内容与脚手架使用-–-全面掌握React18特性"><a href="#React18扩展内容与脚手架使用-–-全面掌握React18特性" class="headerlink" title="React18扩展内容与脚手架使用 – 全面掌握React18特性"></a>React18扩展内容与脚手架使用 – 全面掌握React18特性</h1><h2 id="脚手架安装及vsCode插件安装"><a href="#脚手架安装及vsCode插件安装" class="headerlink" title="脚手架安装及vsCode插件安装"></a>脚手架安装及vsCode插件安装</h2><h3 id="脚手架的安装"><a href="#脚手架的安装" class="headerlink" title="脚手架的安装"></a>脚手架的安装</h3><p>React的脚手架我们采用官方提供的Create React App进行搭建，Create React App是一个用于学习 React 的舒适环境，也是用 React 创建新的单页应用的最佳方式。</p>
+<p>它会配置你的开发环境，以便使你能够使用最新的 JavaScript 特性，提供良好的开发体验，并为生产环境优化你的应用程序。你需要在你的机器上安装Node &gt;&#x3D; 14.0.0 和 npm &gt;&#x3D; 5.6。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装命令</span></span><br><span class="line">npx create-react-app my-app</span><br><span class="line">cd my-app</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+
+<p>目录结构如下：</p>
+<div align=center>
+    <img src="image/react18Note/16-01-Create React App目录结构.png"  loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/>
+    <div>Create React App目录结构</div>
+</div>
+
+
+
+<p>主要开发代码在src目录下。</p>
+<div align=center>
+    <img src="image/react18Note/16-02-src开发环境下的文件.png"  loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/>
+    <div>src开发环境下的文件</div>
+</div>
+
+
+
+<p>App.js为根组件，index.js为入口模块，index.css为全局样式文件。</p>
+<h3 id="插件的安装"><a href="#插件的安装" class="headerlink" title="插件的安装"></a>插件的安装</h3><p>首先需要在vsCode下安装，<code>ES7+ React/Redux/React-Native snippets</code>这个插件，他可以帮我们快速创建React组件的初始代码，也可以给JSX做一些提示操作。直接在vsCode的扩展中进行搜索即可安装。</p>
+<p>可通过<code>rcc</code>快速创建一个类组件，可通过<code>rfc</code>快速创建一个函数组件。</p>
+<p>除了vsCode插件外，还需要安装一个Chrome插件，React Developer Tools 这个工具，可以对React组件进行查看，并且可观察到组件传递数据的情况。</p>
+<p>课件中已经提供了相关工具，直接在Chrome下进行安装即可。</p>
+<div align=center>
+    <img src="image/react18Note/16-03-React Developer Tools.png"  loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/>
+    <div>React Developer Tools</div>
+</div>
+
+
+<h3 id="脚手架下需要注意的点"><a href="#脚手架下需要注意的点" class="headerlink" title="脚手架下需要注意的点"></a>脚手架下需要注意的点</h3><ul>
+<li>注意点：&lt;&gt;&lt;&#x2F;&gt;</li>
+<li>注意点：import React from ‘react’</li>
+<li>注意点：&lt;React.StrictMode&gt;</li>
+<li>注意点：脚手架下的注释</li>
+<li>注意点：package.json中的eslint</li>
+</ul>
+<p>&lt;&gt;&lt;&#x2F;&gt;是&lt;React.Fragment&gt;的简写，在脚手架下可以采用这种简写方式，提供一个唯一根节点非常的有用。</p>
+<p>import React from ‘react’ 这句话在React17之前是不能省略的，但是在React17版本之后是可以省略的，因为React17版本之后对JSX语法的解析有了新的转换方式，具体可参考：<a target="_blank" rel="noopener" href="https://zh-hans.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html">https://zh-hans.reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html</a></p>
+<p>&lt;React.StrictMode&gt;为严格模式，可以检测到一些比较过时的语法，还有一些在操作React的时候的一些不规范写法等。</p>
+<p>在脚手架下添加注释，可通过快捷键进行操作，通过<code>alt + shift + a</code>键来完成，非常的方便。</p>
+<p>package.json中默认对eslint进行了支持，可找到<code>eslintConfig</code>属性进行一些eslint的设置，例如：<code>rules</code>字段。</p>
+<h2 id="脚手架下样式处理方式及Sass支持"><a href="#脚手架下样式处理方式及Sass支持" class="headerlink" title="脚手架下样式处理方式及Sass支持"></a>脚手架下样式处理方式及Sass支持</h2><p>在脚手架下对样式的处理方式非常的多，主要有：全局样式，Sass&#x2F;Less支持，模块化CSS，CSS-in-JS，样式模块classnames等，下面就分别来看一下。</p>
+<h3 id="全局样式"><a href="#全局样式" class="headerlink" title="全局样式"></a>全局样式</h3><p>在对应的jsx文件下创建的.css文件就是一个全局样式，在jsx引入后就可以在全局环境下生效。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./Welcome.css&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Welcome</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;Welcome&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;box&#x27;</span>&gt;</span>Welcome<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;box2&#x27;</span>&gt;</span>Welcome<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样操作很容易产生冲突，所以可以采用命名空间的方式来避免冲突，即最外层元素添加跟当前组件一样名字的选择器。</p>
+<p>内部的其他选择器都是这个最外层选择器的后代选择器。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// Welcome<span class="selector-class">.css</span></span><br><span class="line"><span class="selector-class">.Welcome</span> <span class="selector-class">.box</span>&#123;</span><br><span class="line">  <span class="attribute">color</span>: yellow;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.Welcome</span> <span class="selector-class">.box2</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background</span>: blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>不过这样写样式会很麻烦，可利用预编译CSS的嵌套写法来对代码进行改进，这里以Sass作为演示。</p>
+<h3 id="预编译CSS的支持"><a href="#预编译CSS的支持" class="headerlink" title="预编译CSS的支持"></a>预编译CSS的支持</h3><p>首先默认脚手架是不支持Sass或其他预编译CSS的，所以需要安装第三方模块来进行生效。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install sass</span><br></pre></td></tr></table></figure>
+
+<p>安装好后，就可以编写已.scss为后缀的文件了。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.Welcome</span>&#123;</span><br><span class="line">  <span class="selector-class">.box</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: red;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.box2</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">background</span>: blue;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="模块化CSS"><a href="#模块化CSS" class="headerlink" title="模块化CSS"></a>模块化CSS</h3><p>模块化的CSS，主要就是实现局部样式的能力，这样就只能在当前组件内生效，不会影响到其他的组件。模块化的CSS有格式上的要求，即<code>[name].module.css</code></p>
+<p>下面以Welcome组件举例：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> style <span class="keyword">from</span> <span class="string">&#x27;./Welcome.module.css&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Welcome</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;style.box&#125;</span>&gt;</span>Welcome<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#123;style.box2&#125;</span>&gt;</span>Welcome<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>这种局部的操作，style.box只会给指定的元素添加样式。</p>
+<h3 id="CSS-in-JS"><a href="#CSS-in-JS" class="headerlink" title="CSS-in-JS"></a>CSS-in-JS</h3><p>这种方法主要会把CSS代码直接写入到JSX文件内，这样可以不分成两个文件，而是只需要一个文件就可以完成一个独立的组件开发。</p>
+<p>这种CSS-in-JS的实现是需要借助于第三方模块的，目前比较流行的是：<code>styled-components</code>这个模块。首先是需要下载。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install styled-components</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> styled <span class="keyword">from</span> <span class="string">&#x27;styled-components&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Title</span> = styled.<span class="property">h1</span><span class="string">`</span></span><br><span class="line"><span class="string">  font-size: 1.5em;</span></span><br><span class="line"><span class="string">  text-align: center;</span></span><br><span class="line"><span class="string">  color: blue;</span></span><br><span class="line"><span class="string">  background: red;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Text</span> = styled.<span class="property">a</span><span class="string">`</span></span><br><span class="line"><span class="string">  color: blue;</span></span><br><span class="line"><span class="string">  background: red;</span></span><br><span class="line"><span class="string">  &amp;:hover &#123;</span></span><br><span class="line"><span class="string">    color: yellow;</span></span><br><span class="line"><span class="string">  &#125;;</span></span><br><span class="line"><span class="string">`</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Welcome</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Title</span>&gt;</span>我是一个标题<span class="tag">&lt;/<span class="name">Title</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Text</span> <span class="attr">href</span>=<span class="string">&quot;http://www.imooc.com&quot;</span>&gt;</span>我是一个链接<span class="tag">&lt;/<span class="name">Text</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="样式模块classnames"><a href="#样式模块classnames" class="headerlink" title="样式模块classnames"></a>样式模块classnames</h3><p>有时候操作class样式的时候，往往普通的字符串很难满足我们的需求，所以可以借助第三方模块<code>classnames</code>，他允许我们操作多样式的时候可以以对象的形式进行控制。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./Welcome.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> classnames <span class="keyword">from</span> <span class="string">&#x27;classnames&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">Welcome</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="comment">//const myClass = &#x27;box box2&#x27;</span></span><br><span class="line">  <span class="keyword">const</span> myClass = <span class="title function_">classnames</span>(&#123;</span><br><span class="line">    <span class="attr">box</span>: <span class="literal">true</span>,</span><br><span class="line">    <span class="attr">box2</span>: <span class="literal">true</span></span><br><span class="line">  &#125;)</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&#x27;Welcome&#x27;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span> <span class="attr">className</span>=<span class="string">&#123;myClass&#125;</span>&gt;</span>这是一个标题<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Ant-Design框架的安装与使用（一）"><a href="#Ant-Design框架的安装与使用（一）" class="headerlink" title="Ant Design框架的安装与使用（一）"></a>Ant Design框架的安装与使用（一）</h2><h3 id="什么是Ant-Design框架"><a href="#什么是Ant-Design框架" class="headerlink" title="什么是Ant Design框架"></a>什么是Ant Design框架</h3><p>Ant Design是React的第三方UI组件库，类似于前面我们学习的Vue中的Element Plus。Ant Design是阿里巴巴旗下蚂蚁金服推出的开源框架，分为PC端与移动端。</p>
+<p>PC端：<a target="_blank" rel="noopener" href="https://ant.design/">https://ant.design</a></p>
+<p>移动端：<a target="_blank" rel="noopener" href="https://mobile.ant.design/">https://mobile.ant.design</a></p>
+<p>下面演示PC端的使用方式，需要先下载安装，本小节安装的是”antd”: “^4.24.0”这个版本，如果后续升级了，大家可以通过@方式安装当前小节中指定的版本。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install antd@4.24.0</span><br></pre></td></tr></table></figure>
+
+<p>除了在主入口文件中引入antd框架外，还需要引入他提供的antd全局样式文件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// index.css</span></span><br><span class="line">@<span class="keyword">import</span> <span class="string">&#x27;~antd/dist/antd.css&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>在antd中如果要使用图标的话，需要单独下载并使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install @ant-design/icons</span><br></pre></td></tr></table></figure>
+
+<p>antd中基本组件的使用方式如下，例如：Button按钮组件，Space间距组件，Switch开关组件，Rate评分组件等：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span>, <span class="title class_">Space</span>, <span class="title class_">Switch</span>, <span class="title class_">Rate</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;antd&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">PlayCircleOutlined</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@ant-design/icons&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [ checked, setChecked ] = <span class="title function_">useState</span>(<span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">const</span> [ value, setValue ] = <span class="title function_">useState</span>(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello antd<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">PlayCircleOutlined</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Space</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Button</span>&gt;</span>Default Button<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span>&gt;</span>Primary Button<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Button</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">danger</span>&gt;</span>Primary Danger Button<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Button</span> <span class="attr">danger</span> <span class="attr">icon</span>=<span class="string">&#123;</span>&lt;<span class="attr">PlayCircleOutlined</span> /&gt;</span>&#125;&gt;Default Danger Button<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">Space</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Switch</span> <span class="attr">checked</span>=<span class="string">&#123;checked&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;setChecked&#125;</span> /&gt;</span> &#123; checked ? &#x27;on&#x27; : &#x27;off&#x27; &#125;</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Rate</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;setValue&#125;</span> /&gt;</span> &#123; value &#125;</span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div align=center>
+    <img src="image/react18Note/16-04-antd基本组件.png"  loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/>
+    <div>antd基本组件</div>
+</div>
+
+
+
+<h2 id="Ant-Design框架的安装与使用（二）"><a href="#Ant-Design框架的安装与使用（二）" class="headerlink" title="Ant Design框架的安装与使用（二）"></a>Ant Design框架的安装与使用（二）</h2><p>本小节我们继续来看一下，antd中的一些复杂组件的使用。</p>
+<p>主要就是表单组件涉及的操作是比较多的，下面就一起来看一下。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span>, <span class="title class_">Checkbox</span>, <span class="title class_">Form</span>, <span class="title class_">Input</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;antd&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [username, setUsername] = <span class="title function_">useState</span>(<span class="string">&#x27;xiaoming&#x27;</span>)</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleFinish</span> = (<span class="params">values</span>) =&gt; &#123;</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(values)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleValuesChange</span> = (<span class="params">values</span>) =&gt; &#123;</span><br><span class="line">        <span class="title function_">setUsername</span>(values.<span class="property">username</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello antd<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Form</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">className</span>=<span class="string">&quot;login&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">labelCol</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    <span class="attr">span:</span> <span class="attr">8</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">wrapperCol</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    <span class="attr">span:</span> <span class="attr">16</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                &#125;&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">onFinish</span>=<span class="string">&#123;handleFinish&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">onValuesChange</span>=<span class="string">&#123;handleValuesChange&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                <span class="attr">initialValues</span>=<span class="string">&#123;&#123;username&#125;&#125;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                &gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Form.Item</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    <span class="attr">label</span>=<span class="string">&quot;用户名&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    <span class="attr">name</span>=<span class="string">&quot;username&quot;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    <span class="attr">rules</span>=<span class="string">&#123;[</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                        &#123;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                            <span class="attr">required:</span> <span class="attr">true</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                            <span class="attr">message:</span> &#x27;<span class="attr">用户名不能为空</span>!&#x27;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                        &#125;,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    ]&#125;</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    &gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">Input</span> /&gt;</span> </span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">Form.Item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Form.Item</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    <span class="attr">wrapperCol</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                        <span class="attr">offset:</span> <span class="attr">8</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                            <span class="attr">span:</span> <span class="attr">16</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    &#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">Checkbox</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">Form.Item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Form.Item</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    <span class="attr">wrapperCol</span>=<span class="string">&#123;&#123;</span></span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                        <span class="attr">offset:</span> <span class="attr">8</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                            <span class="attr">span:</span> <span class="attr">16</span>,</span></span></span><br><span class="line"><span class="tag"><span class="language-xml">                    &#125;&#125;&gt;</span></span></span><br><span class="line"><span class="language-xml">                    <span class="tag">&lt;<span class="name">Button</span> <span class="attr">htmlType</span>=<span class="string">&#x27;submit&#x27;</span>&gt;</span>登录<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">Form.Item</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">Form</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里可以先把表单组件的结构编写完成，主要使用到<Form>和&lt;Form.Item&gt;这两个组件。</p>
+<p>labelCol，wrapperCol属性主要是完成布局位置的，rules属性主要是进行表单校验的。</p>
+<p>initialValues属性来添加初始值的，onFinish属性用于按钮触发提交后的事件函数。</p>
+<h3 id="逻辑组件"><a href="#逻辑组件" class="headerlink" title="逻辑组件"></a>逻辑组件</h3><p>在antd中，还提供了很多逻辑组件，就是可以在JS中进行调用的组件，例如：弹出提示，通知框等。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">Button</span>, message, notification &#125; <span class="keyword">from</span> <span class="string">&#x27;antd&#x27;</span>;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    message.<span class="title function_">success</span>(<span class="string">&#x27;成功&#x27;</span>)</span><br><span class="line">    notification.<span class="title function_">open</span>(&#123;</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&#x27;Notification Title&#x27;</span>,</span><br><span class="line">      <span class="attr">description</span>: <span class="string">&#x27;Notification description&#x27;</span>,</span><br><span class="line">      <span class="attr">placement</span>: <span class="string">&#x27;bottomRight&#x27;</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello antd<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>按钮<span class="tag">&lt;/<span class="name">Button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="仿Ant-Design的Button组件实现"><a href="#仿Ant-Design的Button组件实现" class="headerlink" title="仿Ant Design的Button组件实现"></a>仿Ant Design的Button组件实现</h2><p>前面小节我们已经对antd库有了了解，也学会了基本的使用。本小节要模拟实现一下antd中的Button组件，仿造实现的地址如下：<a target="_blank" rel="noopener" href="https://ant.design/components/button-cn/%E3%80%82">https://ant.design/components/button-cn/。</a></p>
+<p>首先在&#x2F;src目录下创建一个新的目录，起名为&#x2F;MyAntd，然后在这个文件夹下创建两个文件，即：&#x2F;MyButton&#x2F;MyButton.jsx 和 &#x2F;MyButton&#x2F;MyButton.scss。</p>
+<p>接下来在&#x2F;MyAntd下再创建一个index.js文件，作为所有组件的一个入口文件。</p>
+<p>具体要实现组件的功能需求：</p>
+<ul>
+<li>按钮类型</li>
+<li>按钮尺寸</li>
+<li>按钮文字</li>
+<li>添加图标</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /MyButton/MyButton.jsx</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./MyButton.scss&#x27;</span></span><br><span class="line"><span class="keyword">import</span> classnames <span class="keyword">from</span> <span class="string">&#x27;classnames&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">PropTypes</span> <span class="keyword">from</span> <span class="string">&#x27;prop-types&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">MyButton</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> buttonClass = <span class="title function_">classnames</span>(&#123;</span><br><span class="line">        <span class="string">&#x27;my-button-default&#x27;</span>: <span class="literal">true</span>,</span><br><span class="line">        [<span class="string">`my-button-<span class="subst">$&#123;props.type&#125;</span>`</span>]: <span class="literal">true</span>,</span><br><span class="line">        [<span class="string">`my-button-<span class="subst">$&#123;props.type&#125;</span>-danger`</span>]: props.<span class="property">danger</span>,</span><br><span class="line">        [<span class="string">`my-button-<span class="subst">$&#123;props.size&#125;</span>`</span>]: <span class="literal">true</span>,</span><br><span class="line">    &#125;)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">className</span>=<span class="string">&#123;buttonClass&#125;</span>&gt;</span>&#123; props.icon &#125; &#123; props.children &#125;<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">MyButton</span>.<span class="property">propTypes</span> = &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="title class_">PropTypes</span>.<span class="property">string</span>,</span><br><span class="line">    <span class="attr">size</span>: <span class="title class_">PropTypes</span>.<span class="property">string</span>,</span><br><span class="line">    <span class="attr">danger</span>: <span class="title class_">PropTypes</span>.<span class="property">bool</span>,</span><br><span class="line">    <span class="attr">icon</span>: <span class="title class_">PropTypes</span>.<span class="property">element</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">MyButton</span>.<span class="property">defaultProps</span> = &#123;</span><br><span class="line">    <span class="attr">type</span>: <span class="string">&#x27;default&#x27;</span>,</span><br><span class="line">    <span class="attr">size</span>: <span class="string">&#x27;middle&#x27;</span>,</span><br><span class="line">    <span class="attr">danger</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /MyButton/MyButton.scss</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.my-button</span>&#123;</span><br><span class="line">    &amp;-default&#123;</span><br><span class="line">        <span class="attribute">line-height</span>: <span class="number">1.5715</span>;</span><br><span class="line">        <span class="attribute">position</span>: relative;</span><br><span class="line">        <span class="attribute">display</span>: inline-block;</span><br><span class="line">        <span class="attribute">font-weight</span>: <span class="number">400</span>;</span><br><span class="line">        <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">        <span class="attribute">text-align</span>: center;</span><br><span class="line">        <span class="attribute">background-image</span>: none;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">1px</span> solid transparent;</span><br><span class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">0</span> <span class="built_in">rgb</span>(<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> / <span class="number">2%</span>);</span><br><span class="line">        <span class="attribute">cursor</span>: pointer;</span><br><span class="line">        <span class="attribute">transition</span>: all <span class="number">0.3s</span> <span class="built_in">cubic-bezier</span>(<span class="number">0.645</span>, <span class="number">0.045</span>, <span class="number">0.355</span>, <span class="number">1</span>);</span><br><span class="line">        -webkit-user-select: none;</span><br><span class="line">        -moz-user-select: none;</span><br><span class="line">        -ms-user-select: none;</span><br><span class="line">        user-select: none;</span><br><span class="line">        touch-action: manipulation;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">32px</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">4px</span> <span class="number">15px</span>;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">2px</span>;</span><br><span class="line">        <span class="attribute">color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.85</span>);</span><br><span class="line">        <span class="attribute">border-color</span>: <span class="number">#d9d9d9</span>;</span><br><span class="line">        <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">        &amp;-danger&#123;</span><br><span class="line">            <span class="attribute">color</span>: <span class="number">#ff4d4f</span>;</span><br><span class="line">            <span class="attribute">border-color</span>: <span class="number">#ff4d4f</span>;</span><br><span class="line">            <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">            <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">0</span> <span class="built_in">rgb</span>(<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> / <span class="number">5%</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;-primary&#123;</span><br><span class="line">        <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">        <span class="attribute">border-color</span>: <span class="number">#1890ff</span>;</span><br><span class="line">        <span class="attribute">background</span>: <span class="number">#1890ff</span>;</span><br><span class="line">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">0</span> <span class="built_in">rgb</span>(<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> / <span class="number">5%</span>);</span><br><span class="line">        &amp;-danger&#123;</span><br><span class="line">            <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">            <span class="attribute">border-color</span>: <span class="number">#ff4d4f</span>;</span><br><span class="line">            <span class="attribute">background</span>: <span class="number">#ff4d4f</span>;</span><br><span class="line">            <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">2px</span> <span class="number">0</span> <span class="built_in">rgb</span>(<span class="number">0</span> <span class="number">0</span> <span class="number">0</span> / <span class="number">5%</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;-large&#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">40px</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">6.4px</span> <span class="number">15px</span>;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">16px</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">2px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    &amp;-small&#123;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">24px</span>;</span><br><span class="line">        <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">7px</span>;</span><br><span class="line">        <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">        <span class="attribute">border-radius</span>: <span class="number">2px</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>开发好组件后，就去测试一下按钮组件的各种功能。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span> <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">MyButton</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./MyAntd&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">PlayCircleOutlined</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@ant-design/icons&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello myAntd<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MyButton</span>&gt;</span>按钮1<span class="tag">&lt;/<span class="name">MyButton</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MyButton</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span>&gt;</span>按钮2<span class="tag">&lt;/<span class="name">MyButton</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MyButton</span> <span class="attr">danger</span>&gt;</span>按钮3<span class="tag">&lt;/<span class="name">MyButton</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MyButton</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">danger</span>&gt;</span>按钮4<span class="tag">&lt;/<span class="name">MyButton</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MyButton</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">size</span>=<span class="string">&quot;large&quot;</span>&gt;</span>按钮5<span class="tag">&lt;/<span class="name">MyButton</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MyButton</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">size</span>=<span class="string">&quot;small&quot;</span>&gt;</span>按钮6<span class="tag">&lt;/<span class="name">MyButton</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MyButton</span> <span class="attr">type</span>=<span class="string">&quot;primary&quot;</span> <span class="attr">icon</span>=<span class="string">&#123;</span>&lt;<span class="attr">PlayCircleOutlined</span> /&gt;</span>&#125;&gt;按钮7<span class="tag">&lt;/<span class="name">MyButton</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div align=center>
+    <img src="image/react18Note/16-05-仿antd按钮组件.png"  loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/>
+    <div>仿antd按钮组件</div>
+</div>
+
+
+<h2 id="仿Ant-Design的Rate组件实现"><a href="#仿Ant-Design的Rate组件实现" class="headerlink" title="仿Ant Design的Rate组件实现"></a>仿Ant Design的Rate组件实现</h2><p>在本小节中将继续来仿造一个antd中的组件，就是Rate评分组件，仿造实现的地址如下：hu<a target="_blank" rel="noopener" href="https://ant.design/components/rate-cn/%E3%80%82">https://ant.design/components/rate-cn/。</a></p>
+<p>首先还是在&#x2F;MyAntd文件夹下创建两个文件，即：&#x2F;MyRate&#x2F;MyRate.jsx 和 &#x2F;MyRate&#x2F;MyRate.scss。</p>
+<p>具体要实现组件的功能需求：</p>
+<ul>
+<li>最大分值</li>
+<li>选中分值</li>
+<li>事件交互</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /MyRate/MyRate.jsx</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./MyRate.scss&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;../../iconfont/iconfont.css&#x27;</span></span><br><span class="line"><span class="keyword">import</span> classnames <span class="keyword">from</span> <span class="string">&#x27;classnames&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">PropTypes</span> <span class="keyword">from</span> <span class="string">&#x27;prop-types&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">MyRate</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [ clickValue, setClickValue ] = <span class="title function_">useState</span>(props.<span class="property">value</span>)</span><br><span class="line">    <span class="keyword">const</span> [ mouseValue, setMouseValue ] = <span class="title function_">useState</span>(props.<span class="property">value</span>)</span><br><span class="line">    <span class="keyword">const</span> stars = [];</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleMouseEnter</span> = (<span class="params">index</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">setMouseValue</span>(index+<span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleMouseLeave</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">        <span class="title function_">setMouseValue</span>(clickValue)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleMouseDown</span> = (<span class="params">index</span>) =&gt; &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="title function_">setClickValue</span>(index+<span class="number">1</span>)</span><br><span class="line">            props.<span class="title function_">onChange</span>(index+<span class="number">1</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>;i&lt;props.<span class="property">count</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">const</span> rateClass = <span class="title function_">classnames</span>(&#123;</span><br><span class="line">            <span class="attr">iconfont</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="string">&#x27;icon-xingxing&#x27;</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">active</span>: mouseValue &gt; i ? <span class="literal">true</span> : <span class="literal">false</span></span><br><span class="line">        &#125;)</span><br><span class="line">        stars.<span class="title function_">push</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">i</span> <span class="attr">key</span>=<span class="string">&#123;i&#125;</span> <span class="attr">className</span>=<span class="string">&#123;rateClass&#125;</span> <span class="attr">onMouseEnter</span>=<span class="string">&#123;handleMouseEnter(i)&#125;</span> <span class="attr">onMouseLeave</span>=<span class="string">&#123;handleMouseLeave&#125;</span> <span class="attr">onMouseDown</span>=<span class="string">&#123;handleMouseDown(i)&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;my-rate&quot;</span>&gt;</span>&#123;stars&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">MyRate</span>.<span class="property">propTypes</span> = &#123;</span><br><span class="line">    <span class="attr">count</span>: <span class="title class_">PropTypes</span>.<span class="property">number</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="title class_">PropTypes</span>.<span class="property">number</span>,</span><br><span class="line">    <span class="attr">onChange</span>: <span class="title class_">PropTypes</span>.<span class="property">func</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title class_">MyRate</span>.<span class="property">defaultProps</span> = &#123;</span><br><span class="line">    <span class="attr">count</span>: <span class="number">5</span>,</span><br><span class="line">    <span class="attr">value</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">onChange</span>: <span class="keyword">function</span>(<span class="params"></span>)&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// /MyRate/MyRate.scss</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.my-rate</span>&#123;</span><br><span class="line">  <span class="selector-tag">i</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#ccc</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.active</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fadb14</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>开发好组件后，就去测试一下评分组件的各种功能。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">MyRate</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;./MyAntd&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [value, setValue] = <span class="title function_">useState</span>(<span class="number">3</span>)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello myAntd<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MyRate</span>&gt;</span><span class="tag">&lt;/<span class="name">MyRate</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MyRate</span> <span class="attr">count</span>=<span class="string">&#123;4&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">MyRate</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">MyRate</span> <span class="attr">value</span>=<span class="string">&#123;value&#125;</span> <span class="attr">onChange</span>=<span class="string">&#123;setValue&#125;</span> &gt;</span><span class="tag">&lt;/<span class="name">MyRate</span>&gt;</span> &#123; value &#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div align=center>
+    <img src="image/react18Note/16-06-仿antd评分组件.png"  loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/>
+    <div>仿antd评分组件</div>
+</div>
+
+
+<h2 id="react-transition-group模块实现动画功能"><a href="#react-transition-group模块实现动画功能" class="headerlink" title="react-transition-group模块实现动画功能"></a>react-transition-group模块实现动画功能</h2><h3 id="react-transition-group模块"><a href="#react-transition-group模块" class="headerlink" title="react-transition-group模块"></a>react-transition-group模块</h3><p>这是一个第三方模块，主要用于完成React动画的，官网地址：<a target="_blank" rel="noopener" href="http://reactcommunity.org/react-transition-group%EF%BC%8C%E9%9C%80%E8%A6%81%E6%8F%90%E5%89%8D%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E3%80%82">http://reactcommunity.org/react-transition-group，需要提前下载安装。</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-transition-group</span><br></pre></td></tr></table></figure>
+
+<p>首先在使用react-transition-group完成动画之前，需要对涉及到的样式做一定的了解，主要有三组样式选择器：</p>
+<ul>
+<li>*-enter  *-enter-active  *-enter-done</li>
+<li>*-exit  *-exit-active  *-exit-done</li>
+<li>*-appear  *-appear-active  *-appear-done</li>
+</ul>
+<p>enter表示从隐藏到显示的动画；exit表示从显示到隐藏的动画；appear表示初始添加的动画。</p>
+<p>其中带有active标识的表示动画过程中，带有done标识的表示动画结束时。</p>
+<p>下面就创建两个文件，即：animate.jsx 和 animate.scss，代码如下：</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// animate.jsx</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState, useRef &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./animate.scss&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">CSSTransition</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-transition-group&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [prop, setProp] = <span class="title function_">useState</span>(<span class="literal">true</span>)</span><br><span class="line">  <span class="keyword">const</span> nodeRef = <span class="title function_">useRef</span>(<span class="literal">null</span>)</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="title function_">setProp</span>(!prop)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">handleEntered</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;entered&#x27;</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;Animate&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello animate<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">CSSTransition</span> <span class="attr">appear</span> <span class="attr">nodeRef</span>=<span class="string">&#123;nodeRef&#125;</span> <span class="attr">in</span>=<span class="string">&#123;prop&#125;</span> <span class="attr">timeout</span>=<span class="string">&#123;1000&#125;</span> <span class="attr">classNames</span>=<span class="string">&quot;fade&quot;</span> <span class="attr">unmountOnExit</span> <span class="attr">onEntered</span>=<span class="string">&#123;handleEntered&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;box&quot;</span> <span class="attr">ref</span>=<span class="string">&#123;nodeRef&#125;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;/<span class="name">CSSTransition</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// animate.scss</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.Animate</span>&#123;</span><br><span class="line">    <span class="selector-class">.box</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">        <span class="attribute">background</span>: red;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.fade-enter</span>&#123;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.fade-enter-active</span>&#123;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">        <span class="attribute">transition</span>: <span class="number">1s</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.fade-enter-done</span>&#123;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.fade-exit</span>&#123;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.fade-exit-active</span>&#123;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">        <span class="attribute">transition</span>: <span class="number">1s</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.fade-exit-done</span>&#123;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.fade-appear</span>&#123;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.fade-appear-active</span>&#123;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">        <span class="attribute">transition</span>: <span class="number">1s</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="selector-class">.fade-appear-done</span>&#123;</span><br><span class="line">        <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>首先模块会提供一个<CSSTransition>组件用于实现动画功能，classNames&#x3D;”fade”来匹配对应的CSS动画选择器。</p>
+<p>in&#x3D;{prop}用于控制显示隐藏的状态切换，timeout&#x3D;{1000}要跟选择器中的过渡时间相匹配，这样才可以完成动画的时间。</p>
+<p>nodeRef&#x3D;{nodeRef} 和 ref&#x3D;{nodeRef} 在内部会把要动画的元素联系起来。</p>
+<p>appear属性是添加初始动画效果，unmountOnExit属性用于动画结束后删除元素。</p>
+<p>onEntered&#x3D;{handleEntered}是动画结束后触发的回调函数。</p>
+<p>最终完成了一个具有淡入淡出的动画效果。</p>
+<h2 id="createPortal传送门与逻辑组件的实现"><a href="#createPortal传送门与逻辑组件的实现" class="headerlink" title="createPortal传送门与逻辑组件的实现"></a>createPortal传送门与逻辑组件的实现</h2><h3 id="createPortal传送门"><a href="#createPortal传送门" class="headerlink" title="createPortal传送门"></a>createPortal传送门</h3><p>传送门就是把当前容器内的结构传递到容器外，主要是为了解决一些布局上的问题。在React中通过ReactDOM.createPortal()将子节点渲染到已 DOM 节点中的方式，从而实现传送门功能。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Message</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">ReactDOM</span>.<span class="title function_">createPortal</span>( <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>hello Message<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>, <span class="variable language_">document</span>.<span class="property">body</span> )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [ show, setShow ] = <span class="title function_">useState</span>(<span class="literal">false</span>)</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">        <span class="title function_">setShow</span>(<span class="literal">true</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello portal<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            &#123; show &amp;&amp; <span class="tag">&lt;<span class="name">Message</span> /&gt;</span> &#125;</span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面的案例中，是非常典型的弹出消息框，需要相对于body进行偏移，所以需要把这个弹出消息框从当前容器中传输到body下。</p>
+<p>但是这种弹出框一般在组件中都会通过逻辑组件进行实现，并不会直接去编写结构，那么该如何实现一个逻辑组件呢？</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; useRef, useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ReactDOM</span> <span class="keyword">from</span> <span class="string">&#x27;react-dom/client&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./05_portal.scss&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">CSSTransition</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react-transition-group&#x27;</span></span><br><span class="line"><span class="keyword">const</span> message = &#123;</span><br><span class="line">    <span class="title function_">success</span>(<span class="params">text</span>)&#123;</span><br><span class="line">        <span class="keyword">const</span> message = <span class="title class_">ReactDOM</span>.<span class="title function_">createRoot</span>(<span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&#x27;#message&#x27;</span>))</span><br><span class="line">        message.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Message</span> <span class="attr">text</span>=<span class="string">&#123;text&#125;</span> <span class="attr">icon</span>=<span class="string">&quot;✔&quot;</span> /&gt;</span></span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">Message</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [prop, setProp] = <span class="title function_">useState</span>(<span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">const</span> nodeRef = <span class="title function_">useRef</span>(<span class="literal">null</span>)</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleEntered</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">            <span class="title function_">setProp</span>(<span class="literal">false</span>)</span><br><span class="line">        &#125;, <span class="number">2000</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">CSSTransition</span> <span class="attr">appear</span> <span class="attr">nodeRef</span>=<span class="string">&#123;nodeRef&#125;</span> <span class="attr">in</span>=<span class="string">&#123;prop&#125;</span> <span class="attr">timeout</span>=<span class="string">&#123;1000&#125;</span> <span class="attr">classNames</span>=<span class="string">&quot;Message&quot;</span> <span class="attr">unmountOnExit</span> <span class="attr">onEntered</span>=<span class="string">&#123;handleEntered&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">className</span>=<span class="string">&quot;Message&quot;</span> <span class="attr">ref</span>=<span class="string">&#123;nodeRef&#125;</span>&gt;</span>&#123;props.icon&#125; &#123;props.text&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">CSSTransition</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">        message.<span class="title function_">success</span>(<span class="string">&#x27;登录成功&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello portal<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>附带逻辑组件加动画效果，还有对应的CSS样式。</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 05_portal.scss</span></span><br><span class="line"></span><br><span class="line"><span class="selector-class">.Message</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">16px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">2px</span>;</span><br><span class="line">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">3px</span> <span class="number">6px</span> -<span class="number">4px</span> <span class="number">#0000001f</span>, <span class="number">0</span> <span class="number">6px</span> <span class="number">16px</span> <span class="number">#00000014</span>, <span class="number">0</span> <span class="number">9px</span> <span class="number">28px</span> <span class="number">8px</span> <span class="number">#0000000d</span>;</span><br><span class="line">    <span class="attribute">pointer-events</span>: all;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">50%</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.Message-enter</span>&#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.Message-enter-active</span>&#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.Message-enter-done</span>&#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.Message-exit</span>&#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.Message-exit-active</span>&#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.Message-exit-done</span>&#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.Message-appear</span>&#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.Message-appear-active</span>&#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">1s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.Message-appear-done</span>&#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<div align=center>
+    <img src="image/react18Note/16-07-逻辑组件弹出提示框.png"  loading="lazy" onerror='this.onerror=null;this.src="/img/404.jpg"'/>
+    <div>逻辑组件弹出提示框</div>
+</div>
+
+
+<h2 id="React-lazy与React-Suspense与错误边界"><a href="#React-lazy与React-Suspense与错误边界" class="headerlink" title="React.lazy与React.Suspense与错误边界"></a>React.lazy与React.Suspense与错误边界</h2><h3 id="React-lazy与React-Suspense"><a href="#React-lazy与React-Suspense" class="headerlink" title="React.lazy与React.Suspense"></a>React.lazy与React.Suspense</h3><p>在React中可以通过React.lazy方法进行组件的异步加载，这样就会做到只有使用的时候才会去加载，从而提升性能。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; lazy, <span class="title class_">Suspense</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Welcome</span> = <span class="title function_">lazy</span>(<span class="function">()=&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;./components/Welcome&#x27;</span>))</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Welcome2</span> = <span class="title function_">lazy</span>(<span class="function">()=&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;./components/Welcome2&#x27;</span>))</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [ show, setShow ] = <span class="title function_">useState</span>(<span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">        <span class="title function_">setShow</span>(<span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello lazy<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">Suspense</span> <span class="attr">fallback</span>=<span class="string">&#123;</span> &lt;<span class="attr">div</span>&gt;</span>loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span> &#125;&gt;</span></span><br><span class="line"><span class="language-xml">                &#123; show ? <span class="tag">&lt;<span class="name">Welcome</span> /&gt;</span> : <span class="tag">&lt;<span class="name">Welcome2</span> /&gt;</span> &#125;</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">ErrorBoundary</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里需要配合React.Suspense方法，来完成异步组件加载过程中的loading效果。</p>
+<h3 id="错误边界"><a href="#错误边界" class="headerlink" title="错误边界"></a>错误边界</h3><p>在React中如果组件发生了错误，会导致整个页面清空，如果只想让有问题的组件提示，而不影响到其他组件的话，可以使用错误边界组件进行处理。</p>
+<p>这里要注意，目前错误边界组件只能用类组件进行编写。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ./07_ErrorBoundary.jsx</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">Component</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">class</span> <span class="title class_">ErrorBoundary</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line">    <span class="title function_">constructor</span>(<span class="params">props</span>) &#123;</span><br><span class="line">        <span class="variable language_">super</span>(props);</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">state</span> = &#123; <span class="attr">hasError</span>: <span class="literal">false</span> &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">static</span> <span class="title function_">getDerivedStateFromError</span>(<span class="params">error</span>) &#123;</span><br><span class="line">        <span class="comment">// 更新 state 使下一次渲染能够显示降级后的 UI</span></span><br><span class="line">        <span class="keyword">return</span> &#123; <span class="attr">hasError</span>: <span class="literal">true</span> &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">state</span>.<span class="property">hasError</span>) &#123;</span><br><span class="line">            <span class="comment">// 你可以自定义降级后的 UI 并渲染</span></span><br><span class="line">            <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>Something went wrong.<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">props</span>.<span class="property">children</span>; </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用错误边界组件，可以结合上面的异步组件一起。</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; lazy, <span class="title class_">Suspense</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; useState &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">ErrorBoundary</span> <span class="keyword">from</span> <span class="string">&#x27;./07_ErrorBoundary&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Welcome</span> = <span class="title function_">lazy</span>(<span class="function">()=&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;./components/Welcome&#x27;</span>))</span><br><span class="line"><span class="keyword">const</span> <span class="title class_">Welcome2</span> = <span class="title function_">lazy</span>(<span class="function">()=&gt;</span> <span class="keyword">import</span>(<span class="string">&#x27;./components/Welcome2&#x27;</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">function</span> <span class="title function_">App</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [ show, setShow ] = <span class="title function_">useState</span>(<span class="literal">true</span>)</span><br><span class="line">    <span class="keyword">const</span> <span class="title function_">handleClick</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">        <span class="title function_">setShow</span>(<span class="literal">false</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        <span class="language-xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">h2</span>&gt;</span>hello lazy<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">button</span> <span class="attr">onClick</span>=<span class="string">&#123;handleClick&#125;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;<span class="name">ErrorBoundary</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;<span class="name">Suspense</span> <span class="attr">fallback</span>=<span class="string">&#123;</span> &lt;<span class="attr">div</span>&gt;</span>loading...<span class="tag">&lt;/<span class="name">div</span>&gt;</span> &#125;&gt;</span></span><br><span class="line"><span class="language-xml">                    &#123; show ? <span class="tag">&lt;<span class="name">Welcome</span> /&gt;</span> : <span class="tag">&lt;<span class="name">Welcome2</span> /&gt;</span> &#125;</span></span><br><span class="line"><span class="language-xml">                <span class="tag">&lt;/<span class="name">Suspense</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">            <span class="tag">&lt;/<span class="name">ErrorBoundary</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当<Welcome>组件发生错误的时候，就只会在局部提示错误信息，并不影响到React的其他组件。</p>
+
+</article>
+    
+    
+
+<ul class="trm-post-copyright">
+    <li class="trm-post-copyright-author">
+        <strong>本文作者：</strong>
+        菜鸟书生
+    </li>
+    <li class="trm-post-copyright-link">
+        <strong>本文链接：</strong>
+        <a id="original-link" href="https://dwmorning.github.io/react18Note-3/" title="React18扩展内容与脚手架使用 – 全面掌握React18特性">https://dwmorning.github.io/react18Note-3/</a>
+    </li>
+    <li class="trm-post-copyright-license">
+        <strong>版权声明：</strong>
+        本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 ">CC BY-NC-SA 4.0</a> 许可协议。
+    </li>
+</ul>
+
+
+</div>
+<div id="post-next-prev" class="row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/react18Note-4/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img data-random-img alt="cover" class="no-fancybox" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVBhXY/gPBVDG//8Aj4IP8dFqTzkAAAAASUVORK5CYII=">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/react/">
+                    react
+                </a>
+            </div>
+            <h5>
+                <a href="/react18Note-4/" class="trm-anima-link">
+                    ReactRouter路由与Redux状态管理 – 组织与架构应用
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>23/05/05</li>
+                <li>23:58</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/react18Note-2/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img data-random-img alt="cover" class="no-fancybox" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVBhXY/gPBVDG//8Aj4IP8dFqTzkAAAAASUVORK5CYII=">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/react/">
+                    react
+                </a>
+            </div>
+            <h5>
+                <a href="/react18Note-2/" class="trm-anima-link">
+                    React18之Hook与函数组件 – 优雅简易的开发模式
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>23/05/05</li>
+                <li>23:44</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+    <div id="giscus-wrap" class="trm-card trm-scroll-animation comment-container" data-scroll data-scroll-offset="50"></div>
+<script data-swup-reload-script>
+    function loadGiscus() {
+        let nowTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        const config = {
+            src: 'https://giscus.app/client.js',
+            "data-repo": 'dwmorning/wmorning_blog',
+            "data-repo-id": 'R_kgDOJVV2rw',
+            "data-category": 'General',
+            "data-category-id": 'DIC_kwDOJVV2r84CVy-H',
+            "data-mapping": 'pathname',
+            "data-reactions-enabled": '1',
+            "data-emit-metadata": '0',
+            "data-theme": nowTheme,
+            "data-lang": 'zh-CN',
+            crossorigin: "anonymous",
+            async: true
+        }
+        let ele = document.createElement('script')
+        for (let key in config) {
+            ele.setAttribute(key, config[key])
+        }
+        document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin', ele)
+    }
+
+    function changeGiscusTheme() {
+        let theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+
+        function sendMessage(message) {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (!iframe) return;
+            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+
+        sendMessage({
+            setConfig: {
+                theme: theme
+            }
+        });
+    }
+
+    loadGiscus();
+</script>
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation" data-scroll data-scroll-offset="50">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2023- 2023</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">菜鸟书生</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v6.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.0.6
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            Hosted by <a href="https://github.com/dwmorning" rel="noopener" target="_blank">Github Pages</a>
+        </div>
+     
+</footer>
+ 
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            <div class="trm-fixed-container" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+          </div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    请输入关键词进行搜索
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/js/plugins/typing.js?v=2.0.6"></script>
+    
+
+    
+        
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/js/plugins/local_search.js?v=2.0.6"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+    <script data-swup-reload-script>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+
+
+<script id="async-script" src="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/js/main.js?v=2.0.6"></script>
+
+</body>
+
+</html>
