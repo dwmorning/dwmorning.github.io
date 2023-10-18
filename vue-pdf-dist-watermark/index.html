@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="x5-fullscreen" content="true">
+<meta name="full-screen" content="yes">
+<meta name="theme-color" content="#317EFB" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=0" name="viewport">
+<meta name="description" content="vue使用pdf-dist实现pdf预览以及水印一.使用pdf-dist插件将PDF文件转换为一张张canvas图片1npm install pdf-dist 二.页面引入插件12const pdfJS &#x3D; require(&quot;pdfjs-dist&quot;);pdfJS.GlobalWorkerOptions.workerSrc &#x3D; require(&quot;pdfjs-dist&#x2F;b">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue使用pdf-dist实现pdf预览以及水印">
+<meta property="og:url" content="https://dwmorning.github.io/vue-pdf-dist-watermark/index.html">
+<meta property="og:site_name" content="wmorning">
+<meta property="og:description" content="vue使用pdf-dist实现pdf预览以及水印一.使用pdf-dist插件将PDF文件转换为一张张canvas图片1npm install pdf-dist 二.页面引入插件12const pdfJS &#x3D; require(&quot;pdfjs-dist&quot;);pdfJS.GlobalWorkerOptions.workerSrc &#x3D; require(&quot;pdfjs-dist&#x2F;b">
+<meta property="og:locale">
+<meta property="article:published_time" content="2023-10-18T13:34:39.000Z">
+<meta property="article:modified_time" content="2023-10-18T13:45:47.071Z">
+<meta name="twitter:card" content="summary">
+
+
+<title >vue使用pdf-dist实现pdf预览以及水印</title>
+
+<!-- Favicon -->
+
+    <link href='/img/favicon-16x16.png?v=2.0.6' rel='icon' type='image/png' sizes='16x16' ></link>
+
+
+    <link href='/img/favicon-32x32.png?v=2.0.6' rel='icon' type='image/png' sizes='32x32' ></link>
+
+
+    <link href='/img/favicon-32x32.png?v=2.0.6' rel='apple-touch-icon' sizes='180x180' ></link>
+
+
+    <link href='/site.webmanifest' rel='manifest' ></link>
+
+
+<!-- Plugin -->
+
+
+
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/css/plugins/bootstrap.row.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css">
+
+    
+    
+
+
+
+
+<!-- Icon -->
+
+    
+<link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
+
+
+
+
+<!-- Variable -->
+<script>window.ASYNC_CONFIG = {"hostname":"dwmorning.github.io","author":null,"root":"/","typed_text":["总是努力翻山越岭"],"theme_version":"2.0.6","theme":{"switch":true,"default":"style-light"},"favicon":{"logo":"/img/favicon-32x32.png","icon16":"/img/favicon-16x16.png","icon32":"/img/favicon-32x32.png","appleTouchIcon":"/img/favicon-32x32.png","webmanifest":"/site.webmanifest","visibilitychange":true,"hidden":"failure.ico","showText":"(/≧▽≦/)wmorningBlog","hideText":"(●—●)休息一下啦！"},"i18n":{"placeholder":"搜索文章...","empty":"找不到您查询的内容: ${query}","hits":"找到 ${hits} 条结果","hits_time":"找到 ${hits} 条结果（用时 ${time} 毫秒）","author":"本文作者：","copyright_link":"本文链接：","copyright_license_title":"版权声明：","copyright_license_content":"本博客所有文章除特别声明外，均默认采用 undefined 许可协议。","copy_success":"复制成功","copy_failure":"复制失败","open_read_mode":"进入阅读模式","exit_read_mode":"退出阅读模式","notice_outdate_message":"距离上次更新已经 undefined 天了, 文章内容可能已经过时。","just":"刚刚","min":"分钟前","hour":"小时前","day":"天前","month":"个月前"},"swup":false,"plugin":{"flickr_justified_gallery":"https://cdn.jsdelivr.net/npm/flickr-justified-gallery@latest/dist/fjGallery.min.js"},"icons":{"sun":"far fa-sun","moon":"far fa-moon","play":"fas fa-play","email":"far fa-envelope","next":"fas fa-arrow-right","calendar":"far fa-calendar-alt","clock":"far fa-clock","user":"far fa-user","back_top":"fas fa-arrow-up","close":"fas fa-times","search":"fas fa-search","reward":"fas fa-hand-holding-usd","user_tag":"fas fa-user-alt","toc_tag":"fas fa-th-list","read":"fas fa-book-reader","arrows":"fas fa-arrows-alt-h","double_arrows":"fas fa-angle-double-down","copy":"fas fa-copy"},"icontype":"font","highlight":{"plugin":"highlighjs","theme":true,"copy":true,"lang":true,"title":"default","height_limit":200},"covers":["//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0jlz9p.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-2ydy76.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-3l9zy3.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-3zkold.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-od95m7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-j87ldq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-qzdxd5.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gj968l.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-4g77y3.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-5gwp58.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-95rrq8.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-28pdry.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-45gjv7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0w9qd7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-8535j1.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-exyxvr.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-g7ormd.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gp87vd.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-jx5xlw.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-kxwzk6.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-l8m3r2.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-l8m8gy.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-nm7q11.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0qq2gl.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-72m53y.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-49qy8d.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-6k7z5l.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-45pe95.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-yj7wqk.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-o5x3v7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-r71zwq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-rryqkj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-we61wq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zym8vj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zyxvqy.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-0wz1p6.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-1kr69v.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-3l9kr9.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-5gwrj1.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-6dkmwl.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-8o5v1k.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-9d6g7w.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-953xmw.png","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gp8wld.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-gp87dq.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-m3dzw1.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-o5x3v7.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-p98ljj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-qz6p85.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-weyq3p.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-x6l93d.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-y8zeyg.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z8dlkj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z81mqv.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z81ovo.png","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-z853dv.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zym8vj.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zymxpv.jpg","//gcore.jsdelivr.net/gh/dwmorning/wmorning-imgs/blogImgs/wallhaven-zymyvj.jpg"],"creative_commons":{"license":"by-nc-sa","language":"deed.zh"},"search":{"enable":true,"type":"local","href":"https://www.google.com/search?q=site:","domain":null,"trigger":"auto","path":"search.xml"}};</script>
+<script id="async-page-config">window.PAGE_CONFIG = {"isPost":true,"isHome":false,"postUpdate":"2023-10-18 21:45:47"};</script>
+
+<!-- Theme mode css -->
+<link data-swup-theme rel="stylesheet" href="/css/index.css?v=2.0.6" id="trm-switch-style">
+<script>
+    let defaultMode = ASYNC_CONFIG.theme.default !=='auto' ?  ASYNC_CONFIG.theme.default : (window.matchMedia("(prefers-color-scheme: light)").matches ? 'style-light' : 'style-dark')
+    let catchMode = localStorage.getItem('theme-mode') || defaultMode;
+    let type = catchMode === 'style-dark' ? 'add' : 'remove';
+    document.documentElement.classList[type]('dark')
+</script>
+
+<!-- CDN -->
+
+
+    
+    
+
+
+
+<!-- Site Analytics -->
+ 
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+
+  <!-- app wrapper -->
+  <div class="trm-app-frame">
+
+    <!-- page preloader -->
+    <div class="trm-preloader">
+    <div class="trm-holder">
+        <div class="preloader">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+    <!-- page preloader end -->
+
+    <!-- change mode preloader -->
+    <div class="trm-mode-swich-animation-frame">
+    <div class="trm-mode-swich-animation">
+        <i class="i-sun"><i class="iconfont far fa-sun"></i></i>
+        <div class="trm-horizon"></div>
+        <i class="i-moon"><i class="iconfont far fa-moon"></i></i>
+    </div>
+</div>
+    <!-- change mode preloader end -->
+
+      <!-- scroll container -->
+      <div id="trm-dynamic-content" class="trm-swup-animation">
+        <div id="trm-scroll-container" class="trm-scroll-container" data-scroll-container style="opacity: 0">
+          <div data-scroll-section id="content" class="trm-scroll-section">
+
+            <div class="locomotive-scroll__sticky-target" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none;"></div>
+
+            <!-- top bar -->
+            <header class="trm-top-bar" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+	<div class="container">
+		<div class="trm-left-side">
+			<!-- logo -->
+<a href="/" class="trm-logo-frame trm-anima-link">
+    
+        <img alt="logo" src="/img/favicon-32x32.png">
+    
+    
+        <div class="trm-logo-text">
+            wmorning<span>Blog</span>
+        </div>
+    
+</a>
+<!-- logo end -->
+		</div>
+		<div class="trm-right-side">
+			<!-- menu -->
+<div class="trm-menu">
+    <nav>
+        <ul>
+            
+            <li class="menu-item-has-children ">
+                <a  href="/" target="">
+                    主页
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/archives/" target="">
+                    归档
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/links/" target="">
+                    项目
+                </a>
+                
+            </li>
+            
+            <li class="menu-item-has-children ">
+                <a data-no-swup href="/about/" target="">
+                    关于
+                </a>
+                
+            </li>
+            
+        </ul>
+    </nav>
+</div>
+<!-- menu end -->
+			
+    <!-- mode switcher place -->
+    <div class="trm-mode-switcher-place">
+        <div class="trm-mode-switcher">
+            <i class="iconfont far fa-sun"></i>
+            <input class="tgl tgl-light" id="trm-swich" type="checkbox">
+            <label class="trm-swich" for="trm-swich"></label>
+            <i class="iconfont far fa-moon"></i>
+        </div>
+    </div>
+    <!-- mode switcher place end -->
+
+			
+    
+    <div id="trm-search-btn" class="trm-search-btn">
+        <i class="iconfont fas fa-search"></i>
+    </div>
+     
+
+		</div>
+		<div class="trm-menu-btn">
+			<span></span>
+		</div>
+	</div>
+</header>
+            <!-- top bar end -->
+
+            <!-- body -->
+            
+<div class="trm-content-start">
+    <!-- banner -->
+    <div class="trm-banner" data-scroll data-scroll-direction="vertical">
+    
+    <!-- banner cover -->
+    <img style="object-position:top;object-fit:cover;" alt="banner" class="trm-banner-cover" data-scroll data-scroll-direction="vertical" data-scroll-speed="-3" src="https://pic1.zhimg.com/v2-b3c2c6745b9421a13a3c4706b19223b3_r.jpg">
+    <!-- banner cover end -->
+    
+
+    <!-- banner content -->
+    <div class="trm-banner-content trm-overlay">
+        <div class="container" data-scroll data-scroll-direction="vertical" data-scroll-speed="0">
+            <div class="row">
+                
+                <div class="col-lg-4"></div>
+                
+                <div class="col-lg-8">
+
+                    <!-- banner title -->
+                    <div class="trm-banner-text ">
+                        <div class="trm-label trm-mb-20">
+                            
+                        </div>
+                        <h1 class="trm-mb-30 trm-hsmb-font">
+                            vue使用pdf-dist实现pdf预览以及水印
+                        </h1>
+
+                        
+                            <ul class="trm-breadcrumbs trm-label">
+                                <li>
+                                    <a href="/" class="trm-anima-link">Home</a>
+                                </li>
+                                <li>
+                                    <span>
+                                        vue-pdf-dist-watermark
+                                    </span
+                                ></li>
+                            </ul>
+                        
+                    </div>
+                    <!-- banner title end -->
+
+                    <!-- scroll hint -->
+                    <a href="#about-triger" data-scroll-to="#about-triger" data-scroll-offset="-130" class="trm-scroll-hint-frame">
+                        <div class="trm-scroll-hint"></div>
+                        <span class="trm-label">Scroll down</span>
+                    </a>
+                    <!-- scroll hint end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- banner content end -->
+</div>
+    <!-- banner end -->
+    <div class="container">
+        <div class="row">
+            
+                <div id="page-sidebar" class="col-lg-4 hidden-sm">
+                    <!-- main card -->
+                    
+
+<div class="trm-main-card-frame trm-sidebar">
+    <div class="trm-main-card" data-scroll data-scroll-repeat data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="60"> 
+    
+        <div class="trm-user-tabs" id="sidebar-tabs">
+           <div class="trm-tabs-nav trm-mb-40" id="trm-tabs-nav">
+                <div data-to="tabs-user" class="trm-tabs-nav-item">
+                    <i class="iconfont fas fa-user-alt"></i>
+                </div>
+                <div data-to="tabs-toc" class="trm-tabs-nav-item active">
+                    <i class="iconfont fas fa-th-list"></i>
+                </div>
+           </div>
+            <div name="tabs-user" class="trm-tabs-item">
+                <!-- card header -->
+<div class="trm-mc-header">
+    <div class="trm-avatar-frame trm-mb-20">
+        <img alt="Avatar" class="trm-avatar" src="/img/avatar.jpg">
+    </div>
+    <h5 class="trm-name trm-mb-15">
+        菜鸟书生
+    </h5>
+    
+        <div class="trm-label">
+            优秀的人
+            <span class="trm-typed-text">
+                <!-- Words for theme.user.typedText -->
+            </span>
+        </div>
+    
+</div>
+<!-- card header end -->
+                <!-- sidebar social -->
+
+<!-- sidebar social end -->
+                <!-- info -->
+<div class="trm-divider trm-mb-40 trm-mt-40"></div>
+<ul class="trm-table trm-mb-20">
+    
+        <li>
+            <div class="trm-label">
+                leetcode:
+            </div>
+            <div class="trm-label trm-label-light">
+                <a href="/tags/leetcode" target="_self" rel="nofollow">查看</a>
+            </div>
+        </li>
+    
+</ul>
+<!-- info end -->
+
+                
+            </div>
+            <div name="tabs-toc" class="trm-tabs-item active">
+                <div class="post-toc">
+    <ol class="toc"><li class="toc-item toc-level-2"><a rel="nofollow" class="toc-link" href="#vue使用pdf-dist实现pdf预览以及水印"  data-scroll-to="#vue使用pdf-dist实现pdf预览以及水印"><span class="toc-number">1.</span> <span class="toc-text">vue使用pdf-dist实现pdf预览以及水印</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#一-使用pdf-dist插件将PDF文件转换为一张张canvas图片"  data-scroll-to="#一-使用pdf-dist插件将PDF文件转换为一张张canvas图片"><span class="toc-number">1.1.</span> <span class="toc-text">一.使用pdf-dist插件将PDF文件转换为一张张canvas图片</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#二-页面引入插件"  data-scroll-to="#二-页面引入插件"><span class="toc-number">1.2.</span> <span class="toc-text">二.页面引入插件</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#三-渲染PDF"  data-scroll-to="#三-渲染PDF"><span class="toc-number">1.3.</span> <span class="toc-text">三.渲染PDF</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#四-添加水印"  data-scroll-to="#四-添加水印"><span class="toc-number">1.4.</span> <span class="toc-text">四.添加水印</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#五-完整代码（带翻页）"  data-scroll-to="#五-完整代码（带翻页）"><span class="toc-number">1.5.</span> <span class="toc-text">五.完整代码（带翻页）</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#六-完整代码（滑动）"  data-scroll-to="#六-完整代码（滑动）"><span class="toc-number">1.6.</span> <span class="toc-text">六.完整代码（滑动）</span></a></li><li class="toc-item toc-level-3"><a rel="nofollow" class="toc-link" href="#七-下载源码地址"  data-scroll-to="#七-下载源码地址"><span class="toc-number">1.7.</span> <span class="toc-text">七.下载源码地址</span></a></li></ol></li></ol>
+</div>
+            </div>
+        </div>
+    
+    </div>
+</div>
+                    <!-- main card end -->
+                </div>
+            
+            <div id="page-content" class="col-lg-8">
+                <div class="trm-content" id="trm-content">
+                    <div data-scroll data-scroll-repeat data-scroll-offset="500" id="about-triger"></div>
+
+                    <div id="post-info" class="row hidden-sm">
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-calendar-alt trm-icon"></i><br>
+            10/18
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-clock trm-icon"></i><br>
+            21:34
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div id="post-author" class="trm-card trm-label trm-label-light text-center">
+            <i class="iconfont far fa-user trm-icon"></i><br>
+            菜鸟书生
+        </div>
+    </div>
+</div>
+<div class="trm-card ">
+    <article id="article-container" class="trm-publication">
+    <h2 id="vue使用pdf-dist实现pdf预览以及水印"><a href="#vue使用pdf-dist实现pdf预览以及水印" class="headerlink" title="vue使用pdf-dist实现pdf预览以及水印"></a>vue使用pdf-dist实现pdf预览以及水印</h2><h3 id="一-使用pdf-dist插件将PDF文件转换为一张张canvas图片"><a href="#一-使用pdf-dist插件将PDF文件转换为一张张canvas图片" class="headerlink" title="一.使用pdf-dist插件将PDF文件转换为一张张canvas图片"></a>一.使用pdf-dist插件将PDF文件转换为一张张canvas图片</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install pdf-dist</span><br></pre></td></tr></table></figure>
+<h3 id="二-页面引入插件"><a href="#二-页面引入插件" class="headerlink" title="二.页面引入插件"></a>二.页面引入插件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> pdfJS = <span class="built_in">require</span>(<span class="string">&quot;pdfjs-dist&quot;</span>);</span><br><span class="line">pdfJS.<span class="property">GlobalWorkerOptions</span>.<span class="property">workerSrc</span> = <span class="built_in">require</span>(<span class="string">&quot;pdfjs-dist/build/pdf.worker.entry&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="三-渲染PDF"><a href="#三-渲染PDF" class="headerlink" title="三.渲染PDF"></a>三.渲染PDF</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 根据页码渲染相应的PDF</span></span><br><span class="line"><span class="title function_">renderPage</span>(<span class="params">num</span>) &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">renderingPage</span> = <span class="literal">true</span>;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">pdfData</span>.<span class="property">promise</span>.<span class="title function_">then</span>(<span class="function">(<span class="params">pdf</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">pdfPageNumber</span> = pdf.<span class="property">numPages</span>;</span><br><span class="line"></span><br><span class="line">    pdf.<span class="title function_">getPage</span>(num).<span class="title function_">then</span>(<span class="function">(<span class="params">page</span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 获取DOM中为预览PDF准备好的canvasDOM对象</span></span><br><span class="line">      <span class="keyword">let</span> canvas = <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">myCanvas</span>;</span><br><span class="line">      <span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 获取页面比率</span></span><br><span class="line">      <span class="keyword">let</span> ratio = <span class="variable language_">this</span>.<span class="title function_">_getRatio</span>(ctx);</span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 根据页面宽度和视口宽度的比率就是内容区的放大比率</span></span><br><span class="line">      <span class="keyword">let</span> dialogWidth = <span class="variable language_">this</span>.<span class="property">$refs</span>[<span class="string">&quot;canvasCont&quot;</span>].<span class="property">offsetWidth</span>;</span><br><span class="line">      <span class="keyword">let</span> pageWidth = page.<span class="property">view</span>[<span class="number">2</span>] * ratio;</span><br><span class="line">      <span class="keyword">let</span> scale = dialogWidth / pageWidth;</span><br><span class="line">      <span class="keyword">let</span> viewport = page.<span class="title function_">getViewport</span>(&#123; scale &#125;);</span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">      <span class="comment">// 记录内容区宽高，后期添加水印时需要</span></span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">width</span> = viewport.<span class="property">width</span> * ratio;</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">height</span> = viewport.<span class="property">height</span> * ratio;</span><br><span class="line"></span><br><span class="line">      canvas.<span class="property">width</span> = <span class="variable language_">this</span>.<span class="property">width</span>;</span><br><span class="line">      canvas.<span class="property">height</span> = <span class="variable language_">this</span>.<span class="property">height</span>;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 缩放比率</span></span><br><span class="line">      ctx.<span class="title function_">setTransform</span>(ratio, <span class="number">0</span>, <span class="number">0</span>, ratio, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> renderContext = &#123;</span><br><span class="line">        <span class="attr">canvasContext</span>: ctx,</span><br><span class="line">        <span class="attr">viewport</span>: viewport,</span><br><span class="line">      &#125;;</span><br><span class="line">      page.<span class="title function_">render</span>(renderContext).<span class="property">promise</span>.<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">renderingPage</span> = <span class="literal">false</span>;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">pageNo</span> = num;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 添加水印</span></span><br><span class="line">        <span class="variable language_">this</span>.<span class="title function_">_renderWatermark</span>();</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment">// 计算角度</span></span><br><span class="line"><span class="title function_">_getRatio</span>(<span class="params">ctx</span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> dpr = <span class="variable language_">window</span>.<span class="property">devicePixelRatio</span> || <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">let</span> bsr =</span><br><span class="line">    ctx.<span class="property">webkitBackingStorePixelRatio</span> ||</span><br><span class="line">    ctx.<span class="property">mozBackingStorePixelRatio</span> ||</span><br><span class="line">    ctx.<span class="property">msBackingStorePixelRatio</span> ||</span><br><span class="line">    ctx.<span class="property">oBackingStorePixelRatio</span> ||</span><br><span class="line">    ctx.<span class="property">backingStorePixelRatio</span> ||</span><br><span class="line">    <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">return</span> dpr / bsr;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="四-添加水印"><a href="#四-添加水印" class="headerlink" title="四.添加水印"></a>四.添加水印</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 生成水印图片</span></span><br><span class="line"><span class="title function_">_initWatermark</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">let</span> canvas = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;canvas&quot;</span>);</span><br><span class="line">  canvas.<span class="property">width</span> = <span class="number">200</span>;</span><br><span class="line">  canvas.<span class="property">height</span> = <span class="number">200</span>;</span><br><span class="line">  <span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span><br><span class="line">  ctx.<span class="title function_">rotate</span>((-<span class="number">18</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">180</span>);</span><br><span class="line">  ctx.<span class="property">font</span> = <span class="string">&quot;10px Vedana&quot;</span>;</span><br><span class="line">  ctx.<span class="property">fillStyle</span> = <span class="string">&quot;rgba(0, 0, 0, 0.8)&quot;</span>;</span><br><span class="line">  ctx.<span class="property">textAlign</span> = <span class="string">&quot;left&quot;</span>;</span><br><span class="line">  ctx.<span class="property">textBaseline</span> = <span class="string">&quot;middle&quot;</span>;</span><br><span class="line">  ctx.<span class="title function_">fillText</span>(<span class="variable language_">this</span>.<span class="property">watermark</span>, <span class="number">10</span>, <span class="number">100</span>);</span><br><span class="line">  <span class="keyword">return</span> canvas;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h3 id="五-完整代码（带翻页）"><a href="#五-完整代码（带翻页）" class="headerlink" title="五.完整代码（带翻页）"></a>五.完整代码（带翻页）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main-container&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;fielinput&quot;</span> @<span class="attr">change</span>=<span class="string">&quot;uploadFile&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&quot;canvasCont&quot;</span> <span class="attr">class</span>=<span class="string">&quot;canvas-container&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">ref</span>=<span class="string">&quot;myCanvas&quot;</span> <span class="attr">class</span>=<span class="string">&quot;pdf-container&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;pagination-wrapper&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;clickPre&quot;</span>&gt;</span>上一页<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">span</span>&gt;</span>第&#123;&#123; pageNo &#125;&#125; / &#123;&#123; pdfPageNumber &#125;&#125;页<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">button</span> @<span class="attr">click</span>=<span class="string">&quot;clickNext&quot;</span>&gt;</span>下一页<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">const</span> pdfJS = <span class="built_in">require</span>(<span class="string">&quot;pdfjs-dist&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">pdfJS.<span class="property">GlobalWorkerOptions</span>.<span class="property">workerSrc</span> = <span class="built_in">require</span>(<span class="string">&quot;pdfjs-dist/build/pdf.worker.entry&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="attr">props</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">watermark</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">type</span>: <span class="title class_">String</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">default</span>: <span class="string">&quot;水印文字水印文字水印文字&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">mounted</span>(<span class="params"></span>) &#123;&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">pageNo</span>: <span class="literal">null</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">pdfPageNumber</span>: <span class="literal">null</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">renderingPage</span>: <span class="literal">false</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">pdfData</span>: <span class="literal">null</span>, <span class="comment">// PDF的base64</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">scale</span>: <span class="number">1</span>, <span class="comment">// 缩放值</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">width</span>: <span class="string">&quot;&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">height</span>: <span class="string">&quot;&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="attr">methods</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">uploadFile</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> inputDom = <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">fielinput</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> file = inputDom.<span class="property">files</span>[<span class="number">0</span>];</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      reader.<span class="title function_">readAsDataURL</span>(file);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      reader.<span class="property">onload</span> = <span class="function">() =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> data = <span class="title function_">atob</span>(</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          reader.<span class="property">result</span>.<span class="title function_">substring</span>(reader.<span class="property">result</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;,&quot;</span>) + <span class="number">1</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        );</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">this</span>.<span class="title function_">loadPdfData</span>(data);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">loadPdfData</span>(<span class="params">data</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="comment">// 引入pdf.js的字体</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> <span class="variable constant_">CMAP_URL</span> = <span class="string">&quot;https://unpkg.com/pdfjs-dist@2.0.943/cmaps/&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="comment">//读取base64的pdf流文件</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">this</span>.<span class="property">pdfData</span> = pdfJS.<span class="title function_">getDocument</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">data</span>: data, <span class="comment">// PDF base64编码</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">cMapUrl</span>: <span class="variable constant_">CMAP_URL</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">cMapPacked</span>: <span class="literal">true</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">this</span>.<span class="title function_">renderPage</span>(<span class="number">1</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 根据页码渲染相应的PDF</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">renderPage</span>(<span class="params">num</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">this</span>.<span class="property">renderingPage</span> = <span class="literal">true</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">this</span>.<span class="property">pdfData</span>.<span class="property">promise</span>.<span class="title function_">then</span>(<span class="function">(<span class="params">pdf</span>) =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">this</span>.<span class="property">pdfPageNumber</span> = pdf.<span class="property">numPages</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        pdf.<span class="title function_">getPage</span>(num).<span class="title function_">then</span>(<span class="function">(<span class="params">page</span>) =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="comment">// 获取DOM中为预览PDF准备好的canvasDOM对象</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> canvas = <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">myCanvas</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="comment">// 获取页面比率</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> ratio = <span class="variable language_">this</span>.<span class="title function_">_getRatio</span>(ctx);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="comment">// 根据页面宽度和视口宽度的比率就是内容区的放大比率</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> dialogWidth = <span class="variable language_">this</span>.<span class="property">$refs</span>[<span class="string">&quot;canvasCont&quot;</span>].<span class="property">offsetWidth</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> pageWidth = page.<span class="property">view</span>[<span class="number">2</span>] * ratio;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> scale = dialogWidth / pageWidth;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> viewport = page.<span class="title function_">getViewport</span>(&#123; scale &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="comment">// 记录内容区宽高，后期添加水印时需要</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="variable language_">this</span>.<span class="property">width</span> = viewport.<span class="property">width</span> * ratio;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="variable language_">this</span>.<span class="property">height</span> = viewport.<span class="property">height</span> * ratio;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          canvas.<span class="property">width</span> = <span class="variable language_">this</span>.<span class="property">width</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          canvas.<span class="property">height</span> = <span class="variable language_">this</span>.<span class="property">height</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="comment">// 缩放比率</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          ctx.<span class="title function_">setTransform</span>(ratio, <span class="number">0</span>, <span class="number">0</span>, ratio, <span class="number">0</span>, <span class="number">0</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> renderContext = &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">canvasContext</span>: ctx,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">viewport</span>: viewport,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          page.<span class="title function_">render</span>(renderContext).<span class="property">promise</span>.<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">this</span>.<span class="property">renderingPage</span> = <span class="literal">false</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">this</span>.<span class="property">pageNo</span> = num;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="comment">// 添加水印</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">this</span>.<span class="title function_">_renderWatermark</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 计算角度</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">_getRatio</span>(<span class="params">ctx</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> dpr = <span class="variable language_">window</span>.<span class="property">devicePixelRatio</span> || <span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> bsr =</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ctx.<span class="property">webkitBackingStorePixelRatio</span> ||</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ctx.<span class="property">mozBackingStorePixelRatio</span> ||</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ctx.<span class="property">msBackingStorePixelRatio</span> ||</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ctx.<span class="property">oBackingStorePixelRatio</span> ||</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ctx.<span class="property">backingStorePixelRatio</span> ||</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">return</span> dpr / bsr;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 在画布上渲染水印</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">_renderWatermark</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> canvas = <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">myCanvas</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="comment">// 平铺水印</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> pattern = ctx.<span class="title function_">createPattern</span>(<span class="variable language_">this</span>.<span class="title function_">_initWatermark</span>(), <span class="string">&quot;repeat&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="title function_">rect</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">width</span>, <span class="variable language_">this</span>.<span class="property">height</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="property">fillStyle</span> = pattern;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="title function_">fill</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 生成水印图片</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">_initWatermark</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> canvas = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;canvas&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      canvas.<span class="property">width</span> = <span class="number">200</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      canvas.<span class="property">height</span> = <span class="number">200</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="title function_">rotate</span>((-<span class="number">18</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">180</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="property">font</span> = <span class="string">&quot;10px Vedana&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="property">fillStyle</span> = <span class="string">&quot;rgba(0, 0, 0, 0.8)&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="property">textAlign</span> = <span class="string">&quot;left&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="property">textBaseline</span> = <span class="string">&quot;middle&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="title function_">fillText</span>(<span class="variable language_">this</span>.<span class="property">watermark</span>, <span class="number">10</span>, <span class="number">100</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">return</span> canvas;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">clickPre</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">if</span> (!<span class="variable language_">this</span>.<span class="property">renderingPage</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">pageNo</span> &amp;&amp; <span class="variable language_">this</span>.<span class="property">pageNo</span> &gt; <span class="number">1</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">this</span>.<span class="title function_">renderPage</span>(<span class="variable language_">this</span>.<span class="property">pageNo</span> - <span class="number">1</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">clickNext</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">if</span> (</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        !<span class="variable language_">this</span>.<span class="property">renderingPage</span> &amp;&amp;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">this</span>.<span class="property">pdfPageNumber</span> &amp;&amp;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">this</span>.<span class="property">pageNo</span> &amp;&amp;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">this</span>.<span class="property">pageNo</span> &lt; <span class="variable language_">this</span>.<span class="property">pdfPageNumber</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">this</span>.<span class="title function_">renderPage</span>(<span class="variable language_">this</span>.<span class="property">pageNo</span> + <span class="number">1</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.main-container</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">display</span>: flex;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">flex-direction</span>: column;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">align-items</span>: center;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.canvas-container</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">width</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">height</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">border</span>: <span class="number">1px</span> dashed black;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">display</span>: flex;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">justify-content</span>: center;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.pdf-container</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">width</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">height</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.pagination-wrapper</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">display</span>: flex;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">justify-content</span>: center;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">align-items</span>: center;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="六-完整代码（滑动）"><a href="#六-完整代码（滑动）" class="headerlink" title="六.完整代码（滑动）"></a>六.完整代码（滑动）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main-container&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">ref</span>=<span class="string">&quot;fielinput&quot;</span> @<span class="attr">change</span>=<span class="string">&quot;uploadFile&quot;</span> /&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">ref</span>=<span class="string">&quot;canvasCont&quot;</span> <span class="attr">class</span>=<span class="string">&quot;canvas-container&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">v-for</span>=<span class="string">&quot;pageIndex in pdfPageNumber&quot;</span> </span></span></span><br><span class="line"><span class="tag"><span class="language-xml">        <span class="attr">:ref</span>=<span class="string">&quot;`myCanvas$&#123;pageIndex&#125;`&quot;</span> <span class="attr">:key</span>=<span class="string">&quot;pageIndex&quot;</span> <span class="attr">class</span>=<span class="string">&quot;pdf-container&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">&lt;/template&gt;</span><br><span class="line"> </span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">const</span> pdfJS = <span class="built_in">require</span>(<span class="string">&quot;pdfjs-dist&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">pdfJS.<span class="property">GlobalWorkerOptions</span>.<span class="property">workerSrc</span> = <span class="built_in">require</span>(<span class="string">&quot;pdfjs-dist/build/pdf.worker.entry&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="attr">props</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="attr">watermark</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">type</span>: <span class="title class_">String</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">default</span>: <span class="string">&quot;水印文字水印文字水印文字&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">mounted</span>(<span class="params"></span>) &#123;&#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="title function_">data</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">return</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">pageNo</span>: <span class="literal">null</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">pdfPageNumber</span>: <span class="literal">null</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">renderingPage</span>: <span class="literal">false</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">pdfData</span>: <span class="literal">null</span>, <span class="comment">// PDF的base64</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">scale</span>: <span class="number">1</span>, <span class="comment">// 缩放值</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">width</span>: <span class="string">&quot;&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">height</span>: <span class="string">&quot;&quot;</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  <span class="attr">methods</span>: &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">uploadFile</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> inputDom = <span class="variable language_">this</span>.<span class="property">$refs</span>.<span class="property">fielinput</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> file = inputDom.<span class="property">files</span>[<span class="number">0</span>];</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> reader = <span class="keyword">new</span> <span class="title class_">FileReader</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      reader.<span class="title function_">readAsDataURL</span>(file);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      reader.<span class="property">onload</span> = <span class="function">() =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="keyword">let</span> data = <span class="title function_">atob</span>(</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          reader.<span class="property">result</span>.<span class="title function_">substring</span>(reader.<span class="property">result</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;,&quot;</span>) + <span class="number">1</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        );</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">this</span>.<span class="title function_">loadPdfData</span>(data);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">loadPdfData</span>(<span class="params">data</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="comment">// 引入pdf.js的字体</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> <span class="variable constant_">CMAP_URL</span> = <span class="string">&quot;https://unpkg.com/pdfjs-dist@2.0.943/cmaps/&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="comment">//读取base64的pdf流文件</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">this</span>.<span class="property">pdfData</span> = pdfJS.<span class="title function_">getDocument</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">data</span>: data, <span class="comment">// PDF base64编码</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">cMapUrl</span>: <span class="variable constant_">CMAP_URL</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="attr">cMapPacked</span>: <span class="literal">true</span>,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">this</span>.<span class="title function_">renderPage</span>(<span class="number">1</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 根据页码渲染相应的PDF</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">renderPage</span>(<span class="params">num</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">this</span>.<span class="property">renderingPage</span> = <span class="literal">true</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="variable language_">this</span>.<span class="property">pdfData</span>.<span class="property">promise</span>.<span class="title function_">then</span>(<span class="function">(<span class="params">pdf</span>) =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="variable language_">this</span>.<span class="property">pdfPageNumber</span> = pdf.<span class="property">numPages</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        pdf.<span class="title function_">getPage</span>(num).<span class="title function_">then</span>(<span class="function">(<span class="params">page</span>) =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="comment">// 获取DOM中为预览PDF准备好的canvasDOM对象</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> canvas = <span class="variable language_">this</span>.<span class="property">$refs</span>[<span class="string">`myCanvas<span class="subst">$&#123;num&#125;</span>`</span>][<span class="number">0</span>];</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="comment">// 获取页面比率</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> ratio = <span class="variable language_">this</span>.<span class="title function_">_getRatio</span>(ctx);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="comment">// 根据页面宽度和视口宽度的比率就是内容区的放大比率</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> dialogWidth = <span class="variable language_">this</span>.<span class="property">$refs</span>[<span class="string">&quot;canvasCont&quot;</span>].<span class="property">offsetWidth</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> pageWidth = page.<span class="property">view</span>[<span class="number">2</span>] * ratio;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> scale = dialogWidth / pageWidth;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> viewport = page.<span class="title function_">getViewport</span>(&#123; scale &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="comment">// 记录内容区宽高，后期添加水印时需要</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="variable language_">this</span>.<span class="property">width</span> = viewport.<span class="property">width</span> * ratio;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="variable language_">this</span>.<span class="property">height</span> = viewport.<span class="property">height</span> * ratio;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          canvas.<span class="property">width</span> = <span class="variable language_">this</span>.<span class="property">width</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          canvas.<span class="property">height</span> = <span class="variable language_">this</span>.<span class="property">height</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="comment">// 缩放比率</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          ctx.<span class="title function_">setTransform</span>(ratio, <span class="number">0</span>, <span class="number">0</span>, ratio, <span class="number">0</span>, <span class="number">0</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          <span class="keyword">let</span> renderContext = &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">canvasContext</span>: ctx,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="attr">viewport</span>: viewport,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          &#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">         </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          page.<span class="title function_">render</span>(renderContext).<span class="property">promise</span>.<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">this</span>.<span class="property">renderingPage</span> = <span class="literal">false</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">this</span>.<span class="property">pageNo</span> = num;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="comment">// 添加水印</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="variable language_">this</span>.<span class="title function_">_renderWatermark</span>(num);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="keyword">if</span>(num &lt; <span class="variable language_">this</span>.<span class="property">pdfPageNumber</span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">              <span class="variable language_">this</span>.<span class="title function_">renderPage</span>(num+<span class="number">1</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">          &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 计算角度</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">_getRatio</span>(<span class="params">ctx</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> dpr = <span class="variable language_">window</span>.<span class="property">devicePixelRatio</span> || <span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> bsr =</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ctx.<span class="property">webkitBackingStorePixelRatio</span> ||</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ctx.<span class="property">mozBackingStorePixelRatio</span> ||</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ctx.<span class="property">msBackingStorePixelRatio</span> ||</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ctx.<span class="property">oBackingStorePixelRatio</span> ||</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        ctx.<span class="property">backingStorePixelRatio</span> ||</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        <span class="number">1</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">return</span> dpr / bsr;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 在画布上渲染水印</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">_renderWatermark</span>(<span class="params">num</span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> canvas = <span class="variable language_">this</span>.<span class="property">$refs</span>[<span class="string">`myCanvas<span class="subst">$&#123;num&#125;</span>`</span>][<span class="number">0</span>];</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="comment">// 平铺水印</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> pattern = ctx.<span class="title function_">createPattern</span>(<span class="variable language_">this</span>.<span class="title function_">_initWatermark</span>(), <span class="string">&quot;repeat&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="title function_">rect</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="variable language_">this</span>.<span class="property">width</span>, <span class="variable language_">this</span>.<span class="property">height</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="property">fillStyle</span> = pattern;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="title function_">fill</span>();</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"> </span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="comment">// 生成水印图片</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="title function_">_initWatermark</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> canvas = <span class="variable language_">document</span>.<span class="title function_">createElement</span>(<span class="string">&quot;canvas&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      canvas.<span class="property">width</span> = <span class="number">200</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      canvas.<span class="property">height</span> = <span class="number">200</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">let</span> ctx = canvas.<span class="title function_">getContext</span>(<span class="string">&quot;2d&quot;</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="title function_">rotate</span>((-<span class="number">18</span> * <span class="title class_">Math</span>.<span class="property">PI</span>) / <span class="number">180</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="property">font</span> = <span class="string">&quot;10px Vedana&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="property">fillStyle</span> = <span class="string">&quot;rgba(0, 0, 0, 0.8)&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="property">textAlign</span> = <span class="string">&quot;left&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="property">textBaseline</span> = <span class="string">&quot;middle&quot;</span>;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      ctx.<span class="title function_">fillText</span>(<span class="variable language_">this</span>.<span class="property">watermark</span>, <span class="number">10</span>, <span class="number">100</span>);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="keyword">return</span> canvas;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;,</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"> </span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">scoped</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.main-container</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">display</span>: flex;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">flex-direction</span>: column;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">align-items</span>: center;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.canvas-container</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">width</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">height</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">border</span>: <span class="number">1px</span> dashed black;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">position</span>: relative;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="comment">/* display: flex; */</span></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="comment">/* justify-content: center; */</span></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-class">.pdf-container</span> &#123;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">width</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">  <span class="attribute">height</span>: <span class="number">100%</span>;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml">&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="七-下载源码地址"><a href="#七-下载源码地址" class="headerlink" title="七.下载源码地址"></a>七.下载源码地址</h3><p><a target="_blank" rel="noopener" href="https://github.com/dwmorning/pdf-dist-watermark">下载地址</a></p>
+
+</article>
+    
+    
+
+<ul class="trm-post-copyright">
+    <li class="trm-post-copyright-author">
+        <strong>本文作者：</strong>
+        菜鸟书生
+    </li>
+    <li class="trm-post-copyright-link">
+        <strong>本文链接：</strong>
+        <a id="original-link" href="https://dwmorning.github.io/vue-pdf-dist-watermark/" title="vue使用pdf-dist实现pdf预览以及水印">https://dwmorning.github.io/vue-pdf-dist-watermark/</a>
+    </li>
+    <li class="trm-post-copyright-license">
+        <strong>版权声明：</strong>
+        本博客所有文章除特别声明外，均默认采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="noopener" title="CC BY-NC-SA 4.0 ">CC BY-NC-SA 4.0</a> 许可协议。
+    </li>
+</ul>
+
+
+</div>
+<div id="post-next-prev" class="row">
+    <div class="col-lg-12">
+        <!-- title -->
+        <h5 class="trm-title-with-divider">
+            其他文章
+            <span data-number="02"></span>
+        </h5>
+    </div>
+    
+    
+        <div class="col-lg-6">
+    <div class="trm-blog-card trm-scroll-animation" data-scroll data-scroll-offset="40">
+        <a href="/leetbookDFS/" class="trm-cover-frame trm-anima-link">
+            
+            
+                <img data-random-img alt="cover" class="no-fancybox" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAIAAAACCAYAAABytg0kAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAPSURBVBhXY/gPBVDG//8Aj4IP8dFqTzkAAAAASUVORK5CYII=">
+            
+        </a>
+        
+        <div class="trm-card-descr">
+            <div class="trm-label trm-category trm-mb-20">
+                <a href=" /categories/leetbook/">
+                    leetbook
+                </a>
+            </div>
+            <h5>
+                <a href="/leetbookDFS/" class="trm-anima-link">
+                    深度优先搜索
+                </a>
+            </h5>
+            <div class="trm-divider trm-mb-20 trm-mt-20"></div>
+            <ul class="trm-card-data trm-label">
+                <li>23/09/04</li>
+                <li>19:45</li>
+                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+    
+</div>
+
+    
+
+    <div id="giscus-wrap" class="trm-card trm-scroll-animation comment-container" data-scroll data-scroll-offset="50"></div>
+<script data-swup-reload-script>
+    function loadGiscus() {
+        let nowTheme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        const config = {
+            src: 'https://giscus.app/client.js',
+            "data-repo": 'dwmorning/wmorning_blog',
+            "data-repo-id": 'R_kgDOJVV2rw',
+            "data-category": 'General',
+            "data-category-id": 'DIC_kwDOJVV2r84CVy-H',
+            "data-mapping": 'pathname',
+            "data-reactions-enabled": '1',
+            "data-emit-metadata": '0',
+            "data-theme": nowTheme,
+            "data-lang": 'zh-CN',
+            crossorigin: "anonymous",
+            async: true
+        }
+        let ele = document.createElement('script')
+        for (let key in config) {
+            ele.setAttribute(key, config[key])
+        }
+        document.getElementById('giscus-wrap').insertAdjacentElement('afterbegin', ele)
+    }
+
+    function changeGiscusTheme() {
+        let theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+
+        function sendMessage(message) {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (!iframe) return;
+            iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+
+        sendMessage({
+            setConfig: {
+                theme: theme
+            }
+        });
+    }
+
+    loadGiscus();
+</script>
+
+
+
+                    <div class="trm-divider footer-divider"></div>
+
+                    <!-- footer -->
+                    <footer class="trm-scroll-animation" data-scroll data-scroll-offset="50">
+
+    
+
+    
+        <div class="trm-footer-item">
+            <span>© 2023- 2023</span>
+            <span class="footer-separator"data-separator=" · "></span>
+            <span class="trm-accent-color">菜鸟书生</span>
+        </div>
+    
+
+    
+        <div class="trm-footer-item">
+            <span>
+                由 <a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a> 驱动 v6.3.0
+            </span>
+            <span class="footer-separator" data-separator=" | "></span>
+            <span> 
+                主题 - 
+                <a rel="noopener" href='https://github.com/MaLuns/hexo-theme-async' target='_blank'>Async</a>
+                v2.0.6
+            </span>
+        </div>
+      
+
+     
+
+    
+        <div class="trm-footer-item">
+            Hosted by <a href="https://github.com/dwmorning" rel="noopener" target="_blank">Github Pages</a>
+        </div>
+     
+</footer>
+ 
+                    <!-- footer end -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            <!-- body end -->
+
+            <div class="trm-fixed-container" data-scroll data-scroll-sticky data-scroll-target=".locomotive-scroll__sticky-target" data-scroll-offset="-10">
+    
+        <div class="trm-fixed-btn" data-title="阅读模式" onclick="asyncFun.switchReadMode()">
+            <i class="iconfont fas fa-book-reader"></i>
+        </div>
+    
+    
+    <div id="trm-back-top" class="trm-fixed-btn" data-title="回到顶部">
+        <i class="iconfont fas fa-arrow-up"></i>
+    </div>
+</div>
+          </div>
+        </div>
+      </div>
+      <!-- scroll container end -->
+
+  </div>
+  <!-- app wrapper end -->
+
+  
+    <div class="trm-search-popup">
+        <div class="trm-search-wrapper">
+            <div class="form trm-search-form">
+                <div class="trm-search-input-icon">
+                    <i class="iconfont fas fa-search"></i>
+                </div>
+                <input class="trm-search-input" type="text" placeholder="搜索文章...">
+                <div class="trm-search-btn-close">
+                    <i class="iconfont fas fa-times"></i>
+                </div>
+            </div>
+            <div class="trm-search-result-container">
+                <div class="trm-search-empty">
+                    请输入关键词进行搜索
+                </div>
+            </div>
+            <div class="trm-search-footer">
+                <div class="trm-search-stats"></div>
+                <ul class="trm-search-commands">
+                    <li>
+                        <kbd class="command-palette-commands-key">
+                            <svg width="15" height="15" aria-label="Escape key" role="img">
+                                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="1.2">
+                                    <path
+                                        d="M13.6167 8.936c-.1065.3583-.6883.962-1.4875.962-.7993 0-1.653-.9165-1.653-2.1258v-.5678c0-1.2548.7896-2.1016 1.653-2.1016.8634 0 1.3601.4778 1.4875 1.0724M9 6c-.1352-.4735-.7506-.9219-1.46-.8972-.7092.0246-1.344.57-1.344 1.2166s.4198.8812 1.3445.9805C8.465 7.3992 8.968 7.9337 9 8.5c.032.5663-.454 1.398-1.4595 1.398C6.6593 9.898 6 9 5.963 8.4851m-1.4748.5368c-.2635.5941-.8099.876-1.5443.876s-1.7073-.6248-1.7073-2.204v-.4603c0-1.0416.721-2.131 1.7073-2.131.9864 0 1.6425 1.031 1.5443 2.2492h-2.956">
+                                    </path>
+                                </g>
+                            </svg>
+                        </kbd>
+                        <span class="command-palette-Label">to close</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+  <!-- Plugin -->
+
+
+
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+
+    
+
+    
+        <script src="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/js/plugins/typing.js?v=2.0.6"></script>
+    
+
+    
+        
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/js/plugins/local_search.js?v=2.0.6"></script>
+    
+
+    <!-- 数学公式 -->
+    
+
+    <!-- 评论插件 -->
+    
+        
+
+        
+    
+
+
+
+<!-- CDN -->
+
+
+    
+
+    
+
+    
+
+
+
+
+    <!-- Service Worker -->
+    
+    <!-- baidu push -->
+    
+    <script data-swup-reload-script>
+        (function () {
+            var bp = document.createElement('script');
+            var curProtocol = window.location.protocol.split(':')[0];
+            if (curProtocol === 'https') {
+                bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            }
+            else {
+                bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            }
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(bp, s);
+        })();
+    </script>
+
+
+
+<script id="async-script" src="https://cdn.jsdelivr.net/npm/hexo-theme-async@2.0.6/source/js/main.js?v=2.0.6"></script>
+
+</body>
+
+</html>
